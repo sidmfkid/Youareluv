@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+
+    <section class="header">
+
+        <div class="header__overlay"></div>
+
+        <div class="header__content">
+
+        <div class="header__content-logo">
+            <img src="/assets/logo.png" alt="">
+        </div>
+
+        <div class="header__content-menu">
+            <a href="">Home</a>
+            <a href="">Products</a>
+            <a href="">Our Mission</a>
+            <a href="">Contact Us</a>
+            <a href="">Blog</a>
+        </div>
+
+        <div class="header__content-cart">
+            <svg width="36" height="37" viewBox="0 0 36 37">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.53043 0C1.12454 0 0.735266 0.161242 0.448254 0.448254C0.161242 0.735266 0 1.12454 0 1.53043C0 1.93633 0.161242 2.3256 0.448254 2.61261C0.735266 2.89963 1.12454 3.06087 1.53043 3.06087H2.28341C2.61573 3.06144 2.93883 3.17017 3.2039 3.37063C3.46896 3.57108 3.66157 3.85236 3.75262 4.17196L8.60716 21.1598C8.88173 22.1185 9.46096 22.9617 10.2573 23.562C11.0536 24.1622 12.0237 24.4869 13.0209 24.4869H27.006C27.9238 24.4871 28.8206 24.2122 29.5806 23.6977C30.3406 23.1832 30.929 22.4527 31.2698 21.6005L35.7816 10.3182C35.967 9.85393 36.036 9.35132 35.9823 8.85427C35.9287 8.35722 35.7542 7.88087 35.4739 7.46686C35.1937 7.05286 34.8163 6.71379 34.3748 6.4793C33.9332 6.24482 33.441 6.12205 32.9411 6.12174H7.49301L6.69412 3.33023C6.42025 2.37148 5.84172 1.52794 5.04597 0.927126C4.25021 0.32631 3.2805 0.000870413 2.28341 0H1.53043ZM11.5517 20.315L8.36841 9.18261H32.938L28.4263 20.465C28.3126 20.7487 28.1165 20.9918 27.8634 21.1631C27.6103 21.3344 27.3117 21.426 27.006 21.4261H13.0209C12.6886 21.4255 12.3655 21.3168 12.1004 21.1163C11.8354 20.9159 11.6428 20.6346 11.5517 20.315Z" fill="#C2750A"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7739 36.7304C14.3769 36.7304 14.9739 36.6117 15.5309 36.3809C16.088 36.1502 16.5941 35.812 17.0205 35.3857C17.4468 34.9593 17.785 34.4532 18.0157 33.8961C18.2465 33.3391 18.3652 32.7421 18.3652 32.1391C18.3652 31.5362 18.2465 30.9391 18.0157 30.3821C17.785 29.8251 17.4468 29.3189 17.0205 28.8926C16.5941 28.4662 16.088 28.128 15.5309 27.8973C14.9739 27.6666 14.3769 27.5478 13.7739 27.5478C12.5562 27.5478 11.3884 28.0315 10.5274 28.8926C9.66634 29.7536 9.18262 30.9214 9.18262 32.1391C9.18262 33.3568 9.66634 34.5246 10.5274 35.3857C11.3884 36.2467 12.5562 36.7304 13.7739 36.7304ZM13.7739 33.6696C13.368 33.6696 12.9788 33.5083 12.6917 33.2213C12.4047 32.9343 12.2435 32.545 12.2435 32.1391C12.2435 31.7332 12.4047 31.344 12.6917 31.0569C12.9788 30.7699 13.368 30.6087 13.7739 30.6087C14.1798 30.6087 14.5691 30.7699 14.8561 31.0569C15.1431 31.344 15.3044 31.7332 15.3044 32.1391C15.3044 32.545 15.1431 32.9343 14.8561 33.2213C14.5691 33.5083 14.1798 33.6696 13.7739 33.6696Z" fill="#C2750A"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M27.7745 36.3809C27.2174 36.6117 26.6204 36.7304 26.0175 36.7304C24.7998 36.7304 23.6319 36.2467 22.7709 35.3857C21.9099 34.5246 21.4261 33.3568 21.4261 32.1391C21.4261 30.9214 21.9099 29.7536 22.7709 28.8926C23.6319 28.0315 24.7998 27.5478 26.0175 27.5478C26.6204 27.5478 27.2174 27.6666 27.7745 27.8973C28.3315 28.128 28.8377 28.4662 29.264 28.8926C29.6903 29.3189 30.0285 29.8251 30.2593 30.3821C30.49 30.9391 30.6088 31.5362 30.6088 32.1391C30.6088 32.7421 30.49 33.3391 30.2593 33.8961C30.0285 34.4532 29.6903 34.9593 29.264 35.3857C28.8377 35.812 28.3315 36.1502 27.7745 36.3809ZM24.9353 33.2213C25.2223 33.5083 25.6116 33.6696 26.0175 33.6696C26.4233 33.6696 26.8126 33.5083 27.0996 33.2213C27.3866 32.9343 27.5479 32.545 27.5479 32.1391C27.5479 31.7332 27.3866 31.344 27.0996 31.0569C26.8126 30.7699 26.4233 30.6087 26.0175 30.6087C25.6116 30.6087 25.2223 30.7699 24.9353 31.0569C24.6483 31.344 24.487 31.7332 24.487 32.1391C24.487 32.545 24.6483 32.9343 24.9353 33.2213Z" fill="#C2750A"/>
+                </svg>
+        </div>
+
+        <div class="header__content-hamburger">
+            <div></div>
+        </div>
+    </div>
+
+    </section>
+
+
+    <section class="hero">
+        <div class="hero__content">
+
+            <div class="hero__content-image">
+                <!-- <svg width="722" height="775" viewBox="0 0 722 775" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect width="722" height="775" fill="#E5E5E5"/>
+                    <rect width="1500" height="3474" transform="translate(0 -125)" fill="white"/>
+                    <g clip-path="url(#clip0)">
+                    <rect width="1500" height="775" fill="#F7BE6E"/>
+                    <mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-242" y="-64" width="964" height="896">
+                    <path d="M621 375C762.572 731 831 832 297.5 832C109.723 832 -218 804.777 -218 617C-218 429.223 -414.5 -64 318.5 -64C506.277 -64 535.5 160 621 375Z" fill="#C4C4C4"/>
+                    </mask>
+                    <g mask="url(#mask0)">
+                    <rect x="-127" y="-81" width="935" height="935" fill="url(#pattern0)"/>
+                    </g>
+                    </g>
+                    <defs>
+                    <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0" transform="scale(0.000249813)"/>
+                    </pattern>
+                    <clipPath id="clip0">
+                    <rect width="1500" height="775" fill="white"/>
+                    </clipPath>
+                    <image id="image0" width="4003" height="4003" xlink:href="/box-1.jpg"/>
+                    </defs>
+                    </svg> -->
+            </div>
+
+            <div class="hero__content-card">
+                <h1>Hi There! Welcome To You Are!</h1>
+                <p>Where everytime we make  sale, a box is donated to a child in a low income area.</p>
+                <a class="btn btn-primary" href="">Buy Now</a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="logo-list">
+
+        <div class="logo-list__icon">
+            <img src="/assets/icon-1.svg" alt="">
+            <h2>100% Minority Owned</h2>
+        </div>
+
+        <div class="logo-list__icon">
+            <img src="/assets/icon-2.svg" alt="">
+            <h2>Over 1,000 Boxes Sold</h2>
+        </div>
+
+        <div class="logo-list__icon">
+            <img src="/assets/icon-3.svg" alt="">
+            <h2>Free US Shipping On Orders Over 30$</h2>
+        </div>
+
+    </section>
+
+
+    <section class="girl">
+
+        <div class="girl__text">
+            <h3>You Are Talented</h3>
+            <h3>You Are Strong</h3>
+            <h3>You Are Victorious</h3>
+
+            </div>
+<img src="/assets/black-girl.svg" alt="">
+        <div class="girl__text">
+
+            <h3>You Are Brilliant</h3>
+            <h3>You Are Unique</h3>
+            <h3>You Are Beautiful</h3>
+
+        </div>
+
+
+    </section>
+
+
+    <section class="affirmations">
+
+        <h2>Positive Affirmations On Every Crayon</h2>
+
+        <div class="affirmations__content">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    </section>
+
+    <section class="image-with-text">
+
+        <div class="image-with-text__img clip">
+            <div></div>
+        </div>
+
+        <div class="image-with-text__text">
+            <h2>Giving Back</h2>
+            <p>The You Are Brand is committed to community and giving back! For every box of crayons purchased a box will be given to an underprivileged Child. They too need to know that they are beautiful, talented, valued and much more!</p>
+        </div>
+
+    </section>
+
+    <section class="newsletter">
+        <div class="newsletter__svg"></div>
+        <form action="" class="newsletter__form">
+            <h2>Sign Up For Our Newsletter For Discounts, Upcoming Product Releases, & Much More!</h2>
+
+            <div>
+            <label for="firstName">First Name</label>
+            <input name="firstName" id="firstName" type="text">
+        </div>
+
+        <div>
+            <label for="lastName">Last Name</label>
+            <input name="lastName" id="lastName" type="text">
+        </div>
+        <div>
+            <label for="email">Email Address</label>
+            <input name="email" id="email" type="email">
+        </div>
+            <input class="btn btn-primary" type="submit" value="Sign Up">
+
+        </form>
+    </section>
+
+    <section class="footer">
+
+        <div class="footer__logo">
+            <img src="/assets/logo.png" alt="">
+            <p>Commited to Positive Representation in The Marketplace</p>
+        </div>
+        <div class="footer__links">
+            <div>Quick Links</div>
+            <a href="">Home</a>
+            <a href="">Products</a>
+            <a href="">Contact Us</a>
+            <a href="">Terms & Service</a>
+            <a href="">Privacy Policy</a>
+        </div>
+    </section>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/nav.js"></script>
+</body>
+</html>

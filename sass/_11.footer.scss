@@ -1,0 +1,40 @@
+.footer {
+  height: min-content;
+  padding: 4rem 0;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: var(--primary-30);
+  flex-wrap: wrap;
+  &__logo {
+    width: 25rem;
+    img {
+      width: 25rem;
+    }
+    p {
+      font-size: var(--small);
+      color: var(--primary-70);
+      font-weight: font-weight(light);
+    }
+  }
+  &__links {
+    width: 25rem;
+    div {
+      font-size: var(--regular);
+      color: var(--primary-70);
+      font-weight: font-weight(light);
+    }
+    a {
+      display: block;
+      font-size: var(--small);
+      color: var(--primary-70);
+      font-weight: font-weight(light);
+    }
+  }
+  @include media-tablet {
+    &__logo {
+      margin-bottom: 4rem;
+    }
+  }
+}

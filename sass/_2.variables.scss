@@ -1,0 +1,73 @@
+html {
+  //******** Colors *********//
+  --primary-10: hsla(35, 88.2%, 10%, 1);
+  --primary-20: hsla(35, 90.2%, 20%, 1);
+  --primary-30: hsla(35, 89.5%, 30%, 1);
+  --primary-40: hsla(35, 90.2%, 40%, 1);
+  --primary-50: hsla(35, 89.8%, 50%, 1);
+  --primary-60: hsla(35, 90.2%, 60%, 1);
+  --primary-60-m: hsla(35, 90.2%, 60%, 0.01);
+  --primary-70: hsla(35, 89.5%, 70%, 1);
+  --primary-80: hsla(35, 90.2%, 80%, 1);
+  --primary-90: hsla(35, 88.2%, 90%, 1);
+  --primary-95: hsla(34, 92%, 95.1%, 1);
+  --primary-98: hsla(40, 81.8%, 97.8%, 1);
+  --primary-99: hsla(36, 100%, 99%, 1);
+  --secondary-10: hsla(131, 88.2%, 10%, 1);
+  --secondary-20: hsla(131, 90.2%, 20%, 1);
+  --secondary-30: hsla(131, 89.5%, 30%, 1);
+  --secondary-40: hsla(131, 90.2%, 40%, 1);
+  --secondary-50: hsla(131, 89.8%, 50%, 1);
+  --secondary-60: hsla(131, 90.2%, 60%, 1);
+  --secondary-70: hsla(131, 89.5%, 70%, 1);
+  --secondary-80: hsla(131, 90.2%, 80%, 1);
+  --secondary-90: hsla(131, 88.2%, 90%, 1);
+  --secondary-95: hsla(130, 92%, 95.1%, 1);
+  --secondary-98: hsla(133, 81.8%, 97.8%, 1);
+  --secondary-99: hsla(132, 100%, 99%, 1);
+
+  //******** Typography *********//
+  --small: 1.6rem;
+  --regular: 2.4rem;
+  --medium: 3.8rem;
+  --large: 4.8rem;
+}
+
+// Typography Settings
+
+//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* Font Weights *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+$font-weights: (
+  "light": 300,
+  "regular": 400,
+  "semibold": 600,
+  "bold": 700,
+);
+
+@function font-weight($font-weight-style) {
+  @return map-get($font-weights, $font-weight-style);
+}
+
+//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* Font Sizes *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+$font-sizes: (
+  "small": calc(1.2rem + 0.5vw),
+  "regular": calc(1.5rem + 1vw),
+  "medium": calc(1.5rem + 2vw),
+  "large": calc(1.5rem + 5vw),
+  "xlarge": calc(2.5rem + 5vw),
+);
+
+@function font-size($font-size-style) {
+  @return map-get($font-sizes, $font-size-style);
+}
+
+//*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* Break Points *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+$break-points: (
+  "break-point-small": 400px,
+  "break-point-medium": 600px,
+  "break-point-tablet": 900px,
+  "break-point-desktop": 1300px,
+);
+
+@function break-point($break-point-limit) {
+  @return map-get($break-points, $break-point-limit);
+}

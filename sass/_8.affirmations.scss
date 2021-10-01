@@ -1,0 +1,79 @@
+.affirmations {
+  display: flex;
+
+  background-color: var(--primary-95);
+  flex-wrap: wrap;
+  justify-content: center;
+
+  h2 {
+    font-size: var(--large);
+    color: var(--primary-30);
+    // width: 100%;
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  &__content {
+    width: 100%;
+    height: 35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20rem 5rem 20rem;
+
+    @for $i from 1 through 10 {
+      div:nth-of-type(#{$i}) {
+        background-image: url(/assets/crayons-png/crayon-#{$i}.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 100%;
+        height: 100%;
+
+        filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+        transform: translateY(0);
+        transition: all 0.3s ease-in-out;
+        //   height: 30%;
+        &:active,
+        &:hover {
+          transform: scale(1.1);
+          filter: brightness(1.1)
+            drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+          transform: translateY(-3rem);
+        }
+      }
+    }
+  }
+
+  @include media-desktop-max {
+    &__content {
+      padding: 0rem 15rem 5rem 15rem;
+    }
+  }
+  @include media-tablet {
+    h2 {
+      margin-bottom: 3rem;
+    }
+    &__content {
+      padding: 0 4rem 5rem 4rem;
+    }
+  }
+  @include media-medium {
+    &__content {
+      flex-direction: column;
+      padding: 0 0rem 4rem 0rem;
+      height: 75rem;
+      @for $i from 1 through 10 {
+        div:nth-of-type(#{$i}) {
+          background-image: url(/assets/crayons-vertical/crayon-#{$i}.png);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 100%;
+        }
+      }
+    }
+  }
+  @include media-small {
+    padding-top: 10rem;
+  }
+}

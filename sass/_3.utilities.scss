@@ -1,0 +1,40 @@
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Signika", sans-serif;
+  font-style: normal;
+  line-height: auto;
+  background-color: var(--primary-70);
+}
+
+a,
+a:link,
+a:active {
+  text-decoration: none;
+  font-style: normal;
+  color: var(--primary-98);
+}
+
+.btn {
+  width: 80%;
+  padding: 1rem 4rem;
+  text-align: center;
+  font-size: var(--small);
+  font-weight: font-weight(semibold);
+  &.btn-primary {
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+    background-color: var(--primary-50);
+    color: var(--primary-98);
+
+    &:active,
+    &:hover {
+      transform: scale(1.05);
+      color: var(--secondary-30);
+      background-color: var(--primary-50);
+      border-radius: 1rem;
+    }
+  }
+}

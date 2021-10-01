@@ -1,0 +1,87 @@
+.girl {
+  background-color: var(--primary-95);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-top: 4rem;
+
+  img {
+    position: relative;
+    height: 40rem;
+  }
+
+  &__text {
+    h3 {
+      font-size: var(--medium);
+      font-weight: font-weight(light);
+      color: var(--primary-20);
+      margin-bottom: 10rem;
+    }
+
+    &:nth-of-type(1) {
+      h3 {
+        transform: rotate(10deg);
+
+        &:nth-of-type(2) {
+          transform: rotate(-10deg);
+        }
+      }
+    }
+
+    &:nth-of-type(2) {
+      h3 {
+        transform: rotate(-10deg);
+
+        &:nth-of-type(2) {
+          transform: rotate(10deg);
+        }
+      }
+    }
+  }
+
+  @include media-tablet {
+    padding: 5rem;
+    &__text {
+      h3 {
+        font-size: var(--regular);
+        // width: 100%;
+      }
+    }
+  }
+  @include media-medium {
+    padding: 5rem 2rem;
+    justify-content: space-between;
+    img {
+      position: absolute;
+      top: 20%;
+      right: 34%;
+      height: 30rem;
+    }
+    &__text {
+      h3 {
+        font-size: var(--regular);
+        // width: 100%;
+      }
+    }
+  }
+  @include media-small {
+    img {
+      position: absolute;
+      top: 25%;
+      right: 34%;
+      height: 30rem;
+    }
+    &__text {
+      h3 {
+        position: relative;
+        z-index: 1;
+        font-size: var(--small);
+        margin-bottom: 5rem;
+        // width: 100%;
+        &:nth-of-type(3) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

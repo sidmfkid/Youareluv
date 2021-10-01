@@ -1,0 +1,83 @@
+.hero {
+  background-color: var(--primary-70);
+  height: 60rem;
+  //   @extend %sec-padding;
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: inherit;
+    &-image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;
+      background-image: url(/assets/hero-1.svg);
+      width: 60%;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      //   background-position: center;
+    }
+
+    &-card {
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem;
+      margin-right: 5rem;
+      width: calc(45rem + 5vw);
+      //   flex-basis: calc(45rem + 5vw);
+      background-color: var(--primary-98);
+      height: min-content;
+      align-self: center;
+      gap: 3rem;
+      text-align: center;
+
+      box-shadow: 20px 20px 0px var(--primary-20);
+      h1 {
+        @extend %sec-heading;
+      }
+      p {
+        @extend %sec-para;
+      }
+    }
+  }
+
+  @include media-tablet {
+    height: 98rem;
+    padding-top: 5rem;
+    &__content {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      &-image {
+        background-image: url(/assets/hero-mobile.svg);
+        left: -13%;
+        top: 43%;
+        width: 100%;
+        height: 100%;
+      }
+      &-card {
+        width: 90%;
+        z-index: 0;
+        margin: 8rem 0 0 0;
+      }
+    }
+  }
+
+  @include media-medium {
+    height: 94rem;
+  }
+  @include media-small {
+    height: 95rem;
+    &__content {
+      &-image {
+        top: 53%;
+      }
+    }
+  }
+}
