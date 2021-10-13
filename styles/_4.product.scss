@@ -1,0 +1,116 @@
+.product {
+  width: 100%;
+  &__content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    &-main-img {
+      position: relative;
+      margin-bottom: 4rem;
+
+      &::after {
+        content: attr(data-price);
+        top: 2rem;
+        right: -2rem;
+        position: absolute;
+        z-index: 2;
+        color: var(--primary-99);
+        font-size: var(--regular);
+        text-align: center;
+        line-height: 4rem;
+        background-color: var(--primary-80);
+        width: 18rem;
+        height: 4rem;
+        font-weight: font-weight(light);
+      }
+      &::before {
+        content: attr(data-title);
+        bottom: 2rem;
+        left: -4rem;
+        position: absolute;
+        z-index: 2;
+        color: var(--primary-99);
+        font-size: var(--medium);
+        text-align: center;
+        line-height: 6rem;
+        background-color: var(--primary-80);
+        width: max-content;
+        height: auto;
+        padding: 0 2rem;
+        font-weight: font-weight(light);
+      }
+    }
+    &-imgs {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      i {
+        display: block;
+        font-size: 5rem;
+        margin-right: 4rem;
+        color: var(--primary-30);
+        &:nth-of-type(2) {
+          margin-left: 4rem;
+        }
+      }
+
+      .variant {
+        padding: 2rem;
+      }
+    }
+    &-selectors {
+      position: relative;
+      width: 100%;
+      i {
+        position: absolute;
+        top: 0.5rem;
+        right: 3rem;
+        font-size: 4rem;
+
+        color: var(--primary-60);
+        transform: rotate(90deg);
+        cursor: pointer;
+      }
+      .var-select {
+        position: relative;
+        appearance: none;
+        color: var(--primary-60);
+        font-size: var(--small);
+        padding: 1rem;
+        border-radius: 10rem;
+        width: 100%;
+        height: 5rem;
+        background-color: transparent;
+        border: 0.3rem solid var(--primary-60);
+        z-index: 2;
+        cursor: pointer;
+        text-align: center;
+      }
+    }
+    &-btns {
+      margin: 4rem 0;
+      width: 100%;
+      .btn {
+        margin-bottom: 2rem;
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .select-wrapper {
+      position: relative;
+      //   &::after {
+      //     content: "\f0d6";
+      //     position: absolute;
+      //     top: 0;
+      //     right: 0;
+      //     width: 15rem;
+      //     height: 15rem;
+      //     color: var(--secondary-40);
+      //   }
+    }
+  }
+}

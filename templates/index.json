@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero"
+    },
+    "logo-list": {
+      "type": "logo-list"
+    },
+    "girl": {
+      "type": "girl"
+    },
+    "affirmations": {
+      "type": "affirmations"
+    },
+    "image-with-text": {
+      "type": "image-with-text"
+    },
+    "newsletter": {
+      "type": "newsletter"
+    }
+  },
+  "order": [
+    "hero",
+    "logo-list",
+    "girl",
+    "affirmations",
+    "image-with-text",
+    "newsletter"
+  ]
+}

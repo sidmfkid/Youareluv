@@ -1,0 +1,45 @@
+<header class="header">
+
+    <div class="header__overlay"></div>
+
+    <nav class="header__content" role="navigation">
+
+        <div class="header__content-logo">
+            <img alt="" src="{{ 'logo.png' | asset_url}}">
+        </div>
+
+        <div class="header__content-menu">
+            {% for link in linklists.main-menu.links %}
+                <a href="{{ link.url }}" {% if link.active %} aria-current="page" {% endif %}>{{ link.title }}</a>
+            {% endfor %}
+
+            <!-- <a href="">Products</a>
+            <a href="">Our Mission</a>
+            <a href="">Contact Us</a>
+            <a href="">Blog</a> -->
+        </div>
+
+        <div class="header__content-cart">
+            {% render 'cart-icon' %}
+        </div>
+
+        <div class="header__content-hamburger">
+            <div></div>
+        </div>
+    </nav>
+
+</header>
+{% schema %}
+
+{
+    "name": "Navigation",
+    "settings": [
+        {
+            "type": "link_list",
+            "id": "main-menu",
+            "label": "Menu"
+        }
+    ]
+}
+
+{% endschema %}

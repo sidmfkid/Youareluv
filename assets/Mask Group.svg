@@ -1,0 +1,16 @@
+<svg width="722" height="775" viewBox="0 0 722 775" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Mask Group">
+<mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-242" y="-64" width="964" height="896">
+<path id="Ellipse 1" d="M621 375C762.572 731 831 832 297.5 832C109.723 832 -218 804.777 -218 617C-218 429.223 -414.5 -64 318.5 -64C506.277 -64 535.5 160 621 375Z" fill="#C4C4C4"/>
+</mask>
+<g mask="url(#mask0)">
+<rect id="box Square 1" x="-127" y="-81" width="935" height="935" fill="url(#pattern0)"/>
+</g>
+</g>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0" transform="scale(0.000249813)"/>
+</pattern>
+<image id="image0" data-name="box Square.jpg" width="4003" height="4003" href="/box-1.jpeg"/>
+</defs>
+</svg>

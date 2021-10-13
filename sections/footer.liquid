@@ -1,0 +1,27 @@
+<footer class="footer">
+
+    <div class="footer__logo">
+        <img loading="lazy" width="250" height="auto" alt="Logo" src="{{ 'logo.png' | asset_url }}">
+        <p>Commited to Positive Representation in The Marketplace</p>
+    </div>
+    <div class="footer__links">
+        <div>Quick Links</div>
+        {% for link in linklists.main-menu.links %}
+            <a {% if link.active %} aria-current="page" {% endif %} href="{{ link.url }}">{{ link.title }}</a>
+
+        {% endfor %}
+    </div>
+</footer>
+
+{% schema %}
+{
+    "name": "Footer",
+    "settings": [
+        {
+            "type": "link_list",
+            "id": "main-menu",
+            "label": "Footer Menu"
+        }
+    ]
+}
+{% endschema %}

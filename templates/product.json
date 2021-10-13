@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "girl": {
+      "type": "girl"
+    },
+    "product-info": {
+      "type": "product-info"
+    }
+  },
+  "order": [
+    "product-info",
+    "girl"
+  ]
+}

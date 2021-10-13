@@ -1,0 +1,323 @@
+{% style %}
+.affirmations {
+    display: flex;
+    background-color: var(--primary-95);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .affirmations h2 {
+    font-size: var(--large);
+    color: var(--primary-30);
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  
+  .affirmations__content {
+    width: 100%;
+    height: 35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20rem 5rem 20rem;
+  }
+  
+  .affirmations__content div:nth-of-type(1) {
+    background-image: url({{ 'crayon-1.jpg' | asset_url }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .affirmations__content div:nth-of-type(1):active,
+  .affirmations__content div:nth-of-type(1):hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+    transform: translateY(-3rem);
+  }
+  
+  .affirmations__content div:nth-of-type(2) {
+    background-image: url({{ 'crayon-2.jpg' | asset_url }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .affirmations__content div:nth-of-type(2):active,
+  .affirmations__content div:nth-of-type(2):hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+    transform: translateY(-3rem);
+  }
+  
+  .affirmations__content div:nth-of-type(3) {
+    background-image: url({{ 'crayon-3.jpg' | asset_url }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .affirmations__content div:nth-of-type(3):active,
+  .affirmations__content div:nth-of-type(3):hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+    transform: translateY(-3rem);
+  }
+  
+  .affirmations__content div:nth-of-type(4) {
+    background-image: url({{ 'crayon-4.jpg' | asset_url }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .affirmations__content div:nth-of-type(4):active,
+  .affirmations__content div:nth-of-type(4):hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+    transform: translateY(-3rem);
+  }
+  
+  .affirmations__content div:nth-of-type(5) {
+    background-image: url({{ 'crayon-5.jpg' | asset_url }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .affirmations__content div:nth-of-type(5):active,
+  .affirmations__content div:nth-of-type(5):hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+    transform: translateY(-3rem);
+  }
+  
+  .affirmations__content div:nth-of-type(6) {
+    background-image: url({{ 'crayon-6.jpg' | asset_url }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .affirmations__content div:nth-of-type(6):active,
+  .affirmations__content div:nth-of-type(6):hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+    transform: translateY(-3rem);
+  }
+  
+  .affirmations__content div:nth-of-type(7) {
+    background-image: url({{ 'crayon-7.jpg' | asset_url }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .affirmations__content div:nth-of-type(7):active,
+  .affirmations__content div:nth-of-type(7):hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+    transform: translateY(-3rem);
+  }
+  
+  .affirmations__content div:nth-of-type(8) {
+    background-image: url({{ 'crayon-8.jpg' | asset_url }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .affirmations__content div:nth-of-type(8):active,
+  .affirmations__content div:nth-of-type(8):hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+    transform: translateY(-3rem);
+  }
+  
+  .affirmations__content div:nth-of-type(9) {
+    background-image: url({{ 'crayon-9.jpg' | asset_url }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .affirmations__content div:nth-of-type(9):active,
+  .affirmations__content div:nth-of-type(9):hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+    transform: translateY(-3rem);
+  }
+  
+  .affirmations__content div:nth-of-type(10) {
+    background-image: url({{ 'crayon-10.jpg' | asset_url }});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100px;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .affirmations__content div:nth-of-type(10):active,
+  .affirmations__content div:nth-of-type(10):hover {
+    transform: scale(1.1);
+    filter: brightness(1.1) drop-shadow(0rem 0.5rem 0.8rem var(--primary-30));
+    transform: translateY(-3rem);
+  }
+  
+  @media screen and (max-width: 1300px) {
+    .affirmations__content {
+      padding: 0rem 15rem 5rem 15rem;
+    }
+  }
+  
+  @media screen and (max-width: 900px) {
+    .affirmations h2 {
+      margin-bottom: 3rem;
+    }
+    .affirmations__content {
+      padding: 0 4rem 5rem 4rem;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .affirmations__content {
+      flex-direction: column;
+      padding: 0 0rem 4rem 0rem;
+      height: 75rem;
+    }
+    .affirmations__content div:nth-of-type(1) {
+      background-image: url({{ 'v-crayon-1.jpg' | asset_url }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+    .affirmations__content div:nth-of-type(2) {
+      background-image: url({{ 'v-crayon-2.jpg' | asset_url }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+    .affirmations__content div:nth-of-type(3) {
+      background-image: url({{ 'v-crayon-3.jpg' | asset_url }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+    .affirmations__content div:nth-of-type(4) {
+      background-image: url({{ 'v-crayon-4.jpg' | asset_url }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+    .affirmations__content div:nth-of-type(5) {
+      background-image: url({{ 'v-crayon-5.jpg' | asset_url }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+    .affirmations__content div:nth-of-type(6) {
+      background-image: url({{ 'v-crayon-6.jpg' | asset_url }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+    .affirmations__content div:nth-of-type(7) {
+      background-image: url({{ 'v-crayon-7.jpg' | asset_url }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+    .affirmations__content div:nth-of-type(8) {
+      background-image: url({{ 'v-crayon-8.jpg' | asset_url }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+    .affirmations__content div:nth-of-type(9) {
+      background-image: url({{ 'v-crayon-9.jpg' | asset_url }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+    .affirmations__content div:nth-of-type(10) {
+      background-image: url({{ 'v-crayon-10.jpg' | asset_url }});
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .affirmations {
+      padding-top: 10rem;
+    }
+  }
+{% endstyle %}
