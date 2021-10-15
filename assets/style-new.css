@@ -195,6 +195,9 @@ section {
   margin: 4rem 0;
   width: 100%;
 }
+.product__content-btns input {
+  border: none;
+}
 .product__content-btns .btn {
   margin-bottom: 2rem;
   display: block;

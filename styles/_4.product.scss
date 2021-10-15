@@ -93,6 +93,9 @@
     &-btns {
       margin: 4rem 0;
       width: 100%;
+      input {
+        border: none;
+      }
       .btn {
         margin-bottom: 2rem;
         display: block;

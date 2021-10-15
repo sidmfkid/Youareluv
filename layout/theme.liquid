@@ -13,6 +13,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         {{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
 
+
+        <script src="{{ 'jquery-3.6.0.min.js' | asset_url }}"></script>
+
         <link rel="stylesheet" href="{{ 'style.css'| asset_url}}">
         <link rel="stylesheet" href="{{ 'style-new.css'| asset_url}}">
         {%- if settings.favicon != blank -%}
@@ -76,7 +79,7 @@
         <!-- <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
     </ul> -->
-        <script src="{{ 'jquery-3.6.0.min.js' | asset_url }}"></script>
+        <script crossorigin="anonymous" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
         <script defer src="{{ 'app.js' | asset_url}}"></script>
         <script>
       window.routes = {
