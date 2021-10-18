@@ -61,3 +61,17 @@ const revealSection = function (entries, observer) {
  })
 
 })
+
+const cartIcon = document.querySelector('.header__content-cart');
+const cartDrawer = document.querySelector('cart-drawer');
+
+function openDrawer() {
+    if (cartDrawer.dataset.state === 'open') {
+    cartDrawer.setAttribute('data-state', 'closed');
+    } else {
+    cartDrawer.setAttribute('data-state', 'open');
+    }
+    console.log()
+ }
+
+ cartIcon.addEventListener('click', openDrawer, false)

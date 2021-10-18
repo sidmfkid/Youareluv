@@ -64,7 +64,29 @@
     &-selectors {
       position: relative;
       width: 100%;
-      i {
+
+      i.fa-minus-circle {
+        position: absolute;
+
+        bottom: 0.5rem;
+        left: 1rem;
+        font-size: 4rem;
+        color: var(--secondary-40);
+        cursor: pointer;
+        z-index: 2;
+      }
+      i.fa-plus-circle {
+        position: absolute;
+
+        bottom: 0.5rem;
+        right: 1rem;
+        font-size: 4rem;
+        color: var(--secondary-40);
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      i.fa-caret-right {
         position: absolute;
         top: 0.5rem;
         right: 3rem;

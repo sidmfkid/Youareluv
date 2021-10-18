@@ -1,0 +1,102 @@
+cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 5;
+  padding: 10rem 5rem 5rem 5rem;
+  &[data-state="closed"] {
+    transform: translateX(100%);
+    // visibility: hidden;
+    transition: transform 1s ease-in-out;
+  }
+  &[data-state="open"] {
+    transform: translateX(0);
+
+    visibility: visible;
+    transition: transform 1s ease-in-out;
+  }
+  .cart__content {
+    display: flex;
+    flex-wrap: wrap;
+    .cart__headings {
+      display: flex;
+      justify-content: space-evenly;
+      font-size: var(--medium);
+      flex-basis: 100%;
+      margin-bottom: 5rem;
+    }
+    .cart__items {
+      flex-basis: 100%;
+      flex-wrap: wrap;
+      .line__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-details {
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          flex-wrap: wrap;
+          flex-basis: 100%;
+          font-size: var(--regular);
+          //   border-bottom: 0.4rem solid black;
+          //   flex-basis: 3rem;
+          text-align: center;
+          padding: 0.5rem;
+          span {
+            span {
+              display: block;
+            }
+          }
+          .quantity__btns {
+            span {
+              margin: 0 2rem;
+            }
+            button {
+              width: max-content;
+              margin-top: 10rem;
+              border: none;
+            }
+          }
+        }
+
+        .delete__icon {
+          cursor: pointer;
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: var(--primary-90);
+          &::after,
+          &::before {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            content: "";
+            background-color: var(--primary-50);
+            width: 3rem;
+            height: 0.5rem;
+            border-radius: 10rem;
+          }
+          &::before {
+            transform: rotate(45deg);
+          }
+          &::after {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+  .checkout {
+    position: fixed;
+    top: 90%;
+    border: none;
+    width: 90%;
+  }
+}

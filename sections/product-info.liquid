@@ -1,14 +1,17 @@
-{% assign current_variant = product.selected_or_first_available_variant %}
-
 <script type="text/javascript">
     window.product = {{ product | json }} || {};
   </script>
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+
 
 <section class="product">
 
     <div class="product__content">
 
-        <div class="product__content-main-img" data-title="{{ product.title }}" data-price="{{ current_variant.price | money }}">
+        <div class="product__content-main-img" data-title="{{ product.title }}" 
+        data-price="{{ current_variant.price | money }}">
             <img loading="lazy" width="500" height="500" alt="" src="{{ product | img_url: '500x500', format: 'pjpg' }}">
         </div>
         <div class="product__content-imgs">
@@ -45,30 +48,7 @@
             </div>
         </endform>
         {%- endcomment -%}
-        {% form 'product', product, id: 'newID', class: 'var-slect'%}
-        <div class="product__content-selectors">
-            <i class="fa fa-caret-right"></i>
-            {% for product_option in product.options_with_values %}
-
-            <select class="var-select" data-index="option{{forloop.index}}" id="id" name="id">
-                {% for variant in product.variants %}
-                    <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}>{{ variant.title }} - {{ variant.price | money }}</option>
-                {% endfor %}
-            </select>
-            <input class="var-select" min="1" name="quantity" type="text" value="1">
-        {% endfor %}
-        <input type="hidden" id="variant-id" name="id" value="{{ product.variants.first.id }}">
-    </div>
-    <div class="product__content-btns">
-        
-        {{ form | payment_button | class: 'btn btn-secondary' }}
-        <input class="btn btn-secondary" type="submit" value="Add to cart" action="/cart/add">
-
-            </div>
-        {% endform%}
+        {% render 'product-form' %}
 
     </div>
 </section>
-
-{{ 'option_selection.js' | shopify_asset_url | script_tag }}
-{{ 'product_form.js' | asset_url | script_tag }}
