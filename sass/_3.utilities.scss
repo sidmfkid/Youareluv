@@ -7,6 +7,7 @@ body {
   font-style: normal;
   line-height: auto;
   background-color: var(--primary-70);
+  overflow-x: hidden;
 }
 
 a,
@@ -17,7 +18,12 @@ a:active {
   color: var(--primary-98);
 }
 
+.hide {
+  visibility: hidden;
+}
+
 .btn {
+  cursor: pointer;
   width: 80%;
   padding: 1rem 4rem;
   text-align: center;
@@ -37,4 +43,22 @@ a:active {
       border-radius: 1rem;
     }
   }
+}
+section {
+  transition: all 0.7s ease-in-out;
+  transform: translateY(0rem);
+}
+
+.hide {
+  opacity: 0;
+  transform: translateY(10rem);
+}
+
+.unhide {
+  opacity: 1;
+}
+
+.lazy {
+  filter: blur(10px);
+  transition: filter 0.5s ease-in-out;
 }

@@ -47,6 +47,7 @@ body {
   font-style: normal;
   line-height: auto;
   background-color: var(--primary-70);
+  overflow-x: hidden;
 }
 
 a,
@@ -57,7 +58,12 @@ a:active {
   color: var(--primary-98);
 }
 
+.hide {
+  visibility: hidden;
+}
+
 .btn {
+  cursor: pointer;
   width: 80%;
   padding: 1rem 4rem;
   text-align: center;
@@ -79,10 +85,31 @@ a:active {
   border-radius: 1rem;
 }
 
+section {
+  transition: all 0.7s ease-in-out;
+  transform: translateY(0rem);
+}
+
+.hide {
+  opacity: 0;
+  transform: translateY(10rem);
+}
+
+.unhide {
+  opacity: 1;
+}
+
+.lazy {
+  filter: blur(10px);
+  transition: filter 0.5s ease-in-out;
+}
+
 .header {
   position: relative;
   z-index: 10;
-  width: 100vw;
+  width: 100%;
+  height: 10rem;
+  overflow: hidden;
 }
 
 .header__overlay {
@@ -96,15 +123,25 @@ a:active {
 }
 
 .header__content {
+  height: 10rem;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   place-items: center;
   grid-gap: 2rem;
-  overflow: hidden;
   position: relative;
   background: linear-gradient(to bottom, var(--primary-60), var(--primary-60-m));
-  width: 100vw;
+  width: 100%;
   transition: all 1s ease-in-out;
+}
+
+.header__content.sticky {
+  position: fixed;
+  top: -30%;
+  transition: 0.5s all ease-in-out;
+}
+
+.header__content.sticky.down {
+  top: 0;
 }
 
 .header__content-logo {
@@ -165,7 +202,14 @@ a:active {
 }
 
 .header__content-cart {
+  cursor: pointer;
   grid-column: 10 / 13;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.header__content-cart:hover, .header__content-cart:active {
+  transform: scale(1.1);
 }
 
 .header__content-cart svg {
@@ -324,29 +368,48 @@ a:active {
   flex-direction: row;
   justify-content: flex-end;
   height: inherit;
+  width: 100%;
 }
 
 .hero__content-image {
   position: absolute;
-  left: 0;
   top: 0;
-  z-index: 0;
-  background-image: url(/assets/hero-1.svg);
-  width: 60%;
-  height: 100%;
-  background-size: contain;
+  left: 4rem;
+  height: 60rem;
+  width: 60rem;
+  z-index: -1;
+}
+
+.hero__content-image div {
+  background-image: url(/assets/box-1.jpg);
+  background-size: cover;
+  background-clip: border-box;
+  background-origin: border-box;
   background-repeat: no-repeat;
+  pointer-events: none;
+  -webkit-mask-image: url(/assets/hero-mask1-1.svg);
+  mask-image: url(/assets/hero-mask1-1.svg);
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+  -webkit-mask-clip: content-box;
+  mask-clip: content-box;
+  clip-path: url(/assets/hero-mask1-1.svg);
+  height: 100%;
 }
 
 .hero__content-card {
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 4rem;
-  margin-right: 5rem;
-  width: calc(45rem + 5vw);
+  margin-right: calc(5rem + 5vw);
+  width: calc(55rem + 5vw);
   background-color: var(--primary-98);
   height: min-content;
   align-self: center;
@@ -357,7 +420,7 @@ a:active {
 
 @media screen and (max-width: 900px) {
   .hero {
-    height: 98rem;
+    height: 90rem;
     padding-top: 5rem;
   }
   .hero__content {
@@ -366,11 +429,8 @@ a:active {
     align-items: center;
   }
   .hero__content-image {
-    background-image: url(/assets/hero-mobile.svg);
-    left: -13%;
-    top: 43%;
-    width: 100%;
-    height: 100%;
+    left: 10%;
+    top: 44%;
   }
   .hero__content-card {
     width: 90%;
@@ -390,7 +450,9 @@ a:active {
     height: 95rem;
   }
   .hero__content-image {
-    top: 53%;
+    width: 60rem;
+    top: 45%;
+    left: -30%;
   }
 }
 
@@ -422,7 +484,7 @@ a:active {
 
 @media screen and (max-width: 900px) {
   .logo-list {
-    margin-top: 30rem;
+    margin-top: 10rem;
   }
   .logo-list__icon {
     width: 50%;
@@ -455,6 +517,7 @@ a:active {
   justify-content: center;
   position: relative;
   padding-top: 4rem;
+  z-index: 2;
 }
 
 .girl img {
@@ -552,10 +615,11 @@ a:active {
 }
 
 .affirmations__content div:nth-of-type(1) {
-  background-image: url(/assets/crayons-png/crayon-1.png);
+  background-image: url(/assets/crayons-jpg/crayon-1.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 100px;
   width: 100%;
   height: 100%;
   filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
@@ -570,10 +634,11 @@ a:active {
 }
 
 .affirmations__content div:nth-of-type(2) {
-  background-image: url(/assets/crayons-png/crayon-2.png);
+  background-image: url(/assets/crayons-jpg/crayon-2.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 100px;
   width: 100%;
   height: 100%;
   filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
@@ -588,10 +653,11 @@ a:active {
 }
 
 .affirmations__content div:nth-of-type(3) {
-  background-image: url(/assets/crayons-png/crayon-3.png);
+  background-image: url(/assets/crayons-jpg/crayon-3.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 100px;
   width: 100%;
   height: 100%;
   filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
@@ -606,10 +672,11 @@ a:active {
 }
 
 .affirmations__content div:nth-of-type(4) {
-  background-image: url(/assets/crayons-png/crayon-4.png);
+  background-image: url(/assets/crayons-jpg/crayon-4.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 100px;
   width: 100%;
   height: 100%;
   filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
@@ -624,10 +691,11 @@ a:active {
 }
 
 .affirmations__content div:nth-of-type(5) {
-  background-image: url(/assets/crayons-png/crayon-5.png);
+  background-image: url(/assets/crayons-jpg/crayon-5.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 100px;
   width: 100%;
   height: 100%;
   filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
@@ -642,10 +710,11 @@ a:active {
 }
 
 .affirmations__content div:nth-of-type(6) {
-  background-image: url(/assets/crayons-png/crayon-6.png);
+  background-image: url(/assets/crayons-jpg/crayon-6.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 100px;
   width: 100%;
   height: 100%;
   filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
@@ -660,10 +729,11 @@ a:active {
 }
 
 .affirmations__content div:nth-of-type(7) {
-  background-image: url(/assets/crayons-png/crayon-7.png);
+  background-image: url(/assets/crayons-jpg/crayon-7.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 100px;
   width: 100%;
   height: 100%;
   filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
@@ -678,10 +748,11 @@ a:active {
 }
 
 .affirmations__content div:nth-of-type(8) {
-  background-image: url(/assets/crayons-png/crayon-8.png);
+  background-image: url(/assets/crayons-jpg/crayon-8.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 100px;
   width: 100%;
   height: 100%;
   filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
@@ -696,10 +767,11 @@ a:active {
 }
 
 .affirmations__content div:nth-of-type(9) {
-  background-image: url(/assets/crayons-png/crayon-9.png);
+  background-image: url(/assets/crayons-jpg/crayon-9.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 100px;
   width: 100%;
   height: 100%;
   filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
@@ -714,10 +786,11 @@ a:active {
 }
 
 .affirmations__content div:nth-of-type(10) {
-  background-image: url(/assets/crayons-png/crayon-10.png);
+  background-image: url(/assets/crayons-jpg/crayon-10.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 100px;
   width: 100%;
   height: 100%;
   filter: brightness(1) drop-shadow(0rem 0.3rem 0.3rem var(--primary-30));
@@ -753,70 +826,70 @@ a:active {
     height: 75rem;
   }
   .affirmations__content div:nth-of-type(1) {
-    background-image: url(/assets/crayons-vertical/crayon-1.png);
+    background-image: url(/assets/crayons-vertical/crayon-1.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
   }
   .affirmations__content div:nth-of-type(2) {
-    background-image: url(/assets/crayons-vertical/crayon-2.png);
+    background-image: url(/assets/crayons-vertical/crayon-2.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
   }
   .affirmations__content div:nth-of-type(3) {
-    background-image: url(/assets/crayons-vertical/crayon-3.png);
+    background-image: url(/assets/crayons-vertical/crayon-3.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
   }
   .affirmations__content div:nth-of-type(4) {
-    background-image: url(/assets/crayons-vertical/crayon-4.png);
+    background-image: url(/assets/crayons-vertical/crayon-4.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
   }
   .affirmations__content div:nth-of-type(5) {
-    background-image: url(/assets/crayons-vertical/crayon-5.png);
+    background-image: url(/assets/crayons-vertical/crayon-5.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
   }
   .affirmations__content div:nth-of-type(6) {
-    background-image: url(/assets/crayons-vertical/crayon-6.png);
+    background-image: url(/assets/crayons-vertical/crayon-6.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
   }
   .affirmations__content div:nth-of-type(7) {
-    background-image: url(/assets/crayons-vertical/crayon-7.png);
+    background-image: url(/assets/crayons-vertical/crayon-7.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
   }
   .affirmations__content div:nth-of-type(8) {
-    background-image: url(/assets/crayons-vertical/crayon-8.png);
+    background-image: url(/assets/crayons-vertical/crayon-8.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
   }
   .affirmations__content div:nth-of-type(9) {
-    background-image: url(/assets/crayons-vertical/crayon-9.png);
+    background-image: url(/assets/crayons-vertical/crayon-9.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
   }
   .affirmations__content div:nth-of-type(10) {
-    background-image: url(/assets/crayons-vertical/crayon-10.png);
+    background-image: url(/assets/crayons-vertical/crayon-10.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -864,7 +937,7 @@ a:active {
 }
 
 .image-with-text__img div {
-  background: url(/assets/black-family-1.jpg);
+  background-image: url(/assets/black-family-1.jpg);
   background-size: cover;
   background-clip: border-box;
   background-origin: border-box;
@@ -1064,6 +1137,114 @@ a:active {
   .footer__logo {
     margin-bottom: 4rem;
   }
+}
+
+cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 5;
+  padding: 10rem 5rem 5rem 5rem;
+}
+
+cart-drawer[data-state="closed"] {
+  transform: translateX(100%);
+  transition: transform 1s ease-in-out;
+}
+
+cart-drawer[data-state="open"] {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 1s ease-in-out;
+}
+
+cart-drawer .cart__content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+cart-drawer .cart__content .cart__headings {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: var(--medium);
+  flex-basis: 100%;
+  margin-bottom: 5rem;
+}
+
+cart-drawer .cart__content .cart__items {
+  flex-basis: 100%;
+  flex-wrap: wrap;
+}
+
+cart-drawer .cart__content .cart__items .line__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+cart-drawer .cart__content .cart__items .line__item-details {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  font-size: var(--regular);
+  text-align: center;
+  padding: 0.5rem;
+}
+
+cart-drawer .cart__content .cart__items .line__item-details span span {
+  display: block;
+}
+
+cart-drawer .cart__content .cart__items .line__item-details .quantity__btns span {
+  margin: 0 2rem;
+}
+
+cart-drawer .cart__content .cart__items .line__item-details .quantity__btns button {
+  width: max-content;
+  margin-top: 10rem;
+  border: none;
+}
+
+cart-drawer .cart__content .cart__items .line__item .delete__icon {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--primary-90);
+}
+
+cart-drawer .cart__content .cart__items .line__item .delete__icon::after, cart-drawer .cart__content .cart__items .line__item .delete__icon::before {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: "";
+  background-color: var(--primary-50);
+  width: 3rem;
+  height: 0.5rem;
+  border-radius: 10rem;
+}
+
+cart-drawer .cart__content .cart__items .line__item .delete__icon::before {
+  transform: rotate(45deg);
+}
+
+cart-drawer .cart__content .cart__items .line__item .delete__icon::after {
+  transform: rotate(-45deg);
+}
+
+cart-drawer .checkout {
+  position: fixed;
+  top: 90%;
+  border: none;
+  width: 90%;
 }
 
 .hero__content-card h1 {

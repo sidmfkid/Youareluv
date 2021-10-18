@@ -8,28 +8,59 @@
     flex-direction: row;
     justify-content: flex-end;
     height: inherit;
+    width: 100%;
     &-image {
       position: absolute;
-      left: 0;
       top: 0;
-      z-index: 0;
-      background-image: url(/assets/hero-1.svg);
-      width: 60%;
-      height: 100%;
-      background-size: contain;
-      background-repeat: no-repeat;
+      left: 4rem;
+      height: 60rem;
+      width: 60rem;
+      // width: 0%;
+      z-index: -1;
+
+      div {
+        // z-index: -1;
+        background-image: url(/assets/box-1.jpg);
+        background-size: cover;
+        background-clip: border-box;
+        background-origin: border-box;
+        background-repeat: no-repeat;
+        pointer-events: none;
+        -webkit-mask-image: url(/assets/hero-mask1-1.svg);
+        mask-image: url(/assets/hero-mask1-1.svg);
+        -webkit-mask-size: 100%;
+        mask-size: 100%;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: 0 0;
+        mask-position: 0 0;
+        -webkit-mask-clip: content-box;
+        mask-clip: content-box;
+
+        clip-path: url(/assets/hero-mask1-1.svg);
+        height: 100%;
+      }
+      // position: absolute;
+      // left: 0;
+      // top: 0;
+      // z-index: 0;
+      // background-image: url(/assets/hero-1.svg);
+      // width: 100%;
+      // height: 120%;
+      // background-size: contain;
+      // background-repeat: no-repeat;
       //   background-position: center;
     }
 
     &-card {
-      z-index: 1;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 4rem;
-      margin-right: 5rem;
-      width: calc(45rem + 5vw);
+      margin-right: calc(5rem + 5vw);
+      width: calc(55rem + 5vw);
       //   flex-basis: calc(45rem + 5vw);
       background-color: var(--primary-98);
       height: min-content;
@@ -48,18 +79,18 @@
   }
 
   @include media-tablet {
-    height: 98rem;
+    height: 90rem;
     padding-top: 5rem;
     &__content {
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
       &-image {
-        background-image: url(/assets/hero-mobile.svg);
-        left: -13%;
-        top: 43%;
-        width: 100%;
-        height: 100%;
+        // background-image: url(/assets/hero-mobile.svg);
+        left: 10%;
+        top: 44%;
+        // width: 100%;
+        // height: 100%;
       }
       &-card {
         width: 90%;
@@ -76,7 +107,9 @@
     height: 95rem;
     &__content {
       &-image {
-        top: 53%;
+        width: 60rem;
+        top: 45%;
+        left: -30%;
       }
     }
   }
