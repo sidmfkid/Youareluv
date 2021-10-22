@@ -1,68 +1,77 @@
-'use strict';
-$(document).ready(function() {
+class ProductForm extends HTMLElement {
+  constructor(){
+    super();
+    this.form = this.querySelector('form');
+    this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
+  }
+  onSubmitHandler(evt) {
+    evt.preventDefault();
+    this.getID();
+    this.postReq();
+    this.updateCart();
+  }
+
+  getID() {
+    var masterSelect = document.querySelector('#currentVariant')
+      var uri = window.location.search
+      const currentID = uri.slice(9);
+  
+    if (!currentID) {
+      let varID = 40065683947710
+      console.log(varID)
+      return varID;
+    } else {
+      masterSelect.setAttribute('value', currentID)
+      let varID = masterSelect.value
+      console.log(varID)
+      return varID
+    }
+  }
 
 
 
-    const $cartNum = $(".cart-bubble");
-    const $addItem = $('#addItem');
-    const $quantityInput = $('#quantityInput');
-    const $currentID = $("option[selected='selected']").val();
-    const selectForm = document.querySelector("#id");
-    const addToCart = document.querySelector("#addToCart");
-
-    
-
-    // const addToCart = jQuery.post('/cart/add.js', $('form[action="/cart/add"]').serialize());
-
-
-    function addItem(e) {
-      e.preventDefault();
-    jQuery.post('/cart/add.js', $("[action='/cart/add']"));
-
-    jQuery.getJSON('/cart.js', function (cart) {
-      const [items] = cart.items
-      const quantity = items.quantity
-          $cartNum.text(function () {
-              if (quantity <= 0){
-              return '';
-              } else {
-           return   `${quantity}`;
-              }
-          });
-
-      console.log(quantity)
-      console.log(items)
+postReq(){
+  const elemQuantity = document.querySelector('#quantityInput');
+  let elemValue = elemQuantity.value;
+  let formData = {
+    'items': [{
+     'id': this.getID(),
+     'quantity': `${elemValue}`
+     }]
+   };
+   
+   fetch('/cart/add.js', {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     body: JSON.stringify(formData)
    })
-   }
+   .then(response => {
+     return response.json();
+   })
+   .catch((error) => {
+     console.error('Error:', error);
+   });
+   
+  console.log(formData)
+}
 
-     function checkVariantId() { 
-       var variant = this.options[this.selectedIndex].value;
-       console.log(variant)
-       jQuery.post('/cart/add.js', {
-        items: [
-          {
-            quantity: 1,
-            id: variant
-          }
-        ]
-      });
-      
-       //var params = `?variant=${variant}`
-       //const productURL = window.location.href;
-      //let newUrl = new URL(productURL)
-      // let p = new URLSearchParams(newUrl.search.slice(1));
-      // console.log(p)
-      //console.log(newUrl)
-     // console.log(productURL)
-      //newUrl.searchParams.set('variant', variant)
-      // console.log(p)
-      //console.log(newUrl)
-      //console.log(newUrl.searchParams.get('variant'))
+updateCart(){
+  const cartBubble = document.querySelector('.header__content-cart .cart-bubble')
+  fetch('/cart.js', {
+    method: 'GET'
+  })
+  .then(response => response.json())
+  .then(cartData => 
+    {
+      cartBubble.textContent = `${cartData.item_count}`
+    })
+  console.log(cartBubble)
+}
 
-      return variant
 
-      }
 
-     selectForm.addEventListener('change', checkVariantId, false);
-       addToCart.addEventListener('click', addItem, false);
-});
+}
+
+customElements.define('product-form', ProductForm);

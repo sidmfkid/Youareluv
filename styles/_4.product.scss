@@ -61,81 +61,27 @@
         padding: 2rem;
       }
     }
-    &-selectors {
+    .minus,
+    .plus {
       position: relative;
-      width: 100%;
-
-      i.fa-minus-circle {
-        position: absolute;
-
-        bottom: 0.5rem;
-        left: 1rem;
-        font-size: 4rem;
-        color: var(--secondary-40);
-        cursor: pointer;
-        z-index: 2;
-      }
-      i.fa-plus-circle {
-        position: absolute;
-
-        bottom: 0.5rem;
-        right: 1rem;
-        font-size: 4rem;
-        color: var(--secondary-40);
-        cursor: pointer;
-        z-index: 2;
-      }
-
-      i.fa-caret-right {
-        position: absolute;
-        top: 0.5rem;
-        right: 3rem;
-        font-size: 4rem;
-
-        color: var(--primary-60);
-        transform: rotate(90deg);
-        cursor: pointer;
-      }
-      .var-select {
+      width: 3rem;
+      height: 3rem;
+      background-color: transparent;
+      border: none;
+      i {
         position: relative;
-        appearance: none;
-        color: var(--primary-60);
-        font-size: var(--small);
-        padding: 1rem;
-        border-radius: 10rem;
-        width: 100%;
-        height: 5rem;
-        background-color: transparent;
-        border: 0.3rem solid var(--primary-60);
-        z-index: 2;
-        cursor: pointer;
-        text-align: center;
+        z-index: -1;
       }
-    }
-    &-btns {
-      margin: 4rem 0;
-      width: 100%;
-      input {
-        border: none;
-      }
-      .btn {
-        margin-bottom: 2rem;
-        display: block;
-        width: 100%;
-      }
-    }
-
-    .select-wrapper {
-      position: relative;
-      //   &::after {
-      //     content: "\f0d6";
-      //     position: absolute;
-      //     top: 0;
-      //     right: 0;
-      //     width: 15rem;
-      //     height: 15rem;
-      //     color: var(--secondary-40);
-      //   }
     }
   }
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }

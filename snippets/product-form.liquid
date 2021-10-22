@@ -1,3 +1,5 @@
+<script defer src="{{ 'product_form.js' | asset_url }}"></script>
+
 <!-- {% form 'product', product %}
         <div class="product__content-selectors">
             <i class="fa fa-caret-right"></i>
@@ -17,25 +19,58 @@
             </div>
 
         {% endform%} -->
+        {%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+        {%- form 'product', product, id: 'product-form-installment', class: 'installment caption-large' -%}
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                {{ form | payment_terms }}
+              {%- endform -%}
 
 
 {% form 'product', product %}
+<variant-radios data-url="{{ product.url }}">
+    {% for option in product.options_with_values %}
+        <fieldset>
+            <legend>{{ option.name }}</legend>
+            {%- for value in option.values -%}
+                <input value="{{ value | escape }}" type="radio" name="{{option.name}}" id="optionValues" {% if option.selected_value == value %} checked {% endif %}>
+                <label for="optionValues" form="product-form-{{ section.id }}">{{ value }}</label>
+            {% endfor %}
+        </fieldset>
+    {% endfor %}
+    <script type="application/json">
 
-    <select name="id" id="id">
-        {% for variant in product.variants %}
-            <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}>
-                {{ variant.title }}
-                -
-                {{ variant.price | money }}
-            </option>
-        {% endfor %}
-    </select>
+{{ product.variants | json }}
 
-
-    <input id="addToCart" type="submit" value="Add to cart">
-
+</script>
+</variant-radios>
 {% endform %}
 
+<quantity-input>
+    <button type="button" class="minus" name="minus">
+        <i class="fa fa-minus-circle"></i>
+    </button>
+    <input id="quantityInput" type="number" value="1" min="1" form="product-form-{{ section.id }}">
+    <button type="button" class="plus" name="plus">
+        <i class="fa fa-plus-circle"></i>
+    </button>
 
-{{ 'option_selection.js' | shopify_asset_url | script_tag }}
-<script defer src="{{ 'product_form.js' | asset_url }}"></script>
+</quantity-input>
+
+
+<product-form class="product-form">
+
+    {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+    <input form="product-form-{{ section.id }}" id="currentVariant" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+
+    <div class="product-form__buttons">
+        <button type="submit" name="addToCart" class="product-form__submit btn btn-primary">Add To Cart</button>
+        {{ form | payment_button }}
+    </div>
+    {%- endform -%}
+</product-form>
+
+
+
+
+<!-- {{ 'option_selection.js' | shopify_asset_url | script_tag }} -->

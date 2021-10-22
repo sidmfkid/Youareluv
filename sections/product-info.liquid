@@ -1,17 +1,15 @@
 <script type="text/javascript">
     window.product = {{ product | json }} || {};
-  </script>
+</script>
 
 {% assign current_variant = product.selected_or_first_available_variant %}
-
 
 
 <section class="product">
 
     <div class="product__content">
 
-        <div class="product__content-main-img" data-title="{{ product.title }}" 
-        data-price="{{ current_variant.price | money }}">
+        <div class="product__content-main-img" data-title="{{ product.title }}" data-price="{{ current_variant.price | money }}">
             <img loading="lazy" width="500" height="500" alt="" src="{{ product | img_url: '500x500', format: 'pjpg' }}">
         </div>
         <div class="product__content-imgs">
@@ -22,32 +20,7 @@
             {% endfor %}
             <i class="fa fa-caret-right"></i>
         </div>
-        {%- comment -%}
-        <form action="/cart/add" method="post">
-            <div class="product__content-selectors">
-                <i class="fa fa-caret-right"></i>
-                <!-- {%- for option in product.options_with_values -%}
-                    {{ option.name }}
-                {% endfor %} -->
 
-                {% for product_option in product.options_with_values %}
-
-                    <select class="var-select" data-index="option{{forloop.index}}" id="product-var" name="var-select">
-                        {% for value in product_option.values %}
-                            <option value="{{ value | escape }}" {% if product_option.selected_value == value %} selected="selected" {% endif %}>{{ value }}</option>
-                        {% endfor %}
-                    </select>
-                    <input class="var-select" min="1" name="quantity" type="text" value="1">
-                {% endfor %}
-                <input type="hidden" id="variant-id" name="id" value="{{product.variants.first.id}}">
-            </div>
-            <div class="product__content-btns">
-                
-                {{ form | payment_button }}
-                <a class="btn btn-secondary" href="">Add To Cart</a>
-            </div>
-        </endform>
-        {%- endcomment -%}
         {% render 'product-form' %}
 
     </div>
