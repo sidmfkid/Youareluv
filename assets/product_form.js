@@ -17,12 +17,12 @@ class ProductForm extends HTMLElement {
       const currentID = uri.slice(9);
   
     if (!currentID) {
-      let varID = 40065683947710
+      const varID = 40065683947710
       console.log(varID)
       return varID;
     } else {
       masterSelect.setAttribute('value', currentID)
-      let varID = masterSelect.value
+      const varID = masterSelect.value
       console.log(varID)
       return varID
     }
@@ -40,34 +40,29 @@ postReq(){
      }]
    };
    
-   fetch('/cart/add.js', {
+   const getData = async function () { 
+     const res = await fetch('/cart/add.js', {
      method: 'POST',
      headers: {
        'Content-Type': 'application/json'
      },
      body: JSON.stringify(formData)
    })
-   .then(response => {
-     return response.json();
-   })
-   .catch((error) => {
-     console.error('Error:', error);
-   });
-   
-  console.log(formData)
+   const data = await res.json();
+   console.log(data)
+    }
+    getData();
 }
 
 updateCart(){
   const cartBubble = document.querySelector('.header__content-cart .cart-bubble')
-  fetch('/cart.js', {
-    method: 'GET'
-  })
-  .then(response => response.json())
-  .then(cartData => 
-    {
-      cartBubble.textContent = `${cartData.item_count}`
-    })
-  console.log(cartBubble)
+  const getdata = async function () {
+    const res = await fetch('/cart.js', { method: 'GET' });
+    const cartData = await res.json();
+    cartBubble.textContent = `${cartData.item_count}`
+  }
+  getdata();
+  console.log(getdata())
 }
 
 

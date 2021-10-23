@@ -88,7 +88,7 @@ function openDrawer() {
       cartBubble.textContent = `${cartData.item_count}`
     })
   console.log(cartBubble)
-  return cartData;
+  // return cartData;
 }
 
 getCart();

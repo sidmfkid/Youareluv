@@ -101,6 +101,20 @@ section {
   transition: filter 0.5s ease-in-out;
 }
 
+.minus,
+.plus {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  background-color: transparent;
+  border: none;
+}
+.minus i,
+.plus i {
+  position: relative;
+  z-index: -1;
+}
+
 .product {
   width: 100%;
 }

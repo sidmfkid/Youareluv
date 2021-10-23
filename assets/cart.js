@@ -3,20 +3,15 @@ class CartDrawer extends HTMLElement{
     constructor(){
         super();
 
-        this.cartItemWrapper = this.querySelector('.line__item');
-        this.itemImg = this.querySelector('.line__item-img');
-        this.itemDetails = this.querySelector('.line__item-details');
-        this.itemTitle = this.querySelector('.item__title');
-        this.itemPrice = this.querySelector('.item__price');
-        this.btns = this.querySelector('.quantity__btns');
-        this.currentQuantity = this.querySelector('.item__quantity');
 
-        this.deleteItem = this.querySelector('.delete__icon');
+        const minusBtn = document.querySelector('#minus')
+        const atcBtn = document.querySelector("[name='addToCart']")
+        const input = document.querySelector('input')
+        const plusBtn = document.querySelector('#plus')
+        console.log(minusBtn)
 
-        this.cart = this.querySelector('.cart__content')
-        this.logItems = this.loadCartContents
-        // this.cart.addEventListener('load', this.onEvent);
         this.onEvent();
+        atcBtn.addEventListener('click', this.onEvent)
     }
 
     onEvent(){
@@ -25,19 +20,97 @@ class CartDrawer extends HTMLElement{
             const res = await fetch('/cart.js', {method: 'GET'})
             const data = await res.json();
             const numItemsInCart = data.items.length;
+
             const price = [];
+            const itemImage = [];
+            const itemTitle = [];
+            const itemVariantTitle = [];
+            const wrapper = document.querySelector('.cart__items');
+            var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+              });
+
             data.items.forEach(item => {
+
+
+                const cartItemWrapper = document.createElement('div');
+                const deleteItem = document.createElement('span');
+                const itemImg = document.createElement('img');
+                const itemDetails = document.createElement('div');
+                const itemTitles = document.createElement('span');
+                const itemPrice = document.createElement('span');
+                const btnsWrapper = document.createElement('quantity-input');
+                const addItem = document.createElement('button');
+                const plusIcon = document.createElement('i');
+                const removeItem = document.createElement('button');
+                const minusIcon = document.createElement('i');
+                const currentQuantity = document.createElement('input');
+
+                cartItemWrapper.classList.add('line__item');
+                deleteItem.classList.add('delete__icon');
+                itemImg.classList.add('line__item-img');
+                itemDetails.classList.add('line__item-details');
+                itemTitles.classList.add('item__title');
+                itemPrice.classList.add('item__price');
+                removeItem.classList.add('minus');
+                removeItem.setAttribute('type', 'button')
+                removeItem.setAttribute('id', 'minus')
+                removeItem.setAttribute('name', 'minus')
+                addItem.classList.add('plus');
+                addItem.setAttribute('type', 'button')
+                addItem.setAttribute('id', 'plus')
+                addItem.setAttribute('name', 'plus')
+                plusIcon.setAttribute('class', 'fa fa-plus-circle')
+                minusIcon.setAttribute('class', 'fa fa-minus-circle')
+                currentQuantity.setAttribute('id', 'quantityInput')
+                currentQuantity.setAttribute('type', 'number')
+                currentQuantity.setAttribute('value', '1')
+                currentQuantity.setAttribute('min', '1')
+                currentQuantity.setAttribute('form', 'product-form')
+
+
+
+
+                cartItemWrapper.appendChild(deleteItem);
+                cartItemWrapper.appendChild(itemImg);
+                cartItemWrapper.appendChild(itemDetails);
+                itemDetails.appendChild(itemTitles);
+                itemDetails.appendChild(itemPrice);
+                itemDetails.appendChild(btnsWrapper);
+                btnsWrapper.appendChild(addItem);
+                addItem.appendChild(plusIcon);
+                btnsWrapper.appendChild(currentQuantity);
+                btnsWrapper.appendChild(removeItem);
+                removeItem.appendChild(minusIcon)
+                wrapper.appendChild(cartItemWrapper);
+
+                itemImg.setAttribute('src', `${item.image}`)
+                itemImg.setAttribute('width', '300')
+                itemImg.setAttribute('height', '300')
+                itemTitles.textContent = `${item.product_title}` + ' / ' + `${item.variant_title}`
+                itemPrice.textContent = formatter.format(item.price * .01)
+                currentQuantity.value = `${item.quantity}`
+                
+                // addItem.textContent = 'Add Item';
+                // removeItem.textContent = 'Remove Item';
+
+
+                
                 price.push(item.price)
+                itemImage.push(item.image)
+                itemVariantTitle.push(item.variant_title)
+                itemTitle.push(item.product_title)
             });
-            
 
-            console.log(price);
+
+            console.log(data.items);
+            console.log(itemImage);
          }
-
          cartInfo();
-    //   e.preventDefault();
-        // this.getCart();
     }
+
+
 
 
 
