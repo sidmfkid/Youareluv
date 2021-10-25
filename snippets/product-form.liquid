@@ -28,7 +28,7 @@
 
 
 {% form 'product', product %}
-<variant-radios data-url="{{ product.url }}">
+<variant-radios data-url="{{ product.url }}"" data-section="{{ section.id }}">
     {% for option in product.options_with_values %}
         <fieldset>
             <legend>{{ option.name }}</legend>

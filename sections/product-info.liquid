@@ -9,7 +9,7 @@
 
     <div class="product__content">
 
-        <div class="product__content-main-img" data-title="{{ product.title }}" data-price="{{ current_variant.price | money }}">
+        <div id="price-{{ section.id }}" class="product__content-main-img" data-title="{{ product.title }}" data-price="{{ current_variant.price | money }}">
             <img loading="lazy" width="500" height="500" alt="" src="{{ product | img_url: '500x500', format: 'pjpg' }}">
         </div>
         <div class="product__content-imgs">

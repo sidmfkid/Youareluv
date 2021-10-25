@@ -58,8 +58,22 @@ updateCart(){
   const cartBubble = document.querySelector('.header__content-cart .cart-bubble')
   const getdata = async function () {
     const res = await fetch('/cart.js', { method: 'GET' });
-    const cartData = await res.json();
-    cartBubble.textContent = `${cartData.item_count}`
+    const data = await res.json();
+    cartBubble.textContent = `${data.item_count}`
+    const price = [];
+            const itemImage = [];
+            const itemTitle = [];
+            const itemVariantTitle = [];
+            const wrapper = document.querySelector('.cart__items');
+            var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+              });
+              data.items.forEach(item => {
+
+            });
+  
+
   }
   getdata();
   console.log(getdata())
