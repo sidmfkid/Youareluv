@@ -1,24 +1,6 @@
 <script defer src="{{ 'product_form.js' | asset_url }}"></script>
 
-<!-- {% form 'product', product %}
-        <div class="product__content-selectors">
-            <i class="fa fa-caret-right"></i>
-
-            <select class="var-select" data-index="option{{forloop.index}}" id="id" name="id">
-                {% for variant in product.variants %}
-                    <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}>{{ variant.title }} - {{ variant.price | money }}</option>
-                {% endfor %}
-            </select>
-
-            <input id="quantityInput" class="var-select" min="1" name="quantity" type="text" value="1">
-    </div>
-    <div class="product__content-btns">
-        
-        {{ form | payment_button | class: 'btn btn-secondary' }}
-        <input id="addToCart" class="btn btn-secondary" type="submit" value="Add to cart">
-            </div>
-
-        {% endform%} -->
+<div class="product__selects">
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
         {%- form 'product', product, id: 'product-form-installment', class: 'installment caption-large' -%}
@@ -33,8 +15,8 @@
         <fieldset>
             <legend>{{ option.name }}</legend>
             {%- for value in option.values -%}
-                <input value="{{ value | escape }}" type="radio" name="{{option.name}}" id="optionValues" {% if option.selected_value == value %} checked {% endif %}>
-                <label for="optionValues" form="product-form-{{ section.id }}">{{ value }}</label>
+                <input value="{{ value | escape }}" type="radio" name="{{option.name}}" id="optionValues-{{ forloop.index }}" {% if option.selected_value == value %} checked {% endif %}>
+                <label for="optionValues-{{  forloop.index }}" form="product-form-{{ section.id }}">{{ value }}</label>
             {% endfor %}
         </fieldset>
     {% endfor %}
@@ -69,8 +51,4 @@
     </div>
     {%- endform -%}
 </product-form>
-
-
-
-
-<!-- {{ 'option_selection.js' | shopify_asset_url | script_tag }} -->
+</div>
