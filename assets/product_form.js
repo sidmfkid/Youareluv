@@ -18,12 +18,12 @@ class ProductForm extends HTMLElement {
   
     if (!currentID) {
       const varID = 40065683947710
-      console.log(varID)
+
       return varID;
     } else {
       masterSelect.setAttribute('value', currentID)
       const varID = masterSelect.value
-      console.log(varID)
+
       return varID
     }
   }
@@ -40,7 +40,7 @@ postReq(){
      }]
    };
    
-   const getData = async function () { 
+   const postData = async function () { 
      const res = await fetch('/cart/add.js', {
      method: 'POST',
      headers: {
@@ -50,33 +50,23 @@ postReq(){
    })
    const data = await res.json();
    console.log(data)
+   
+
     }
-    getData();
+    postData();
 }
 
 updateCart(){
-  const cartBubble = document.querySelector('.header__content-cart .cart-bubble')
-  const getdata = async function () {
-    const res = await fetch('/cart.js', { method: 'GET' });
-    const data = await res.json();
-    cartBubble.textContent = `${data.item_count}`
-    const price = [];
-            const itemImage = [];
-            const itemTitle = [];
-            const itemVariantTitle = [];
-            const wrapper = document.querySelector('.cart__items');
-            var formatter = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-              });
-              data.items.forEach(item => {
-
-            });
   
-
+  const getdata = async function () {
+    const res = await fetch('/cart.js')
+    const data = await res.json();
+    console.log( await data)
+    const cartBubble = document.querySelector('.cart-bubble')
+   cartBubble.textContent = `${ data.item_count + 1}`
   }
-  getdata();
-  console.log(getdata())
+   getdata();
+
 }
 
 

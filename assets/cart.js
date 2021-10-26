@@ -57,7 +57,8 @@ class CartDrawer extends HTMLElement{
                 return;
             }
             if (cartData.length > 0) {
-                cartItemsWrapper.classList.remove('is-hidden');
+                cartItemsWrapper.classList.toggle('is-hidden');
+                checkoutButton.classList.toggle('is-hidden');
 
                 cartData.length === 1 ? heading.textContent = `You Have ${cartData.length} Item In Your Cart` : heading.textContent = `You Have ${cartData.length} Items In Your Cart`;
                  

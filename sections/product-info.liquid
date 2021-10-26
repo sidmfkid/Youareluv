@@ -10,12 +10,12 @@
     <div class="product__content">
 
         <div id="price-{{ section.id }}" class="product__content-main-img" data-title="{{ product.title }}" data-price="{{ current_variant.price | money }}">
-            <img loading="lazy" width="500" height="500" alt="" src="{{ product | img_url: '500x500', format: 'pjpg' }}">
+            <img id="mainImage" loading="lazy" width="500" height="500" alt="" src="{{ product | img_url: '500x500', format: 'pjpg' }}">
         </div>
         <div class="product__content-imgs">
             <i class="fa fa-caret-left"></i>
             {% for image in product.images %}
-                <img loading="lazy" width="auto" height="auto" alt="" class="variant" src="{{ image.src | img_url: '100x100', scale: 2, crop: 'center', format: 'pjpg'}}">
+                <img id="varImage" loading="lazy" width="auto" height="auto" alt="" data-image="{{ forloop.index }}" class="variant-{{ forloop.index}}" src="{{ image.src | img_url: '100x100', scale: 2, crop: 'center', format: 'pjpg'}}">
 
             {% endfor %}
             <i class="fa fa-caret-right"></i>

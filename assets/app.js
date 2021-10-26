@@ -290,9 +290,6 @@ window.onload = getCart();
             const source = html.getElementById(id);
     
             if (source && destination) destination.dataset.price = source.dataset.price;
-    
-            const cartBubble = document.getElementById(`price-${this.dataset.section}`);
-    
 
           });
       }
@@ -323,5 +320,97 @@ class QuantityInput extends HTMLElement {
 }
 customElements.define('quantity-input', QuantityInput);
 
+// Product Slider Component
 
+const currentImage = document.getElementById('mainImage');
+const varImage = document.querySelectorAll('#varImage');
+varImage[0].classList.add('selected')
+const arrowBtns = document.querySelectorAll('.product__content-imgs i');
+// const selectedImg = document.querySelector('.product__content-imgs .selected')
+
+
+
+
+arrowBtns.forEach( button => {
+  button.addEventListener('click', changeImage)
+}
+)
+varImage.forEach(image => {
+  image.addEventListener('click', changeImage)
+})
+
+
+
+
+
+function getImageTitles() { 
+  let varImg = []
+  varImage.forEach((image, i) => {
+    varImg.push(image.getAttribute('src'))
+  })
+  return varImg
+
+  
+ }
+getImageTitles();
+clicks = 0
+function changeImage(e) {
+e.preventDefault();
+
+const selectedImg = document.querySelector('.product__content-imgs .selected')
+
+  if (e.target.id === 'varImage') {
+    e.target.classList.add('selected')
+    clicks = e.target.dataset.image - 1;
+    console.log(clicks)
+  }
+
+  if (e.target.classList.contains('fa-caret-left') && selectedImg.previousElementSibling.tagName === 'IMG' ) {
+    selectedImg.previousElementSibling.classList.add('selected')
+    clicks -= 1
+  }
+  if (e.target.classList.contains('fa-caret-left') && selectedImg.previousElementSibling.tagName !== 'IMG' ) {
+    varImage[varImage.length - 1].classList.add('selected')
+    clicks = varImage.length -1
+  }
+
+  if (e.target.classList.contains('fa-caret-right') && selectedImg.nextElementSibling.tagName === 'IMG' ) {
+    selectedImg.nextElementSibling.classList.add('selected')
+    clicks += 1
+  }
+
+  if (e.target.classList.contains('fa-caret-right') && selectedImg.nextElementSibling.tagName !== 'IMG' ) {
+    varImage[0].classList.add('selected')
+    clicks = 0
+  }
+  // console.log(clicks)
+
+  selectedImg.classList.remove('selected')
+
+return changeImageUrl(clicks);
+ };
+
+const changeImageUrl = function () {
+const titles = getImageTitles();
+titles.forEach(title => {
+ title[clicks].replace('100x100','500x500')
+});
+// titles[clicks].replace('100x100','500x500')
+// url.forEach(string => {
+//   string.replace('100x100','500x500')
+// });
+console.log(titles[clicks])
+console.log(titles)
+// console.log(url)
+  currentImage.classList.toggle('fade-out')
+  setTimeout(() => {
+currentImage.setAttribute('src', `${titles[clicks].replace('100x100','medium')}`)
+currentImage.classList.toggle('fade-out')
+
+  },300)
+  
+
+
+ }
+//  changeImageUrl();
 

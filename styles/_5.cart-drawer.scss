@@ -22,7 +22,7 @@ cart-drawer {
   .cart__content {
     display: flex;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    // overflow-y: scroll;
 
     .cart__headings {
       display: flex;
@@ -34,7 +34,7 @@ cart-drawer {
     .cart__items {
       flex-basis: 100%;
       flex-wrap: wrap;
-      overflow-y: scroll;
+      // overflow-y: scroll;
       overflow-x: hidden;
 
       .line__item {
