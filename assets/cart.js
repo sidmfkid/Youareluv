@@ -78,6 +78,7 @@ class CartDrawer extends HTMLElement{
         .cart__content .cart__items .line__item-details .quantity-input-drawer {
             display: flex;
             justify-content: center;
+            align-items: center;
             width: min-content;
             margin: 2rem 0 2rem 0;
             border: 2px solid var(--primary-50);
@@ -97,14 +98,13 @@ class CartDrawer extends HTMLElement{
         .cart__content
             .cart__items
             .line__item-details
-            quantity-input-drawer
+            .quantity-input-drawer
             button:hover
             i,
-        cart-drawer
             .cart__content
             .cart__items
             .line__item-details
-            quantity-input-drawer
+            .quantity-input-drawer
             button:active
             i {
             transform: scale(1.05);
@@ -126,7 +126,7 @@ class CartDrawer extends HTMLElement{
             border-right: 2px solid var(--primary-50);
             border-top: none;
             border-bottom: none;
-            width: 20rem;
+            width: max-content;
             font-size: var(--small);
             color: var(--primary-30);
         }
@@ -170,10 +170,13 @@ class CartDrawer extends HTMLElement{
           font-size: var(--regular);
           font-weight: 600;
           color: var(--primary-30);
+          width: 100%;
+          text-align: center;
+          padding-top: .5rem;
         }
          .checkout-wrapper {
            display: flex;
-           flex-wrap: wrap;
+           flex-wrap: wrap-reverse;
            justify-content: space-evenly;
            align-items: center;
           z-index: 10;
@@ -205,6 +208,12 @@ class CartDrawer extends HTMLElement{
           background-color: var(--primary-50);
           border-radius: 1.3rem;
         }
+        .quantity-input-drawer {
+          width: 70%;
+        }
+
+
+
 
         `;
     const fontAwesome = document.createElement('link')
@@ -264,15 +273,22 @@ class CartDrawer extends HTMLElement{
         currency: 'USD',
 
       });
+
+      const body = document.querySelector('body');
+const bodyWidth = body.clientWidth
       const shadow = elem.shadowRoot;
  
         console.log(cart.items)
         if (cart.items.length > 0 && elem.dataset.state === 'open') {
-          const checkoutButtonWrapper = shadow.appendChild(document.createElement('div'));
+          const checkoutButtonWrapper = shadow.appendChild(document.createElement('form'));
           checkoutButtonWrapper.setAttribute('class', 'checkout-wrapper')
-          const checkoutButton = checkoutButtonWrapper.appendChild(document.createElement('button'));
+          const checkoutButton = checkoutButtonWrapper.appendChild(document.createElement('input'));
           checkoutButton.setAttribute('class','btn btn-primary checkout');
           checkoutButton.setAttribute('type','submit');
+          checkoutButton.setAttribute('name','checkout');
+          checkoutButton.setAttribute('value','Checkout');
+          checkoutButtonWrapper.setAttribute('method','post');
+          checkoutButtonWrapper.setAttribute('action', `${window.routes.cart_url}`);
           checkoutButton.textContent = 'Checkout';
           const cartTotal = checkoutButtonWrapper.appendChild(document.createElement('span'));
           console.log(cart.total_price)
@@ -341,11 +357,64 @@ class CartDrawer extends HTMLElement{
                 });
 
             }
-            if (elem.dataset.state !== 'open' && cart.items.length === 0) {
-
+            if (elem.dataset.state !== 'open' && cart.items.length >= 0) {
+              const cartItemsWrapper = shadow.querySelector('.cart__items')
+              const child = shadow.querySelector('.line__item')
+              if (child) {
+              cartItemsWrapper.removeChild(child);
+              }
               const checkoutButtonWrapper = shadow.querySelector('.checkout-wrapper')
               checkoutButtonWrapper ? shadow.removeChild(checkoutButtonWrapper) :
               console.log('checkout button visible');
+            }
+            const chatApp = document.querySelector('.chat-app.chap-app--')
+            const cartDrawer = document.querySelector('cart-drawer')
+            const cartIcon = document.querySelector('.header__content-cart')
+            const hamburgerIcon = document.querySelector('.header__content-hamburger')
+            const cartContent = shadow.querySelector('.cart__content')
+            const deleteIcon = shadow.querySelector('.delete__icon')
+            const cartImage = shadow.querySelector('.line__item-img')
+            const itemDetails = shadow.querySelector('.line__item-details')
+            const itemTitle = shadow.querySelector('.item__title')
+            const itemPrice = shadow.querySelector('.item__price')
+            const inputWrapper = shadow.querySelector('.quantity-input-drawer')
+            const input = shadow.querySelector('input')
+            const icons = shadow.querySelectorAll('.quantity-input-drawer button')
+            const cartHeading = shadow.querySelector('.cart__headings > span')
+
+            if (bodyWidth < 900 && cartDrawer.dataset.state === 'open') {
+             cartImage.setAttribute('width', '150');
+             cartImage.setAttribute('height', '150');
+             deleteIcon.style.top = '6rem'
+             itemTitle.style.fontSize = 'var(--small)'
+             itemPrice.style.fontSize = 'var(--small)'
+             cartHeading.style.fontSize = 'var(--regular)'
+             itemDetails.style.width = 'min-content'
+             inputWrapper.style.width = 'auto'
+             input.style.width = 'calc(2rem + 5vw)'
+             input.style.padding = '0'
+             inputWrapper.style.padding = '.5rem 1rem'
+             cartDrawer.style.border = 'none'
+             input.style.lineHeight = 'auto'
+             cartContent.style.padding = '7rem 2rem 2rem 3rem'
+             cartIcon.style.top = '5%'
+             hamburgerIcon.style.top = '13%'
+             icons[0].firstChild.style.fontSize = 'calc(2rem + 1vw)'
+             icons[0].style.padding = '0 3px 0 0'
+             icons[1].firstChild.style.fontSize = 'calc(2rem + 1vw)'
+             icons[1].style.padding = '0 0 0 3px'
+             chatApp.style.marginBottom = '10rem'
+            }
+            if (bodyWidth < 900 && cartDrawer.dataset.state !== 'open') {
+              cartIcon.style.top = '26%'
+              hamburgerIcon.style.top = '15%'
+            } else {
+              cartIcon.style.top = '26%'
+              hamburgerIcon.style.top = '15%'
+            }
+            if (bodyWidth > 900) {
+              cartIcon.style.top = '0%'
+              
             }
      }
 

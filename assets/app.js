@@ -47,6 +47,7 @@ const allSections = document.querySelectorAll('section')
 
 const revealSection = function (entries, observer) { 
     const [entry] = entries;
+    console.log(entry)
     entry.target.classList.remove('hide')
     // console.log(entry)
  }
@@ -330,7 +331,9 @@ customElements.define('quantity-input', QuantityInput);
 
 const currentImage = document.getElementById('mainImage');
 const varImage = document.querySelectorAll('#varImage');
+if (varImage) {
 varImage[0].classList.add('selected')
+}
 const arrowBtns = document.querySelectorAll('.product__content-imgs i');
 // const selectedImg = document.querySelector('.product__content-imgs .selected')
 

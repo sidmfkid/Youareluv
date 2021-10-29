@@ -5,10 +5,26 @@
     },
     "product-info": {
       "type": "product-info"
+    },
+    "logo-list": {
+      "type": "logo-list"
+    },
+    "affirmations": {
+      "type": "affirmations"
+    },
+    "image-with-text": {
+      "type": "image-with-text"
+    },
+    "newsletter": {
+      "type": "newsletter"
     }
   },
   "order": [
     "product-info",
-    "girl"
+    "logo-list",
+    "girl",
+    "affirmations",
+    "image-with-text",
+    "newsletter"
   ]
 }

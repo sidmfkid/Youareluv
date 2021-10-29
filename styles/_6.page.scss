@@ -1,0 +1,33 @@
+.shopify-section.page {
+  & .page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__title {
+      font-size: var(--medium);
+      margin-bottom: 5rem;
+    }
+    &__para {
+      font-size: var(--small);
+      width: 80%;
+    }
+  }
+  // squeezing in newsletter
+  & ~ .shopify-section.newsletter {
+    .newsletter.hide {
+      opacity: 1;
+      transform: translateY(0rem);
+    }
+  }
+}
+
+main .shopify-policy__container {
+  width: 80%;
+  max-width: none;
+  font-size: var(--small);
+  padding: 3rem 2rem;
+  .shopify-policy__title {
+    margin-bottom: 3rem;
+  }
+}

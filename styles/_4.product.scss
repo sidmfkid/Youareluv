@@ -1,5 +1,6 @@
 .product {
   width: 100%;
+
   &__content {
     display: flex;
     justify-content: center;
@@ -73,6 +74,7 @@
         }
         &:nth-of-type(2) {
           margin-left: 4rem;
+          margin-right: 0rem;
         }
       }
       @for $i from 1 to 11 {
@@ -231,6 +233,91 @@
           border: none;
           margin-bottom: 2rem;
           cursor: pointer;
+        }
+      }
+    }
+  }
+  @include media-medium {
+    &__content {
+      &-main-img {
+        &::before {
+          bottom: -1rem;
+          width: 110%;
+          left: -5%;
+          font-size: var(--regular);
+          letter-spacing: 0.2rem;
+        }
+      }
+      #mainImage {
+        width: 35rem;
+        height: 35rem;
+      }
+      &-imgs {
+        flex-wrap: wrap;
+        img {
+          width: 4rem;
+        }
+      }
+      .product__selects variant-radios {
+        width: auto;
+      }
+      .product__selects {
+        quantity-input {
+          input {
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+  @include media-tablet {
+    &__content {
+      justify-content: space-evenly;
+      &-main-img {
+        // width: 70%;
+      }
+      &-imgs {
+        width: 100%;
+        img {
+          width: 8rem;
+        }
+        i {
+          filter: drop-shadow(2px 2px 2px var(--primary-30));
+          margin-right: 1rem;
+          &:nth-of-type(2) {
+            margin-left: 1rem;
+          }
+        }
+      }
+      & .product__selects {
+        #product-form-installment {
+          width: 90%;
+        }
+        .product-form {
+          width: 100%;
+          form {
+            width: 100%;
+          }
+          &__buttons {
+            width: 100%;
+            padding: 4rem;
+          }
+          & button {
+            width: 100%;
+          }
+          &__submit {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  @include media-desktop-max {
+    &__content {
+      &-imgs {
+        width: 100%;
+        img {
+          width: 10rem;
         }
       }
     }

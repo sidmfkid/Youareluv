@@ -12,6 +12,7 @@
     justify-content: flex-end;
     height: inherit;
     width: 100%;
+    padding: 0 2rem
 }
 
 .hero__content-image {
@@ -44,6 +45,7 @@
     height: 100%;
 }
 
+
 .hero__content-card {
     z-index: 2;
     display: flex;
@@ -51,7 +53,7 @@
     justify-content: center;
     align-items: center;
     padding: 4rem;
-    margin-right: calc(5rem + 5vw);
+    // margin-right: calc(5rem + 5vw);
     width: calc(55rem + 5vw);
     background-color: var(--primary-98);
     height: min-content;
@@ -89,6 +91,10 @@
     .hero {
         height: 94rem;
     }
+
+    .hero__content-card {
+        margin-right: 0;
+    }
 }
 
 @media screen and(max-width: 400px) {
@@ -100,6 +106,10 @@
         width: 60rem;
         top: 45%;
         left: -30%;
+    }
+
+    .hero__content-card {
+        margin-right: 0;
     }
 }
 

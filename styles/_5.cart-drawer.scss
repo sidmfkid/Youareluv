@@ -2,7 +2,8 @@ cart-drawer {
   position: fixed;
   top: 0;
   right: 0;
-  width: 50vw;
+  min-width: 60vw;
+  width: min-content;
   height: 100vh;
   background-color: white;
   z-index: 5;
@@ -151,5 +152,14 @@ cart-drawer {
     bottom: 0;
     border: none;
     width: 100%;
+  }
+  @include media-medium {
+    width: 100vw;
+  }
+  @include media-tablet {
+    width: 100vw;
+  }
+  @include media-desktop-max {
+    // width: min-content;
   }
 }
