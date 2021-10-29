@@ -1,28 +1,29 @@
 <cart-drawer data-state="closed" data-section="{{ section.id }}">
-    <div class="cart__content">
+    <!-- <div class="cart__content">
         <div class="cart__headings">
             <span></span>
         </div>
         <div class="cart__items is-hidden" id="cartItems">
 
             <div class="line__item">
-                <span class="delete__icon"></span>
+                <button class="delete__icon" name="deleteItem" type="button"></button>
                 <img class="line__item-img" height="300" src="" width="300">
                 <div class="line__item-details">
                     <span class="item__title"></span>
                     <span class="item__price"></span>
-                    <quantity-input>
-                        <button class="plus" id="plus" name="plus-drawer" type="button">
+                    <quantity-input-drawer>
+                        <button class="plus" name="plus" type="button">
                             <i class="fa fa-plus-circle"></i>
                         </button>
-                        <input form="product-form" id="quantityInputDrawer" min="1" type="number" value="1"><button class="minus" id="minus-drawer" name="minus" type="button">
+                        <input form="line-item" id="quantityInput" min="1" type="number" value="1">
+                        <button class="minus" name="plus" type="button">
                             <i class="fa fa-minus-circle"></i>
                         </button>
-                    </quantity-input>
+                    </quantity-input-drawer>
                 </div>
             </div>
         </div>
     </div>
 
-    <button class="btn btn-primary checkout is-hidden" type="submit">Checkout</button>
+    <button class="btn btn-primary checkout is-hidden" type="submit">Checkout</button> -->
 </cart-drawer>

@@ -86,7 +86,7 @@ function openDrawer() {
   .then(cartData => 
     {
       
-      cartBubble.textContent = `${cartData.item_count}`
+      cartBubble.textContent = `${cartData.items.length}`
       
     })
 }
@@ -297,6 +297,8 @@ window.onload = getCart();
 
 customElements.define('variant-radios', VariantRadios);
 
+//Product Quanitiy Input Component//
+
 class QuantityInput extends HTMLElement {
   constructor() {
     super();
@@ -319,6 +321,10 @@ class QuantityInput extends HTMLElement {
   }
 }
 customElements.define('quantity-input', QuantityInput);
+
+
+
+
 
 // Product Slider Component
 

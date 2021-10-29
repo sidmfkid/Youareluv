@@ -61,9 +61,8 @@ updateCart(){
   const getdata = async function () {
     const res = await fetch('/cart.js')
     const data = await res.json();
-    console.log( await data)
     const cartBubble = document.querySelector('.cart-bubble')
-   cartBubble.textContent = `${ data.item_count + 1}`
+   cartBubble.textContent = `${ data.items.length + 1 }`
   }
    getdata();
 

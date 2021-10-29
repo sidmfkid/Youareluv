@@ -555,7 +555,6 @@ cart-drawer {
   height: 100vh;
   background-color: white;
   z-index: 5;
-  padding: 10rem 5rem 5rem 5rem;
   overflow-x: hidden;
 }
 cart-drawer[data-state=closed] {
@@ -590,7 +589,7 @@ cart-drawer .cart__content .cart__items .line__item {
   align-items: center;
   justify-content: space-between;
 }
-cart-drawer .cart__content .cart__items .line__item:nth-of-type(1) {
+cart-drawer .cart__content .cart__items .line__item:nth-of-type(0) {
   visibility: hidden;
   height: 0 !important;
   width: 0 !important;
@@ -612,21 +611,57 @@ cart-drawer .cart__content .cart__items .line__item-details span {
 cart-drawer .cart__content .cart__items .line__item-details span span {
   display: block;
 }
-cart-drawer .cart__content .cart__items .line__item-details .quantity__btns span {
-  margin: 0 2rem;
+cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer {
+  display: flex;
+  justify-content: center;
+  width: min-content;
+  margin: 2rem 0 2rem 0;
+  border: 2px solid var(--primary-50);
+  border-radius: 3rem;
+  background-color: var(--primary-90);
 }
-cart-drawer .cart__content .cart__items .line__item-details .quantity__btns button {
-  width: max-content;
-  margin-top: 10rem;
-  border: none;
+cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer button {
+  position: relative;
+  z-index: 5;
+  width: auto;
+  height: auto;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer button:hover i, cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer button:active i {
+  transform: scale(1.05);
+  color: var(--primary-60);
+}
+cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer button i {
+  position: relative;
+  z-index: -1;
+  font-size: 4rem;
+  color: var(--primary-50);
+  cursor: pointer;
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
+}
+cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer input {
+  text-align: center;
+  background-color: var(--primary-90);
+  border-left: 2px solid var(--primary-50);
+  border-right: 2px solid var(--primary-50);
+  border-top: none;
+  border-bottom: none;
+  width: 20rem;
+  font-size: var(--small);
+  color: var(--primary-30);
 }
 cart-drawer .cart__content .cart__items .line__item .delete__icon {
   cursor: pointer;
   display: block;
   position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  background: none;
   top: 0;
   right: 0;
-  background-color: var(--primary-90);
 }
 cart-drawer .cart__content .cart__items .line__item .delete__icon::after, cart-drawer .cart__content .cart__items .line__item .delete__icon::before {
   display: block;
