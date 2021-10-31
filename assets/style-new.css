@@ -793,6 +793,68 @@ main .shopify-policy__container .shopify-policy__title {
   margin-bottom: 3rem;
 }
 
+.list-collections {
+  min-height: 50rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-bottom: 5rem;
+}
+.list-collections h1 {
+  width: 100%;
+  text-align: center;
+  font-size: var(--large);
+  color: var(--secondary-30);
+  margin-bottom: 3rem;
+}
+.list-collections .collection {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-decoration: none;
+  color: var(--secondary-90);
+  height: 30rem;
+  width: 30rem;
+  margin-bottom: 3rem;
+  transition: all 0.3s ease-in-out;
+  filter: brightness(1);
+  transform: scale(1);
+}
+.list-collections .collection:hover, .list-collections .collection:active {
+  filter: brightness(1.1);
+  transform: scale(1.1);
+}
+.list-collections .collection h2 {
+  font-size: var(--regular);
+  font-weight: 300;
+  position: absolute;
+  top: 0;
+  left: -6rem;
+  padding: 1rem 2rem;
+  background: var(--primary-50);
+  transform: rotate(-10deg);
+}
+
+.collection-banner {
+  width: 100%;
+  padding: 1rem 2rem;
+}
+.collection-banner .collection-img {
+  background: linear-gradient(to bottom, var(--primary-60), var(--primary-70));
+  padding: 5rem;
+}
+.collection-banner .collection-img h1 {
+  font-size: var(--large);
+  color: var(--primary-20);
+}
+
+.collection-products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 html.transition,
 html.transition *,
 html.transition *::before,
