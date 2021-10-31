@@ -1,0 +1,43 @@
+.list-collections {
+  h1 {
+    width: 100%;
+    text-align: center;
+    font-size: var(--large);
+    color: var(--secondary-30);
+    margin-bottom: 3rem;
+  }
+  min-height: 50rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-bottom: 5rem;
+  .collection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-decoration: none;
+    color: var(--secondary-90);
+    height: 30rem;
+    width: 30rem;
+    margin-bottom: 3rem;
+    transition: all 0.3s ease-in-out;
+    filter: brightness(1);
+    transform: scale(1);
+    &:hover,
+    &:active {
+      filter: brightness(1.1);
+      transform: scale(1.1);
+    }
+    h2 {
+      font-size: var(--regular);
+      font-weight: font-weight(light);
+      position: absolute;
+      top: 0;
+      left: -6rem;
+      padding: 1rem 2rem;
+      background: var(--primary-50);
+      transform: rotate(-10deg);
+    }
+  }
+}

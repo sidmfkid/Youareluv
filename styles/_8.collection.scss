@@ -1,0 +1,22 @@
+.collection-banner {
+  width: 100%;
+  padding: 1rem 2rem;
+  .collection-img {
+    background: linear-gradient(
+      to bottom,
+      var(--primary-60),
+      var(--primary-70)
+    );
+    padding: 5rem;
+    h1 {
+      font-size: var(--large);
+      color: var(--primary-20);
+    }
+  }
+}
+
+.collection-products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

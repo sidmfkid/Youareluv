@@ -1,0 +1,9 @@
+<section class="collection-products">
+    {% for item in collection.products %}
+        {{ item }}
+    {% endfor %}
+
+    <a class="collection-product">
+        <img loading="lazy" width="500" height="500" src="{{ collection.image | img_url: '500x500', format: 'pjpg' }}" alt="">
+    </a>
+</section>

@@ -1,5 +1,3 @@
-
-
 class CartDrawer extends HTMLElement{
     constructor(){
         super();
@@ -346,7 +344,6 @@ const bodyWidth = body.clientWidth
                         button.addEventListener('click', changeItem)
                     })
                   }
-                  
                   if (elem.dataset.state !== 'open') {
                     const cartItemsWrapper = shadow.querySelector('.cart__items')
                     const child = shadow.querySelector('.line__item')
@@ -552,81 +549,3 @@ class QuantityInputDrawer extends CartDrawer {
     }
 
   customElements.define('quantity-input-drawer', QuantityInputDrawer);
-
-
-    // renderCart(){
-    //     const defaults = {
-    //         cartDrawer: 'cart-drawer',
-    //         cartItemsWrapper: 'cart-drawer .cart__items',
-    //         lineItem: 'cart-drawer .line__item',
-    //         deleteIcon: 'cart-drawer .delete__icon',
-    //         lineItemImage: 'cart-drawer .line__item-img',
-    //         lineItemDetails: 'cart-drawer .line__item-details',
-    //         lineItemTitle: 'cart-drawer .item__title',
-    //         lineItemPrice: 'cart-drawer .item__price',
-    //         addToCart: 'cart-drawer .plus',
-    //         removeFromCart: 'cart-drawer .minus',
-    //         checkoutButton: 'cart-drawer .checkout',
-    //         heading: 'cart-drawer .cart__headings span',
-    //         lineItemQuantity: 'cart-drawer quantity-input-drawer',
-    //         plusIcon: 'cart-drawer .fa.fa-plus-circle',
-    //         minusIcon: 'cart-drawer .fa.fa-minus-circle',
-    //         input: 'cart-drawer input'
-    //     }
-
-    //     const cartDrawer = document.querySelector(defaults.cartDrawer);
-    //     const cartItemsWrapper = document.querySelector(defaults.cartItemsWrapper);
-    //     const lineItem = document.querySelector(defaults.lineItem);
-    //     const deleteIcon = document.querySelector(defaults.deleteIcon)
-    //     const lineItemImage = document.querySelector(defaults.lineItemImage)
-    //     const lineItemDetails = document.querySelector(defaults.lineItemDetails);
-    //     const lineItemTitle = document.querySelector(defaults.lineItemTitle);
-    //     const lineItemPrice = document.querySelector(defaults.lineItemPrice);
-    //     const lineItemQuantity = document.querySelector(defaults.lineItemQuantity);
-    //     const addToCart = document.querySelector(defaults.addToCart);
-    //     const plusIcon = document.querySelector(defaults.plusIcon);
-    //     const removeFromCart = document.querySelector(defaults.removeFromCart);
-    //     const minusIcon = document.querySelector(defaults.minusIcon);
-    //     const input = document.querySelector(defaults.input);
-
-    //     const checkoutButton = document.querySelector(defaults.checkoutButton);
-    //     const heading = document.querySelector(defaults.heading)
-
-    //     const fetchCart = async function () {
-    //         const req = await fetch('/cart.js')
-    //         const data = await req.json()
-    //         let cartData = data.items.map(items => {
-    //             return items
-    //         })
-    //         if (cartData.length <= 0) {
-    //             heading.textContent = "No Items In Your Cart";
-    //             return;
-    //         }
-    //         if (cartData.length > 0) {
-    //             cartItemsWrapper.classList.toggle('is-hidden');
-    //             checkoutButton.classList.toggle('is-hidden');
-
-    //             cartData.length === 1 ? heading.textContent = `You Have ${cartData.length} Item In Your Cart` : heading.textContent = `You Have ${cartData.length} Items In Your Cart`;
-
-    //             const formatter = new Intl.NumberFormat('en-US', {
-    //                              style: 'currency',
-    //                              currency: 'USD',
-    //                            });
-    //             cartData.forEach(item => {
-    //                if (cartDrawer.dataset.state = "open") {
-    //                     cartItemsWrapper.outerHTML = "<div class=\"line__item\">";
-    //                    console.log(cartItemsWrapper.outerHTML)
-    //                }
-    //              });
-
-
-    //         }
-    //         console.log(cartData)
-    //      }
-    //      fetchCart();
-
-    // }
-    // changeCart(e){
-    //     e.preventDefault();
-    //     console.log(e.target)
-    // }

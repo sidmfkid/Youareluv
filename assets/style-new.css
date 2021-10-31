@@ -71,7 +71,8 @@ a:active {
   background-color: var(--primary-50);
   color: var(--primary-98);
 }
-.btn.btn-primary:active, .btn.btn-primary:hover {
+.btn.btn-primary:active,
+.btn.btn-primary:hover {
   transform: scale(1.05);
   color: var(--secondary-30);
   background-color: var(--primary-50);
@@ -184,7 +185,8 @@ section {
   filter: drop-shadow(4px 2px 2px var(--primary-30));
   transition: all 0.3s ease-in-out;
 }
-.product__content-imgs i:active, .product__content-imgs i:hover {
+.product__content-imgs i:active,
+.product__content-imgs i:hover {
   color: var(--primary-40);
   filter: drop-shadow(4px 5px 5px var(--primary-20));
   transform: scale(1.1);
@@ -202,14 +204,16 @@ section {
   z-index: 1;
   filter: brightness(1);
 }
-.product__content-imgs .variant-1:hover, .product__content-imgs .variant-1:active {
+.product__content-imgs .variant-1:hover,
+.product__content-imgs .variant-1:active {
   filter: brightness(0.8);
 }
 .product__content-imgs .variant-1.selected {
   transition: all 0.3s ease-in-out;
   border: 6px solid var(--primary-50);
 }
-.product__content-imgs .variant-1.selected:hover, .product__content-imgs .variant-1.selected:active {
+.product__content-imgs .variant-1.selected:hover,
+.product__content-imgs .variant-1.selected:active {
   filter: brightness(1.1);
 }
 .product__content-imgs .variant-2 {
@@ -221,14 +225,16 @@ section {
   z-index: 1;
   filter: brightness(1);
 }
-.product__content-imgs .variant-2:hover, .product__content-imgs .variant-2:active {
+.product__content-imgs .variant-2:hover,
+.product__content-imgs .variant-2:active {
   filter: brightness(0.8);
 }
 .product__content-imgs .variant-2.selected {
   transition: all 0.3s ease-in-out;
   border: 6px solid var(--primary-50);
 }
-.product__content-imgs .variant-2.selected:hover, .product__content-imgs .variant-2.selected:active {
+.product__content-imgs .variant-2.selected:hover,
+.product__content-imgs .variant-2.selected:active {
   filter: brightness(1.1);
 }
 .product__content-imgs .variant-3 {
@@ -240,14 +246,16 @@ section {
   z-index: 1;
   filter: brightness(1);
 }
-.product__content-imgs .variant-3:hover, .product__content-imgs .variant-3:active {
+.product__content-imgs .variant-3:hover,
+.product__content-imgs .variant-3:active {
   filter: brightness(0.8);
 }
 .product__content-imgs .variant-3.selected {
   transition: all 0.3s ease-in-out;
   border: 6px solid var(--primary-50);
 }
-.product__content-imgs .variant-3.selected:hover, .product__content-imgs .variant-3.selected:active {
+.product__content-imgs .variant-3.selected:hover,
+.product__content-imgs .variant-3.selected:active {
   filter: brightness(1.1);
 }
 .product__content-imgs .variant-4 {
@@ -259,14 +267,16 @@ section {
   z-index: 1;
   filter: brightness(1);
 }
-.product__content-imgs .variant-4:hover, .product__content-imgs .variant-4:active {
+.product__content-imgs .variant-4:hover,
+.product__content-imgs .variant-4:active {
   filter: brightness(0.8);
 }
 .product__content-imgs .variant-4.selected {
   transition: all 0.3s ease-in-out;
   border: 6px solid var(--primary-50);
 }
-.product__content-imgs .variant-4.selected:hover, .product__content-imgs .variant-4.selected:active {
+.product__content-imgs .variant-4.selected:hover,
+.product__content-imgs .variant-4.selected:active {
   filter: brightness(1.1);
 }
 .product__content-imgs .variant-5 {
@@ -278,14 +288,16 @@ section {
   z-index: 1;
   filter: brightness(1);
 }
-.product__content-imgs .variant-5:hover, .product__content-imgs .variant-5:active {
+.product__content-imgs .variant-5:hover,
+.product__content-imgs .variant-5:active {
   filter: brightness(0.8);
 }
 .product__content-imgs .variant-5.selected {
   transition: all 0.3s ease-in-out;
   border: 6px solid var(--primary-50);
 }
-.product__content-imgs .variant-5.selected:hover, .product__content-imgs .variant-5.selected:active {
+.product__content-imgs .variant-5.selected:hover,
+.product__content-imgs .variant-5.selected:active {
   filter: brightness(1.1);
 }
 .product__content-imgs .variant-6 {
@@ -297,14 +309,16 @@ section {
   z-index: 1;
   filter: brightness(1);
 }
-.product__content-imgs .variant-6:hover, .product__content-imgs .variant-6:active {
+.product__content-imgs .variant-6:hover,
+.product__content-imgs .variant-6:active {
   filter: brightness(0.8);
 }
 .product__content-imgs .variant-6.selected {
   transition: all 0.3s ease-in-out;
   border: 6px solid var(--primary-50);
 }
-.product__content-imgs .variant-6.selected:hover, .product__content-imgs .variant-6.selected:active {
+.product__content-imgs .variant-6.selected:hover,
+.product__content-imgs .variant-6.selected:active {
   filter: brightness(1.1);
 }
 .product__content-imgs .variant-7 {
@@ -316,14 +330,16 @@ section {
   z-index: 1;
   filter: brightness(1);
 }
-.product__content-imgs .variant-7:hover, .product__content-imgs .variant-7:active {
+.product__content-imgs .variant-7:hover,
+.product__content-imgs .variant-7:active {
   filter: brightness(0.8);
 }
 .product__content-imgs .variant-7.selected {
   transition: all 0.3s ease-in-out;
   border: 6px solid var(--primary-50);
 }
-.product__content-imgs .variant-7.selected:hover, .product__content-imgs .variant-7.selected:active {
+.product__content-imgs .variant-7.selected:hover,
+.product__content-imgs .variant-7.selected:active {
   filter: brightness(1.1);
 }
 .product__content-imgs .variant-8 {
@@ -335,14 +351,16 @@ section {
   z-index: 1;
   filter: brightness(1);
 }
-.product__content-imgs .variant-8:hover, .product__content-imgs .variant-8:active {
+.product__content-imgs .variant-8:hover,
+.product__content-imgs .variant-8:active {
   filter: brightness(0.8);
 }
 .product__content-imgs .variant-8.selected {
   transition: all 0.3s ease-in-out;
   border: 6px solid var(--primary-50);
 }
-.product__content-imgs .variant-8.selected:hover, .product__content-imgs .variant-8.selected:active {
+.product__content-imgs .variant-8.selected:hover,
+.product__content-imgs .variant-8.selected:active {
   filter: brightness(1.1);
 }
 .product__content-imgs .variant-9 {
@@ -354,14 +372,16 @@ section {
   z-index: 1;
   filter: brightness(1);
 }
-.product__content-imgs .variant-9:hover, .product__content-imgs .variant-9:active {
+.product__content-imgs .variant-9:hover,
+.product__content-imgs .variant-9:active {
   filter: brightness(0.8);
 }
 .product__content-imgs .variant-9.selected {
   transition: all 0.3s ease-in-out;
   border: 6px solid var(--primary-50);
 }
-.product__content-imgs .variant-9.selected:hover, .product__content-imgs .variant-9.selected:active {
+.product__content-imgs .variant-9.selected:hover,
+.product__content-imgs .variant-9.selected:active {
   filter: brightness(1.1);
 }
 .product__content-imgs .variant-10 {
@@ -373,14 +393,16 @@ section {
   z-index: 1;
   filter: brightness(1);
 }
-.product__content-imgs .variant-10:hover, .product__content-imgs .variant-10:active {
+.product__content-imgs .variant-10:hover,
+.product__content-imgs .variant-10:active {
   filter: brightness(0.8);
 }
 .product__content-imgs .variant-10.selected {
   transition: all 0.3s ease-in-out;
   border: 6px solid var(--primary-50);
 }
-.product__content-imgs .variant-10.selected:hover, .product__content-imgs .variant-10.selected:active {
+.product__content-imgs .variant-10.selected:hover,
+.product__content-imgs .variant-10.selected:active {
   filter: brightness(1.1);
 }
 .product__content .product__selects {
@@ -427,38 +449,83 @@ section {
   margin-bottom: 2rem;
   color: var(--primary-20);
 }
-.product__content .product__selects variant-radios fieldset input#optionValues-1 {
+.product__content
+  .product__selects
+  variant-radios
+  fieldset
+  input#optionValues-1 {
   visibility: hidden;
 }
-.product__content .product__selects variant-radios fieldset input#optionValues-1:checked ~ label[for=optionValues-1] {
+.product__content
+  .product__selects
+  variant-radios
+  fieldset
+  input#optionValues-1:checked
+  ~ label[for="optionValues-1"] {
   color: var(--primary-90);
   background-color: var(--primary-50);
 }
-.product__content .product__selects variant-radios fieldset input#optionValues-2 {
+.product__content
+  .product__selects
+  variant-radios
+  fieldset
+  input#optionValues-2 {
   visibility: hidden;
 }
-.product__content .product__selects variant-radios fieldset input#optionValues-2:checked ~ label[for=optionValues-2] {
+.product__content
+  .product__selects
+  variant-radios
+  fieldset
+  input#optionValues-2:checked
+  ~ label[for="optionValues-2"] {
   color: var(--primary-90);
   background-color: var(--primary-50);
 }
-.product__content .product__selects variant-radios fieldset input#optionValues-3 {
+.product__content
+  .product__selects
+  variant-radios
+  fieldset
+  input#optionValues-3 {
   visibility: hidden;
 }
-.product__content .product__selects variant-radios fieldset input#optionValues-3:checked ~ label[for=optionValues-3] {
+.product__content
+  .product__selects
+  variant-radios
+  fieldset
+  input#optionValues-3:checked
+  ~ label[for="optionValues-3"] {
   color: var(--primary-90);
   background-color: var(--primary-50);
 }
-.product__content .product__selects variant-radios fieldset input#optionValues-4 {
+.product__content
+  .product__selects
+  variant-radios
+  fieldset
+  input#optionValues-4 {
   visibility: hidden;
 }
-.product__content .product__selects variant-radios fieldset input#optionValues-4:checked ~ label[for=optionValues-4] {
+.product__content
+  .product__selects
+  variant-radios
+  fieldset
+  input#optionValues-4:checked
+  ~ label[for="optionValues-4"] {
   color: var(--primary-90);
   background-color: var(--primary-50);
 }
-.product__content .product__selects variant-radios fieldset input#optionValues-5 {
+.product__content
+  .product__selects
+  variant-radios
+  fieldset
+  input#optionValues-5 {
   visibility: hidden;
 }
-.product__content .product__selects variant-radios fieldset input#optionValues-5:checked ~ label[for=optionValues-5] {
+.product__content
+  .product__selects
+  variant-radios
+  fieldset
+  input#optionValues-5:checked
+  ~ label[for="optionValues-5"] {
   color: var(--primary-90);
   background-color: var(--primary-50);
 }
@@ -473,7 +540,8 @@ section {
   transform: scale(1);
   transition: all 0.3s ease-in-out;
 }
-.product__content .product__selects variant-radios fieldset label:hover, .product__content .product__selects variant-radios fieldset label:active {
+.product__content .product__selects variant-radios fieldset label:hover,
+.product__content .product__selects variant-radios fieldset label:active {
   color: var(--primary-90);
   background-color: var(--primary-50);
   transform: scale(1.05);
@@ -495,7 +563,8 @@ section {
   padding: 1rem 2rem;
   cursor: pointer;
 }
-.product__content .product__selects quantity-input button:hover i, .product__content .product__selects quantity-input button:active i {
+.product__content .product__selects quantity-input button:hover i,
+.product__content .product__selects quantity-input button:active i {
   transform: scale(1.05);
   color: var(--primary-60);
 }
@@ -603,14 +672,14 @@ section {
   }
 }
 
-input[type=number] {
+input[type="number"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
@@ -625,11 +694,11 @@ cart-drawer {
   z-index: 5;
   overflow-x: hidden;
 }
-cart-drawer[data-state=closed] {
+cart-drawer[data-state="closed"] {
   transform: translateX(100%);
   transition: transform 1s ease-in-out;
 }
-cart-drawer[data-state=open] {
+cart-drawer[data-state="open"] {
   transform: translateX(0);
   visibility: visible;
   transition: transform 1s ease-in-out;
@@ -679,7 +748,11 @@ cart-drawer .cart__content .cart__items .line__item-details span {
 cart-drawer .cart__content .cart__items .line__item-details span span {
   display: block;
 }
-cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer {
+cart-drawer
+  .cart__content
+  .cart__items
+  .line__item-details
+  .quantity-input-drawer {
   display: flex;
   justify-content: center;
   width: min-content;
@@ -688,7 +761,12 @@ cart-drawer .cart__content .cart__items .line__item-details .quantity-input-draw
   border-radius: 3rem;
   background-color: var(--primary-90);
 }
-cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer button {
+cart-drawer
+  .cart__content
+  .cart__items
+  .line__item-details
+  .quantity-input-drawer
+  button {
   position: relative;
   z-index: 5;
   width: auto;
@@ -696,11 +774,30 @@ cart-drawer .cart__content .cart__items .line__item-details .quantity-input-draw
   padding: 1rem 2rem;
   cursor: pointer;
 }
-cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer button:hover i, cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer button:active i {
+cart-drawer
+  .cart__content
+  .cart__items
+  .line__item-details
+  .quantity-input-drawer
+  button:hover
+  i,
+cart-drawer
+  .cart__content
+  .cart__items
+  .line__item-details
+  .quantity-input-drawer
+  button:active
+  i {
   transform: scale(1.05);
   color: var(--primary-60);
 }
-cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer button i {
+cart-drawer
+  .cart__content
+  .cart__items
+  .line__item-details
+  .quantity-input-drawer
+  button
+  i {
   position: relative;
   z-index: -1;
   font-size: 4rem;
@@ -709,7 +806,12 @@ cart-drawer .cart__content .cart__items .line__item-details .quantity-input-draw
   transform: scale(1);
   transition: all 0.3s ease-in-out;
 }
-cart-drawer .cart__content .cart__items .line__item-details .quantity-input-drawer input {
+cart-drawer
+  .cart__content
+  .cart__items
+  .line__item-details
+  .quantity-input-drawer
+  input {
   text-align: center;
   background-color: var(--primary-90);
   border-left: 2px solid var(--primary-50);
@@ -731,7 +833,8 @@ cart-drawer .cart__content .cart__items .line__item .delete__icon {
   top: 0;
   right: 0;
 }
-cart-drawer .cart__content .cart__items .line__item .delete__icon::after, cart-drawer .cart__content .cart__items .line__item .delete__icon::before {
+cart-drawer .cart__content .cart__items .line__item .delete__icon::after,
+cart-drawer .cart__content .cart__items .line__item .delete__icon::before {
   display: block;
   position: absolute;
   top: 0;
@@ -821,7 +924,8 @@ main .shopify-policy__container .shopify-policy__title {
   filter: brightness(1);
   transform: scale(1);
 }
-.list-collections .collection:hover, .list-collections .collection:active {
+.list-collections .collection:hover,
+.list-collections .collection:active {
   filter: brightness(1.1);
   transform: scale(1.1);
 }
