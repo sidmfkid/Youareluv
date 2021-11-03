@@ -243,6 +243,12 @@ class CartDrawer extends HTMLElement{
 
     }
 
+    async prepShipping (fn, el, fns) {
+      const req = await fetch('/cart.js');
+      const data = await req.json();
+      fn(data, el, fns);
+    }
+
     setCartHeading(cart, elem) {
         const shadow = elem.shadowRoot;
 
