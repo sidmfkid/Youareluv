@@ -41,8 +41,8 @@ const allSections = document.querySelectorAll('section');
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
-  console.log(entry);
-  console.log(entry.target.className)
+  // console.log(entry)
+  // console.log(entry.target.className)
   entry.target.classList.remove('hide'); // console.log(entry)
 };
 
@@ -67,8 +67,6 @@ function openDrawer() {
   } else {
     cartDrawer.setAttribute('data-state', 'open');
   }
-
-  console.log();
 }
 
 cartIcon.addEventListener('click', openDrawer, false);
@@ -252,7 +250,7 @@ class VariantRadios extends HTMLElement {
     this.options = fieldsets.map(fieldset => {
       return Array.from(fieldset.querySelectorAll('input')).find(radio => radio.checked).value;
     });
-    console.log('This is this current option', this.options);
+    // console.log('This is this current option', this.options);
   }
 
   updateMasterId() {
@@ -261,7 +259,7 @@ class VariantRadios extends HTMLElement {
         return this.options[index] === option;
       }).includes(false);
     });
-    console.log('this is curent value', this.currentVariant);
+    // console.log('this is curent value', this.currentVariant);
   }
 
   getVariantData() {
@@ -327,7 +325,7 @@ class QuantityInput extends HTMLElement {
     const previousValue = this.input.value;
     event.target.name === 'plus' ? this.input.stepUp(1) : this.input.stepDown(1);
     if (previousValue !== this.input.value) this.input.dispatchEvent(this.changeEvent);
-    console.log(this.input.value);
+    // console.log(this.input.value);
   }
 
 }
@@ -368,7 +366,7 @@ function changeImage(e) {
   if (e.target.id === 'varImage') {
     e.target.classList.add('selected');
     clicks = e.target.dataset.image - 1;
-    console.log(clicks);
+    // console.log(clicks);
   }
 
   if (e.target.classList.contains('fa-caret-left') && selectedImg.previousElementSibling.tagName === 'IMG') {
@@ -402,17 +400,14 @@ const changeImageUrl = function () {
   const titles = getImageTitles();
   titles.forEach(title => {
     title[clicks].replace('100x100', '500x500');
-  }); // titles[clicks].replace('100x100','500x500')
-  // url.forEach(string => {
-  //   string.replace('100x100','500x500')
-  // });
+  });
 
-  console.log(titles[clicks]);
-  console.log(titles); // console.log(url)
+  // console.log(titles[clicks]);
+  // console.log(titles); 
 
   currentImage.classList.toggle('fade-out');
   setTimeout(() => {
     currentImage.setAttribute('src', `${titles[clicks].replace('100x100', 'medium')}`);
     currentImage.classList.toggle('fade-out');
   }, 300);
-}; //  changeImageUrl();
+}; 
