@@ -1,0 +1,13 @@
+{{ 'article.css' | asset_url | stylesheet_tag }}
+
+<article class="article">
+    <span class="article-title">{{ article.title }}</span>
+    <span class="article-date">{{ article.created_at | date: format: 'abbreviated_date' }}</span>
+    <span class="article-author">BY:
+        {{ article.author | upcase }}</span>
+
+    <div class="article-content">
+        {{ article.content }}
+    </div>
+
+</article>

@@ -10,6 +10,17 @@
     <div class="product__content">
 
         <div id="price-{{ section.id }}" class="product__content-main-img" data-title="{{ product.title }}" data-price="{{ current_variant.price | money }}">
+
+            <div class="discount-price">
+                {% if current_variant.compare_at_price != null %}
+                    {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}% Off
+                    <br>
+                    Orig. Price:
+                    {{ current_variant.compare_at_price | money }}
+                {% else %}
+                    Regular Price
+                {% endif %}
+            </div>
             <img id="mainImage" loading="lazy" width="500" height="500" alt="" src="{{ product | img_url: '500x500', format: 'pjpg' }}">
         </div>
         <div class="product__content-imgs">
@@ -21,7 +32,11 @@
             <i class="fa fa-caret-right"></i>
         </div>
 
-        {% render 'product-form' %}
-
+        {% render 'product-form', current_variant: current_variant %}
+        <div class="decription-wrapper">
+            <div class="product__description">
+                {{ product.content }}
+            </div>
+        </div>
     </div>
 </section>

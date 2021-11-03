@@ -62,7 +62,10 @@ updateCart(){
     const res = await fetch('/cart.js')
     const data = await res.json();
     const cartBubble = document.querySelector('.cart-bubble')
-   cartBubble.textContent = `${ data.items.length + 1 }`
+    
+      cartBubble.style.opacity = '1'
+    cartBubble.textContent = `${data.items.length + 1}`;
+    
   }
    getdata();
 

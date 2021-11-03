@@ -29,14 +29,20 @@ const stickyNav = function (entries) {
 const observerHeader = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0,
-  rootMargin: '500px'
+  rootMargin: '350px'
 });
 observerHeader.observe(header);
+
+
+// ************** Fade in Section Animations **************** //
+
 const allSections = document.querySelectorAll('section');
+
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
   console.log(entry);
+  console.log(entry.target.className)
   entry.target.classList.remove('hide'); // console.log(entry)
 };
 
@@ -45,9 +51,13 @@ const sectionObserver = new IntersectionObserver(revealSection, {
   threshold: .15
 });
 allSections.forEach(function (section) {
+  section.className === 'hide' ? section.classList.remove('hide') : section.classList.add('hide')
   sectionObserver.observe(section);
-  section.classList.add('hide');
 });
+
+// ************** Open Cart Drawer **************** //
+
+
 const cartIcon = document.querySelector('.header__content-cart');
 const cartDrawer = document.querySelector('cart-drawer');
 
@@ -63,12 +73,19 @@ function openDrawer() {
 
 cartIcon.addEventListener('click', openDrawer, false);
 
+// ** Get amount of items in cart on load and apply to bubble ** //
+
+
 function getCart() {
   const cartBubble = document.querySelector('.header__content-cart .cart-bubble');
   fetch('/cart.js', {
     method: 'GET'
   }).then(response => response.json()).then(cartData => {
+    if (cartData.items.length === 0) {
+      cartBubble.style.opacity = '0'
+    } else {
     cartBubble.textContent = `${cartData.items.length}`;
+    }
   });
 }
 
@@ -263,7 +280,31 @@ class VariantRadios extends HTMLElement {
       const html = new DOMParser().parseFromString(responseText, 'text/html');
       const destination = document.getElementById(id);
       const source = html.getElementById(id);
-      if (source && destination) destination.dataset.price = source.dataset.price;
+
+      if (source && destination) {
+        destination.dataset.price = source.dataset.price
+        destination.children[0].textContent = source.children[0].textContent
+      }
+      const total = '.selection-total .total';
+      const savings = '.selection-total .savings';
+      const origPrice = '.selection-total .orig-price';
+      const destinationTotal = document.querySelector(total);
+      const destinationSavings = document.querySelector(savings);
+      const destinationOrigPrice = document.querySelector(origPrice);
+
+      const sourceTotal = html.querySelector(total);
+      const sourceSavings = html.querySelector(savings);
+      const sourceOrigPrice = html.querySelector(origPrice);
+      if (destinationTotal && sourceTotal) {
+        destinationTotal.textContent = sourceTotal.textContent
+      }
+
+      if (destinationSavings && sourceSavings) {
+        destinationSavings.textContent = sourceSavings.textContent
+      }
+      if (destinationOrigPrice && sourceOrigPrice) {
+        destinationOrigPrice.textContent = sourceOrigPrice.textContent
+      }
     });
   }
 

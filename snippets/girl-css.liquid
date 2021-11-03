@@ -6,6 +6,7 @@
     position: relative;
     padding-top: 4rem;
     z-index: 2;
+
   }
   
   .girl img {
@@ -62,11 +63,14 @@
   }
   
   @media screen and (max-width: 400px) {
+    .girl {
+      height: min-content;
+      padding: 7rem 1rem;
+    }
     .girl img {
       position: absolute;
-      top: 25%;
+      top: 5%;
       right: 34%;
-      height: 30rem;
     }
     .girl__text h3 {
       position: relative;

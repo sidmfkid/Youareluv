@@ -1,0 +1,190 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  --primary-10: hsla(35, 88.2%, 10%, 1);
+  --primary-20: hsla(35, 90.2%, 20%, 1);
+  --primary-30: hsla(35, 89.5%, 30%, 1);
+  --primary-40: hsla(35, 90.2%, 40%, 1);
+  --primary-50: hsla(35, 89.8%, 50%, 1);
+  --primary-60: hsla(35, 90.2%, 60%, 1);
+  --primary-60-m: hsla(35, 90.2%, 60%, 0.01);
+  --primary-70: hsla(35, 89.5%, 70%, 1);
+  --primary-80: hsla(35, 90.2%, 80%, 1);
+  --primary-90: hsla(35, 88.2%, 90%, 1);
+  --primary-95: hsla(34, 92%, 95.1%, 1);
+  --primary-98: hsla(40, 81.8%, 97.8%, 1);
+  --primary-99: hsla(36, 100%, 99%, 1);
+  --secondary-10: hsla(131, 88.2%, 10%, 1);
+  --secondary-20: hsla(131, 90.2%, 20%, 1);
+  --secondary-30: hsla(131, 89.5%, 30%, 1);
+  --secondary-40: hsla(131, 90.2%, 40%, 1);
+  --secondary-50: hsla(131, 89.8%, 50%, 1);
+  --secondary-60: hsla(131, 90.2%, 60%, 1);
+  --secondary-70: hsla(131, 89.5%, 70%, 1);
+  --secondary-80: hsla(131, 90.2%, 80%, 1);
+  --secondary-90: hsla(131, 88.2%, 90%, 1);
+  --secondary-95: hsla(130, 92%, 95.1%, 1);
+  --secondary-98: hsla(133, 81.8%, 97.8%, 1);
+  --secondary-99: hsla(132, 100%, 99%, 1);
+  --small: 1.6rem;
+  --regular: 2.4rem;
+  --medium: 3.8rem;
+  --large: 4.8rem;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Signika", sans-serif;
+  font-style: normal;
+  line-height: auto;
+  background-color: var(--primary-70);
+  overflow-x: hidden;
+}
+
+a,
+a:link,
+a:active {
+  text-decoration: none;
+  font-style: normal;
+  color: var(--primary-98);
+}
+
+.btn {
+  width: 80%;
+  padding: 1rem 4rem;
+  text-align: center;
+  font-size: var(--small);
+  font-weight: 600;
+}
+.btn.btn-primary {
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
+  background-color: var(--primary-50);
+  color: var(--primary-98);
+}
+.btn.btn-primary:active, .btn.btn-primary:hover {
+  transform: scale(1.05);
+  color: var(--secondary-30);
+  background-color: var(--primary-50);
+  border-radius: 1rem;
+}
+
+section {
+  transition: all 0.7s ease-in-out;
+  transform: translateY(0rem);
+}
+
+.hide {
+  opacity: 0;
+  transform: translateY(10rem);
+}
+
+.unhide {
+  opacity: 1;
+}
+
+.lazy {
+  filter: blur(10px);
+  transition: filter 0.5s ease-in-out;
+}
+
+.minus,
+.plus {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  background-color: transparent;
+  border: none;
+}
+.minus i,
+.plus i {
+  position: relative;
+  z-index: -1;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.blog {
+  background: var(--primary-80);
+}
+.blog .blog-title {
+  font-size: var(--large);
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+}
+.blog .blog-articles {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.blog .blog-articles .article-card {
+  width: calc(35rem + 10vw);
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--primary-70);
+  padding: 3rem 3rem;
+  border-radius: 1rem;
+}
+.blog .blog-articles .article-card img {
+  height: calc(30rem + 10vw);
+  width: calc(30rem + 10vw);
+  margin: 0 auto 2rem auto;
+  border-radius: 1rem;
+}
+.blog .blog-articles .article-card h2 {
+  font-size: var(--medium);
+  font-weight: 300;
+  margin-bottom: 2rem;
+  color: var(--primary-20);
+}
+.blog .blog-articles .article-card p {
+  font-size: var(--small);
+  color: var(--primary-10);
+}
+.blog .blog-articles .article-card h3 {
+  color: var(--primary-20);
+  text-align: center;
+  font-size: var(--small);
+  width: 100%;
+  font-weight: 300;
+  margin-top: 2rem;
+}
+.blog .blog-articles .article-card span {
+  color: var(--primary-20);
+  text-align: center;
+  display: block;
+  font-size: var(--small);
+  width: 100%;
+}
+.blog .blog-articles .article-card span:nth-of-type(2) {
+  margin-bottom: 2rem;
+}
+.blog .blog-articles .article-card a {
+  display: block;
+  margin: 0 auto;
+}
+
+.blog {
+  padding: 6vh 4vw;
+}
+
+html.transition,
+html.transition *,
+html.transition *::before,
+html.transition *::after {
+  transition: all 0.5s !important;
+  transition-delay: 0 !important;
+}

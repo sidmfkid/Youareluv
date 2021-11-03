@@ -1,0 +1,31 @@
+.article {
+  @extend %sec-padding;
+  .article-title {
+    font-size: var(--large);
+    margin-bottom: 2rem;
+  }
+  span {
+    display: block;
+    font-size: var(--small);
+    &:nth-of-type(3) {
+      margin-bottom: 2rem;
+    }
+  }
+  .article-content {
+    h1 {
+      font-size: var(--medium);
+      margin-bottom: 2rem;
+      span {
+        font-size: var(--medium);
+      }
+    }
+    h2 {
+      font-size: var(--regular);
+      margin: 2rem 0;
+    }
+    p {
+      font-size: var(--small);
+      margin-bottom: 2rem;
+    }
+  }
+}

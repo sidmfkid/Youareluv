@@ -21,8 +21,8 @@
   },
   "order": [
     "hero",
-    "logo-list",
     "girl",
+    "logo-list",
     "affirmations",
     "image-with-text",
     "newsletter"

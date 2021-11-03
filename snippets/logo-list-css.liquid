@@ -1,5 +1,6 @@
 {% style %}
 .logo-list {
+  height: min-content;
     padding: 5rem 5rem;
     display: flex;
     flex-direction: row;
@@ -27,7 +28,7 @@
   
   @media screen and (max-width: 900px) {
     .logo-list {
-      margin-top: 10rem;
+      padding-top: 10rem;
     }
     .logo-list__icon {
       width: 50%;
@@ -36,21 +37,21 @@
   
   @media screen and (max-width: 600px) {
     .logo-list {
-      margin-top: 10rem;
+      padding-top: 10rem;
     }
     .logo-list__icon {
       width: 50%;
-      margin-bottom: 4rem;
+      padding-bottom: 4rem;
     }
   }
   
   @media screen and (max-width: 600px) {
     .logo-list {
-      margin-top: 4rem;
+      padding-top: 4rem;
     }
     .logo-list__icon {
       width: 100%;
-      margin-bottom: 4rem;
+      padding-bottom: 4rem;
     }
   }
 {% endstyle %}
