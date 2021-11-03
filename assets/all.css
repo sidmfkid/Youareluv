@@ -527,8 +527,6 @@ section {
     background-color: var(--primary-90);
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     margin: auto;
     -webkit-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
@@ -538,7 +536,7 @@ section {
     top: -2.2rem;
   }
   .header__content-hamburger div::after {
-    top: 1.3rem;
+    top: 2.2rem;
   }
 }
 
