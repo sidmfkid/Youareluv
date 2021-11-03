@@ -226,8 +226,8 @@ class CartDrawer extends HTMLElement{
         const cartIcon = document.querySelector('.header__content-cart');
         const addToCartBtn = document.querySelector('.product-form__submit')
           cartIcon.addEventListener('click',this.onEventHandler.bind(this))
-          
-         
+
+
     };
 
 
@@ -281,8 +281,8 @@ class CartDrawer extends HTMLElement{
       const body = document.querySelector('body');
 const bodyWidth = body.clientWidth
       const shadow = elem.shadowRoot;
- 
-        console.log(cart.items)
+
+        // console.log(cart.items)
         if (cart.items.length > 0 && elem.dataset.state === 'open') {
           const checkoutButtonWrapper = shadow.appendChild(document.createElement('form'));
           checkoutButtonWrapper.setAttribute('class', 'checkout-wrapper')
@@ -295,7 +295,7 @@ const bodyWidth = body.clientWidth
           checkoutButtonWrapper.setAttribute('action', `${window.routes.cart_url}`);
           checkoutButton.textContent = 'Checkout';
           const cartTotal = checkoutButtonWrapper.appendChild(document.createElement('span'));
-          console.log(cart.total_price)
+          // console.log(cart.total_price)
           cartTotal.textContent = 'Your Total: ' + `${formatter.format(cart.total_price * .01)}`
           cartTotal.setAttribute('class','total')
                 cart.items.forEach((item, i) => {
@@ -335,18 +335,18 @@ const bodyWidth = body.clientWidth
                     itemQuantity.setAttribute('id', 'quantityInput')
                     itemQuantity.setAttribute('type', 'number')
                     itemQuantity.setAttribute('min', '0')
-  
+
                     const removeFromCart = lineItemQuantity.appendChild(document.createElement('button'));
                     removeFromCart.setAttribute('class', 'minus');
                     removeFromCart.setAttribute('name', 'minus');
                     removeFromCart.setAttribute('type', 'button');
                     const removeFromCartIcon = removeFromCart.appendChild(document.createElement('i'));
                     removeFromCartIcon.setAttribute('class', 'fa fa-minus-circle');
-  
+
                     const buttons = lineItem.querySelectorAll('button');
                     const changeItem = fn.bind(shadow)
                     buttons.forEach(button => {
-  
+
                         button.addEventListener('click', changeItem)
                     })
                   }
@@ -368,7 +368,7 @@ const bodyWidth = body.clientWidth
               }
               const checkoutButtonWrapper = shadow.querySelector('.checkout-wrapper')
               checkoutButtonWrapper ? shadow.removeChild(checkoutButtonWrapper) :
-              console.log('checkout button visible');
+               console.log('checkout button visible');
             }
             const chatApp = document.querySelector('.chat-app.chap-app--')
             const cartDrawer = document.querySelector('cart-drawer')
@@ -417,7 +417,7 @@ const bodyWidth = body.clientWidth
             }
             if (bodyWidth > 900) {
               cartIcon.style.top = '0%'
-              
+
             }
      }
 
@@ -427,12 +427,12 @@ const bodyWidth = body.clientWidth
         const formatter = new Intl.NumberFormat('en-US', {
           style: 'currency',
           currency: 'USD',
-  
+
         });
 
         const newQuantity = this.querySelectorAll('input')
         const newItemsHeading = this.querySelector('.cart__headings span');
-        console.log(this)
+        // console.log(this)
 
         let formData = {}
 
@@ -458,14 +458,14 @@ const bodyWidth = body.clientWidth
             body: JSON.stringify(form)
           })
           const data = await res.json();
-          console.log(data)
+          // console.log(data)
           fn(data);
            }
 
 
             switch (e.target.className) {
                 case 'minus':
-                  console.log(e.originalTarget.previousSibling.value)
+                  // console.log(e.originalTarget.previousSibling.value)
                   e.originalTarget.previousSibling.stepDown(1)
                 formData = {
                   'id': e.originalTarget.offsetParent.dataset.varID,
@@ -487,7 +487,7 @@ const bodyWidth = body.clientWidth
                   newItemsHeading.textContent = `You Have ${lineItems.length} Items In Your Cart`
                 }
 
-                
+
                     break;
 
                case 'plus':
@@ -513,10 +513,10 @@ const bodyWidth = body.clientWidth
 
                 }
                 postData(formData, updateTotal)
-                console.log(e.originalTarget.nextSibling.nextSibling.lastChild.firstChild.nextSibling.value)
-                
+                // console.log(e.originalTarget.nextSibling.nextSibling.lastChild.firstChild.nextSibling.value)
+
                   e.originalTarget.offsetParent.remove()
-                
+
                   lineItems = this.querySelectorAll('.line__item');
 
                 if (lineItems.length === 0) {

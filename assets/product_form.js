@@ -15,7 +15,7 @@ class ProductForm extends HTMLElement {
     var masterSelect = document.querySelector('#currentVariant')
       var uri = window.location.search
       const currentID = uri.slice(9);
-  
+
     if (!currentID) {
       const varID = 40065683947710
 
@@ -39,8 +39,8 @@ postReq(){
      'quantity': `${elemValue}`
      }]
    };
-   
-   const postData = async function () { 
+
+   const postData = async function () {
      const res = await fetch('/cart/add.js', {
      method: 'POST',
      headers: {
@@ -49,23 +49,23 @@ postReq(){
      body: JSON.stringify(formData)
    })
    const data = await res.json();
-   console.log(data)
-   
+  //  console.log(data)
+
 
     }
     postData();
 }
 
 updateCart(){
-  
+
   const getdata = async function () {
     const res = await fetch('/cart.js')
     const data = await res.json();
     const cartBubble = document.querySelector('.cart-bubble')
-    
+
       cartBubble.style.opacity = '1'
     cartBubble.textContent = `${data.items.length + 1}`;
-    
+
   }
    getdata();
 
