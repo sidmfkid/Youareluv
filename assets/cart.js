@@ -279,7 +279,7 @@ class CartDrawer extends HTMLElement{
       });
 
       const body = document.querySelector('body');
-const bodyWidth = body.clientWidth
+      const bodyWidth = body.clientWidth
       const shadow = elem.shadowRoot;
 
         // console.log(cart.items)
@@ -355,6 +355,7 @@ const bodyWidth = body.clientWidth
                     const child = shadow.querySelector('.line__item')
                     cartItemsWrapper.removeChild(child);
                     const checkoutButtonWrapper = shadow.querySelector('.checkout-wrapper')
+                    // console.log(cartItemsWrapper.child)
                     shadow.removeChild(checkoutButtonWrapper);
                   }
                 });
@@ -362,51 +363,49 @@ const bodyWidth = body.clientWidth
             }
             if (elem.dataset.state !== 'open' && cart.items.length >= 0) {
               const cartItemsWrapper = shadow.querySelector('.cart__items')
-              const child = shadow.querySelector('.line__item')
-              if (child) {
+              const child = shadow.querySelectorAll('.line__item')
+             child.forEach(child => {
               cartItemsWrapper.removeChild(child);
-              }
+             });
+              
               const checkoutButtonWrapper = shadow.querySelector('.checkout-wrapper')
               checkoutButtonWrapper ? shadow.removeChild(checkoutButtonWrapper) :
                console.log('checkout button visible');
             }
-            const chatApp = document.querySelector('.chat-app.chap-app--')
+
             const cartDrawer = document.querySelector('cart-drawer')
             const cartIcon = document.querySelector('.header__content-cart')
             const hamburgerIcon = document.querySelector('.header__content-hamburger')
             const cartContent = shadow.querySelector('.cart__content')
-            const deleteIcon = shadow.querySelector('.delete__icon')
-            const cartImage = shadow.querySelector('.line__item-img')
-            const itemDetails = shadow.querySelector('.line__item-details')
-            const itemTitle = shadow.querySelector('.item__title')
-            const itemPrice = shadow.querySelector('.item__price')
-            const inputWrapper = shadow.querySelector('.quantity-input-drawer')
-            const input = shadow.querySelector('input')
-            const icons = shadow.querySelectorAll('.quantity-input-drawer button')
             const cartHeading = shadow.querySelector('.cart__headings > span')
+            const lineItem = shadow.querySelectorAll('.line__item')
+            // console.log(lineItem)
 
-            if (bodyWidth < 900 && cartDrawer.dataset.state === 'open') {
-             cartImage.setAttribute('width', '150');
-             cartImage.setAttribute('height', '150');
-             deleteIcon.style.top = '6rem'
-             itemTitle.style.fontSize = 'var(--small)'
-             itemPrice.style.fontSize = 'var(--small)'
+            if (bodyWidth <= 900 && cartDrawer.dataset.state === 'open') {
+              lineItem.forEach(child => {
+                console.log(child.children[2].children[2].children[1])
+                child.children[1].style.width = '150px';
+                child.children[1].style.height = '150px';
+                child.children[0].style.top = '6rem'
+                child.children[2].style.fontSize = 'var(--small)'
+                child.children[2].style.fontSize = 'var(--small)'
+                child.children[2].style.width = 'min-content'
+                child.children[2].children[2].style.width = 'auto'
+                child.children[2].children[2].style.padding = '.5rem 1rem'
+                child.children[2].children[2].children[1].style.width = 'calc(2rem + 5vw)'
+                child.children[2].children[2].children[1].style.padding = '0'
+                child.children[2].children[2].children[1].style.lineHeight = 'auto'
+                child.children[2].children[2].children[0].firstChild.style.fontSize = 'calc(2rem + 1vw)'
+                child.children[2].children[2].children[0].style.padding = '0 3px 0 0'
+                child.children[2].children[2].children[2].firstChild.style.fontSize = 'calc(2rem + 1vw)'
+                child.children[2].children[2].children[2].style.padding = '0 0 0 3px'
+              });
              cartHeading.style.fontSize = 'var(--regular)'
-             itemDetails.style.width = 'min-content'
-             inputWrapper.style.width = 'auto'
-             input.style.width = 'calc(2rem + 5vw)'
-             input.style.padding = '0'
-             inputWrapper.style.padding = '.5rem 1rem'
              cartDrawer.style.border = 'none'
-             input.style.lineHeight = 'auto'
              cartContent.style.padding = '7rem 2rem 2rem 3rem'
              cartIcon.style.top = '5%'
              hamburgerIcon.style.top = '13%'
-             icons[0].firstChild.style.fontSize = 'calc(2rem + 1vw)'
-             icons[0].style.padding = '0 3px 0 0'
-             icons[1].firstChild.style.fontSize = 'calc(2rem + 1vw)'
-             icons[1].style.padding = '0 0 0 3px'
-             chatApp.style.marginBottom = '10rem'
+            //  chatApp.style.marginBottom = '10rem'
             }
             if (bodyWidth < 900 && cartDrawer.dataset.state !== 'open') {
               cartIcon.style.top = '26%'
@@ -466,18 +465,30 @@ const bodyWidth = body.clientWidth
             switch (e.target.className) {
                 case 'minus':
                   // console.log(e.originalTarget.previousSibling.value)
+                 if (e.target) {
+                  e.target.previousSibling.stepDown(1)
+                  formData = {
+                    'id': e.target.offsetParent.dataset.varID,
+                    'line': Number(e.target.offsetParent.dataset.line),
+                    'quantity': Number(e.target.previousSibling.value)
+                  }
+                  if (Number(e.target.previousSibling.value) === 0) {
+                    e.target.offsetParent.remove()
+                  }
+                 } else {
                   e.originalTarget.previousSibling.stepDown(1)
-                formData = {
-                  'id': e.originalTarget.offsetParent.dataset.varID,
-                  'line': Number(e.originalTarget.offsetParent.dataset.line),
-                  'quantity': Number(e.originalTarget.previousSibling.value)
-                }
+                  formData = {
+                    'id': e.originalTarget.offsetParent.dataset.varID,
+                    'line': Number(e.originalTarget.offsetParent.dataset.line),
+                    'quantity': Number(e.originalTarget.previousSibling.value)
+                  }
+                  if (Number(e.originalTarget.previousSibling.value) === 0) {
+                    e.originalTarget.offsetParent.remove()
+                  }
+                 }
                 postData(formData, updateTotal)
 
                 // console.log(Number(newQuantity.value))
-                if (Number(e.originalTarget.previousSibling.value) === 0) {
-                  e.originalTarget.offsetParent.remove()
-                }
                 lineItems = this.querySelectorAll('.line__item');
 
                 if (lineItems.length === 0) {
@@ -491,6 +502,16 @@ const bodyWidth = body.clientWidth
                     break;
 
                case 'plus':
+
+               if (e.target) {
+                e.target.nextSibling.stepUp(1)
+                formData = {
+                  'id': Number(e.target.offsetParent.dataset.varID),
+                  'line': Number(e.target.offsetParent.dataset.line),
+                  'quantity': e.target.nextSibling.value
+
+                }
+               } else {
                 e.originalTarget.nextSibling.stepUp(1)
                 formData = {
                   'id': Number(e.originalTarget.offsetParent.dataset.varID),
@@ -498,14 +519,32 @@ const bodyWidth = body.clientWidth
                   'quantity': e.originalTarget.nextSibling.value
 
                 }
+               }
                 postData(formData, updateTotal)
                 lineItems = this.querySelectorAll('.line__item');
-
+                if (lineItems.length === 0) {
+                  newItemsHeading.textContent = 'You Have No Items In Your Cart'
+                }
+                if (lineItems.length > 0) {
+                  newItemsHeading.textContent = `You Have ${lineItems.length} Items In Your Cart`
+                }
 
                    break;
 
                case 'delete__icon':
-                 lineItems = this.querySelectorAll('.line__item')
+
+               if (e.target) {
+                lineItems = this.querySelectorAll('.line__item')
+                formData = {
+                  'id': Number(e.target.offsetParent.dataset.varID),
+                  'line': Number(e.target.offsetParent.dataset.line),
+                  'quantity': 0
+
+                }
+                postData(formData, updateTotal)
+                e.target.offsetParent.remove()
+               }else {
+                lineItems = this.querySelectorAll('.line__item')
                 formData = {
                   'id': Number(e.originalTarget.offsetParent.dataset.varID),
                   'line': Number(e.originalTarget.offsetParent.dataset.line),
@@ -513,9 +552,11 @@ const bodyWidth = body.clientWidth
 
                 }
                 postData(formData, updateTotal)
+                e.originalTarget.offsetParent.remove()
+               }
+
                 // console.log(e.originalTarget.nextSibling.nextSibling.lastChild.firstChild.nextSibling.value)
 
-                  e.originalTarget.offsetParent.remove()
 
                   lineItems = this.querySelectorAll('.line__item');
 
