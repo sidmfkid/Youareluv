@@ -30,7 +30,7 @@
     "image-with-text": {
       "type": "image-with-text",
       "settings": {
-        "btn_link": "",
+        "btn_link": "shopify:\/\/products\/you-are-10-piece-crayons",
         "btn_text": "Buy Now"
       }
     },
