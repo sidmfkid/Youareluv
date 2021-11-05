@@ -34,10 +34,11 @@ const observerHeader = new IntersectionObserver(stickyNav, {
 observerHeader.observe(header);
 
 
+
 // ************** Fade in Section Animations **************** //
 
 const allSections = document.querySelectorAll('section');
-
+const allImages 
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
@@ -410,4 +411,8 @@ const changeImageUrl = function () {
     currentImage.setAttribute('src', `${titles[clicks].replace('100x100', 'medium')}`);
     currentImage.classList.toggle('fade-out');
   }, 300);
-}; 
+};
+
+
+
+
