@@ -14,12 +14,21 @@ class CartDrawer extends HTMLElement{
         cartItemsContainer.setAttribute('class', 'cart__items');
         cartItemsContainer.setAttribute('id', 'cartItems');
 
-
-
-
-
-
-
+        this.loader = cartItemsContainer.appendChild(document.createElement('div'))
+    //      this.loader.setAttribute('class', 'load-icon')
+    //      this.loader.innerHTML = `
+    //      <svg enable-background="new 0 0 0 0" id="L4" version="1.1" viewbox="0 0 100 100" x="0px" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px">
+    //      <circle cx="6" cy="50" fill="#fff" r="6" stroke="none">
+    //          <animate attributename="opacity" begin="0.1" dur="1s" repeatcount="indefinite" values="0;1;0"/>
+    //      </circle>
+    //      <circle cx="26" cy="50" fill="#fff" r="6" stroke="none">
+    //          <animate attributename="opacity" begin="0.2" dur="1s" repeatcount="indefinite" values="0;1;0"/>
+    //      </circle>
+    //      <circle cx="46" cy="50" fill="#fff" r="6" stroke="none">
+    //          <animate attributename="opacity" begin="0.3" dur="1s" repeatcount="indefinite" values="0;1;0"/>
+    //      </circle>
+    //  </svg>
+    //      `
 
         const style = document.createElement('style');
         style.textContent = `
@@ -32,6 +41,30 @@ class CartDrawer extends HTMLElement{
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
+        }
+        .load-icon {
+          position: absolute;
+          top:0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+        }
+
+        .load-icon.done {
+          display: none;
+        }
+        
+        .load-icon svg {
+          width: 100px;
+          height: 100px;
+        }
+        
+        .load-icon svg circle {
+          fill: var(--primary-20);
         }
         .cart__content {
             padding: 10rem 5rem 5rem 5rem;
@@ -214,6 +247,7 @@ class CartDrawer extends HTMLElement{
 
 
         `;
+
     const fontAwesome = document.createElement('link')
         fontAwesome.setAttribute('ref', 'stylesheet')
         fontAwesome.setAttribute('href', '/assets/font-awesome.min.css')
@@ -223,8 +257,9 @@ class CartDrawer extends HTMLElement{
 
         this.shadowRoot.append(style,wrapper)
 
+
         const cartIcon = document.querySelector('.header__content-cart');
-        const addToCartBtn = document.querySelector('.product-form__submit')
+        // const addToCartBtn = document.querySelector('.product-form__submit')
           cartIcon.addEventListener('click',this.onEventHandler.bind(this))
 
 
@@ -232,14 +267,50 @@ class CartDrawer extends HTMLElement{
 
 
     onEventHandler () {
+      // this.loadAnimation(this.loader, this)
       this.loadData(this.setCartHeading, this)
-      this.loadData(this.getCartItems, this, this.changeCart)
+      this.loadData(this.getCartItems, this, this.changeCart.bind(this))
+      
     }
 
+    loadAnimation(el) {
+      el.setAttribute('class', 'load-icon')
+      
+      el.innerHTML = `
+      <svg enable-background="new 0 0 0 0" id="L4" version="1.1" viewbox="0 0 100 100" x="0px" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px">
+      <circle cx="6" cy="50" fill="#fff" r="6" stroke="none">
+          <animate attributename="opacity" begin="0.1" dur="1s" repeatcount="indefinite" values="0;1;0"/>
+      </circle>
+      <circle cx="26" cy="50" fill="#fff" r="6" stroke="none">
+          <animate attributename="opacity" begin="0.2" dur="1s" repeatcount="indefinite" values="0;1;0"/>
+      </circle>
+      <circle cx="46" cy="50" fill="#fff" r="6" stroke="none">
+          <animate attributename="opacity" begin="0.3" dur="1s" repeatcount="indefinite" values="0;1;0"/>
+      </circle>
+  </svg>
+      `
+    }
+
+    removeAnimation(el) {
+
+      el.innerHTML = ``;
+      el.setAttribute('class', 'done')
+      
+    }
+
+
     async loadData(fn, el, fns)  {
+    this.loadAnimation(el.loader)
       const req = await fetch('/cart.js');
       const data = await req.json();
       fn(data, el, fns);
+      console.log(data)
+    if (data) {
+      setTimeout(() => {
+
+        this.removeAnimation(el.loader)
+      },500)
+    }
 
     }
 
@@ -251,9 +322,9 @@ class CartDrawer extends HTMLElement{
 
     setCartHeading(cart, elem) {
         const shadow = elem.shadowRoot;
-
+       const parElem = shadow.querySelector('.cart__headings > span')
         if (cart.items.length === 0) {
-            shadow.querySelector('.cart__headings > span').textContent = 'No Items In Your Cart';
+            parElem.textContent = 'No Items In Your Cart';
             return;
         }
 
@@ -281,7 +352,7 @@ class CartDrawer extends HTMLElement{
       const body = document.querySelector('body');
       const bodyWidth = body.clientWidth
       const shadow = elem.shadowRoot;
-
+      
         // console.log(cart.items)
         if (cart.items.length > 0 && elem.dataset.state === 'open') {
           const checkoutButtonWrapper = shadow.appendChild(document.createElement('form'));
@@ -346,32 +417,34 @@ class CartDrawer extends HTMLElement{
                     const buttons = lineItem.querySelectorAll('button');
                     const changeItem = fn.bind(shadow)
                     buttons.forEach(button => {
-
                         button.addEventListener('click', changeItem)
                     })
                   }
-                  if (elem.dataset.state !== 'open') {
-                    const cartItemsWrapper = shadow.querySelector('.cart__items')
-                    const child = shadow.querySelector('.line__item')
-                    cartItemsWrapper.removeChild(child);
-                    const checkoutButtonWrapper = shadow.querySelector('.checkout-wrapper')
-                    // console.log(cartItemsWrapper.child)
-                    shadow.removeChild(checkoutButtonWrapper);
-                  }
+                  // if (elem.dataset.state !== 'open') {
+                  //   const cartItemsWrapper = shadow.querySelector('.cart__items')
+                  //   const child = shadow.querySelectorAll('.line__item')
+                  //   child.forEach(child => {
+                  //     child.remove();
+                  //   });
+                  //   const checkoutButtonWrapper = shadow.querySelector('.checkout-wrapper')
+                  //   // console.log(cartItemsWrapper.child)
+                  //   shadow.removeChild(checkoutButtonWrapper);
+                  // }
                 });
 
             }
-            if (elem.dataset.state !== 'open' && cart.items.length >= 0) {
-              const cartItemsWrapper = shadow.querySelector('.cart__items')
-              const child = shadow.querySelectorAll('.line__item')
-             child.forEach(child => {
-              cartItemsWrapper.removeChild(child);
-             });
-              
-              const checkoutButtonWrapper = shadow.querySelector('.checkout-wrapper')
-              checkoutButtonWrapper ? shadow.removeChild(checkoutButtonWrapper) :
-               console.log('checkout button visible');
-            }
+        if (elem.dataset.state !== 'open' && cart.items.length > 0) {
+          const cartItemsWrapper = shadow.querySelector('.cart__items')
+          const child = shadow.querySelectorAll('.line__item')
+          child.forEach(child => {
+          child.remove();
+          });
+          
+          const checkoutButtonWrapper = shadow.querySelectorAll('.checkout-wrapper')
+          checkoutButtonWrapper.forEach(btn => {
+            btn.remove();
+          });
+        }
 
             const cartDrawer = document.querySelector('cart-drawer')
             const cartIcon = document.querySelector('.header__content-cart')
@@ -429,26 +502,35 @@ class CartDrawer extends HTMLElement{
 
         });
 
-        const newQuantity = this.querySelectorAll('input')
-        const newItemsHeading = this.querySelector('.cart__headings span');
-        // console.log(this)
+        const newQuantity = this.shadowRoot.querySelectorAll('input')
+        const newItemsHeading = this.shadowRoot.querySelector('.cart__headings > span');
+        // console.log(this)shadowRoot.
 
         let formData = {}
 
-        let lineItems = this.querySelectorAll('.line__item');
-        const newTotal = this.querySelector('.total')
+        let lineItems = this.shadowRoot.querySelectorAll('.line__item');
+        const newTotal = this.shadowRoot.querySelector('.total')
         const cartBubble = document.querySelector('.cart-bubble')
         const updateTotal = function (data){
           if (formatter.format(data.total_price * .01) === NaN && data.items.length === 0 ) {
             newTotal.textContent = 'Your Total: $0'
+            
+            newItemsHeading.textContent = 'You Have No Items In Your Cart' 
+            return;
           } else {
           newTotal.textContent = 'Your Total: ' + `${formatter.format(data.total_price * .01)}`;
           }
           cartBubble.textContent = `${data.items.length}`;
+          data.items.length > 1 ?
+          newItemsHeading.textContent = `You Have ${data.items.length} Items In Your Cart` :
+          newItemsHeading.textContent = `You Have ${data.items.length} Item In Your Cart`
+
+
 
         }
 
         const postData = async function (form, fn) {
+
             const res = await fetch('/cart/change.js', {
             method: 'POST',
             headers: {
@@ -459,8 +541,10 @@ class CartDrawer extends HTMLElement{
           const data = await res.json();
           // console.log(data)
           fn(data);
+
            }
 
+           this.loadAnimation(this.loader)
 
             switch (e.target.className) {
                 case 'minus':
@@ -489,14 +573,8 @@ class CartDrawer extends HTMLElement{
                 postData(formData, updateTotal)
 
                 // console.log(Number(newQuantity.value))
-                lineItems = this.querySelectorAll('.line__item');
 
-                if (lineItems.length === 0) {
-                  newItemsHeading.textContent = 'You Have No Items In Your Cart'
-                }
-                if (lineItems.length > 0) {
-                  newItemsHeading.textContent = `You Have ${lineItems.length} Items In Your Cart`
-                }
+
 
 
                     break;
@@ -521,20 +599,14 @@ class CartDrawer extends HTMLElement{
                 }
                }
                 postData(formData, updateTotal)
-                lineItems = this.querySelectorAll('.line__item');
-                if (lineItems.length === 0) {
-                  newItemsHeading.textContent = 'You Have No Items In Your Cart'
-                }
-                if (lineItems.length > 0) {
-                  newItemsHeading.textContent = `You Have ${lineItems.length} Items In Your Cart`
-                }
+
 
                    break;
 
                case 'delete__icon':
 
                if (e.target) {
-                lineItems = this.querySelectorAll('.line__item')
+
                 formData = {
                   'id': Number(e.target.offsetParent.dataset.varID),
                   'line': Number(e.target.offsetParent.dataset.line),
@@ -555,26 +627,15 @@ class CartDrawer extends HTMLElement{
                 e.originalTarget.offsetParent.remove()
                }
 
-                // console.log(e.originalTarget.nextSibling.nextSibling.lastChild.firstChild.nextSibling.value)
-
-
-                  lineItems = this.querySelectorAll('.line__item');
-
-                if (lineItems.length === 0) {
-                  newItemsHeading.textContent = 'You Have No Items In Your Cart'
-                }
-                if (lineItems.length > 0) {
-                  newItemsHeading.textContent = `You Have ${lineItems.length} Items In Your Cart`
-                }
-
                    break;
 
 
                 default:
                     break;
             }
-     }
+            this.removeAnimation(this.loader)
 
+     }
 
     connectedCallback(){
 

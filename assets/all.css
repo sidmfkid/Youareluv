@@ -1,4 +1,3 @@
-
 /*
 * Prefixed by https://autoprefixer.github.io
 * PostCSS: v8.3.6,
@@ -684,7 +683,7 @@ section {
 }
 .product .decription-wrapper {
   width: 100%;
-  background: linear-gradient( to bottom, var(--primary-70), var(--primary-80));
+  background: linear-gradient(to bottom, var(--primary-70), var(--primary-80));
   height: min-content;
   display: flex;
   justify-content: center;
@@ -698,19 +697,18 @@ section {
 
 .product__content .selection-total {
   width: 100%;
-text-align: right;
+  text-align: right;
   font-size: var(--regular);
   padding: 1rem 5rem;
   color: var(--primary-99);
 }
-.product__content .selection-total>span.total {
+.product__content .selection-total > span.total {
   display: block;
   width: 100%;
 
   font-size: var(--medium);
   padding: 0rem 0;
   color: var(--primary-99);
-
 }
 
 .product__content .selection-total span.savings {
@@ -729,8 +727,8 @@ text-align: right;
   padding: 1rem 0 0 0;
   color: var(--primary-30);
 }
-@media screen and (min-width: 1000px){
-  .product__content .selection-total>span.total,
+@media screen and (min-width: 1000px) {
+  .product__content .selection-total > span.total,
   .product__content .selection-total span.savings,
   .product__content .selection-total span.orig-price {
     width: 100%;
@@ -3235,4 +3233,20 @@ main .shopify-policy__container .shopify-policy__title {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+*/
+.load-icon {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.load-icon svg {
+  width: 100px;
+  height: 100px;
+}
+
+.load-icon svg circle {
+  fill: var(--primary-20);
 }

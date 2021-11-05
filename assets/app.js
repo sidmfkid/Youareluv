@@ -38,7 +38,7 @@ observerHeader.observe(header);
 // ************** Fade in Section Animations **************** //
 
 const allSections = document.querySelectorAll('section');
-const allImages 
+
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
