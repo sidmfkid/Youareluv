@@ -16,7 +16,7 @@
 
 
         <!-- <link rel="stylesheet" href="{{ 'style.css'| asset_url}}"> -->
-                <!-- <link rel="stylesheet" href="{{ 'style-new.css'| asset_url}}"> -->
+                        <!-- <link rel="stylesheet" href="{{ 'style-new.css'| asset_url}}"> -->
         <link rel="stylesheet" href="{{ 'all.css'| asset_url}}">
         {%- if settings.favicon != blank -%}
             <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
@@ -47,7 +47,7 @@
 
         {% render 'meta-tags' %}
 
-        <script defer src="{{ 'jquery-3.6.0.min.js' | asset_url }}"></script>
+        <!-- <script defer src="{{ 'jquery-3.6.0.min.js' | asset_url }}"></script> -->
         {{ content_for_header }}
 
         {%- liquid
