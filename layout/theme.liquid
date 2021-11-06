@@ -11,12 +11,11 @@
         <link href="https://fonts.googleapis.com" rel="preconnect">
         <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         {{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
 
 
         <!-- <link rel="stylesheet" href="{{ 'style.css'| asset_url}}"> -->
-                        <!-- <link rel="stylesheet" href="{{ 'style-new.css'| asset_url}}"> -->
+                                <!-- <link rel="stylesheet" href="{{ 'style-new.css'| asset_url}}"> -->
         <link rel="stylesheet" href="{{ 'all.css'| asset_url}}">
         {%- if settings.favicon != blank -%}
             <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
