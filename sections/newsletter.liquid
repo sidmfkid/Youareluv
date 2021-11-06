@@ -1,7 +1,7 @@
 {% render 'newsletter-css'%}
 
 <section class="newsletter">
-    <div class="newsletter__svg"></div>
+    <img loading="lazy" height="800" width="800" src="{{ 'baby-1.svg' | asset_url }}" class="newsletter__svg"></img>
     <!-- <div class="newsletter__form"> -->
     {% form 'customer', class: 'newsletter__form'%}
         <h2>Sign Up For Our Newsletter For Discounts, Upcoming Product Releases, & Much More!</h2>

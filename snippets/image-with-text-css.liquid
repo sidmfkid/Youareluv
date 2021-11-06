@@ -32,13 +32,12 @@
     width: 60rem;
   }
   
-  .image-with-text__img div {
-    background-image: url({{'black-family-1.jpg' | asset_url}});
-    background-size: cover;
+  .image-with-text__img img {
     background-clip: border-box;
     background-origin: border-box;
-    background-repeat: no-repeat;
     pointer-events: none;
+    width: 100%;
+    height: 100%;
     -webkit-mask-image: url({{'new-shape.svg' | asset_url}});
     mask-image: url({{'new-shape.svg' | asset_url}});
     -webkit-mask-size: 100%;

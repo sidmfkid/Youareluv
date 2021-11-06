@@ -1,20 +1,23 @@
 {% render 'affirmations-css'%}
+{% assign img_str = 'crayon-' %}
+
+
 
 <section class="affirmations">
 
     <h2>Positive Affirmations On Every Crayon</h2>
 
     <div class="affirmations__content">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div"></div>
+
+        {% for i in (1..10) %}
+        {% capture imgSrc %}
+        {{ img_str }}{{ i }}.jpg
+        {% endcapture %}
+        <div class="crayon-container">
+            <img height="500" width="500" loading="lazy" src="{{ imgSrc | asset_url }}"></img>
+        </div>
+        {% endfor %}
+
     <!-- <div></div> -->
 </div>
 

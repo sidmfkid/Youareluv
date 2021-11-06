@@ -37,6 +37,15 @@
     transform: rotate(10deg);
   }
   
+  .girl__text h3:nth-of-type(2n + 1) {
+    animation: wiggle1 1.4s linear infinite alternate;
+  }
+
+  .girl__text h3:nth-of-type(2n) {
+    animation: wiggle2 2s linear infinite alternate;
+  }
+  
+
   @media screen and (max-width: 900px) {
     .girl {
       padding: 5rem;
