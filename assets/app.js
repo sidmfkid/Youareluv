@@ -335,8 +335,8 @@ customElements.define('quantity-input', QuantityInput); // Product Slider Compon
 
 const currentImage = document.getElementById('mainImage');
 const varImage = document.querySelectorAll('#varImage');
-
-if (varImage) {
+const productPath = 'products'
+if (window.location.pathname.includes(productPath)) {
   varImage[0].classList.add('selected');
 }
 
