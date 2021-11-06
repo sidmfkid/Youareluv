@@ -568,6 +568,7 @@ section {
 
 .footer__logo img {
   width: 25rem;
+  height: auto;
 }
 
 .footer__logo p {
