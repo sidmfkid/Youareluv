@@ -74,7 +74,7 @@ class CartDrawer extends HTMLElement{
             justify-content: space-evenly;
             align-items: center;
             flex-wrap: wrap;
-            flex-basis: 100%;
+            width: 100%;
             font-size: var(--regular);
             text-align: center;
             padding: 0.5rem;
@@ -391,7 +391,7 @@ class CartDrawer extends HTMLElement{
                   // }
                 });
 
-            return;
+
               }
         if (elem.dataset.state === 'closed' && cart.items.length > 0) {
           const cartItemsWrapper = shadow.querySelector('.cart__items')
@@ -414,7 +414,8 @@ class CartDrawer extends HTMLElement{
             const lineItem = shadow.querySelectorAll('.line__item')
             // console.log(lineItem)
 
-            if (bodyWidth <= 900 && cartDrawer.dataset.state === 'open') {
+            if (bodyWidth <= 900) {
+              console.log(bodyWidth)
               lineItem.forEach(child => {
                 console.log(child.children[2].children[2].children[1])
                 child.children[1].style.width = '150px';
@@ -422,7 +423,7 @@ class CartDrawer extends HTMLElement{
                 child.children[0].style.top = '6rem'
                 child.children[2].style.fontSize = 'var(--small)'
                 child.children[2].style.fontSize = 'var(--small)'
-                child.children[2].style.width = 'min-content'
+                child.children[2].style.width = '100%'
                 child.children[2].children[2].style.width = 'auto'
                 child.children[2].children[2].style.padding = '.5rem 1rem'
                 child.children[2].children[2].children[1].style.width = 'calc(2rem + 5vw)'
@@ -439,16 +440,13 @@ class CartDrawer extends HTMLElement{
              cartIcon.style.top = '5%'
              hamburgerIcon.style.top = '13%'
             }
-            if (bodyWidth < 900 && cartDrawer.dataset.state !== 'open') {
-              cartIcon.style.top = '26%'
-              hamburgerIcon.style.top = '15%'
-            } else {
-              cartIcon.style.top = '26%'
+            if (cartDrawer.dataset.state === 'open') {
+              cartIcon.style.top = '3%'
               hamburgerIcon.style.top = '15%'
             }
-            if (bodyWidth > 900) {
-              cartIcon.style.top = '0%'
-
+            if (cartDrawer.dataset.state === 'closed'){
+              cartIcon.style.top = '26%'
+              hamburgerIcon.style.top = '15%'
             }
      }
 
