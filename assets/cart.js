@@ -1,35 +1,16 @@
 class CartDrawer extends HTMLElement{
     constructor(){
         super();
-        // cartIcon.addEventListener('click', this.renderCart )
         this.attachShadow({ mode: 'open'})
-    //    this.shadowRoot.appendChild(template.content.cloneNode(true))
         const wrapper = document.createElement('div');
         wrapper.setAttribute('class', 'cart__content');
         const headingContainer = wrapper.appendChild(document.createElement('div'));
         headingContainer.setAttribute('class', 'cart__headings');
         const cartHeading = headingContainer.appendChild(document.createElement('span'));
-
         const cartItemsContainer = wrapper.appendChild(document.createElement('div'));
         cartItemsContainer.setAttribute('class', 'cart__items');
         cartItemsContainer.setAttribute('id', 'cartItems');
-
         this.loader = cartItemsContainer.appendChild(document.createElement('div'))
-    //      this.loader.setAttribute('class', 'load-icon')
-    //      this.loader.innerHTML = `
-    //      <svg enable-background="new 0 0 0 0" id="L4" version="1.1" viewbox="0 0 100 100" x="0px" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px">
-    //      <circle cx="6" cy="50" fill="#fff" r="6" stroke="none">
-    //          <animate attributename="opacity" begin="0.1" dur="1s" repeatcount="indefinite" values="0;1;0"/>
-    //      </circle>
-    //      <circle cx="26" cy="50" fill="#fff" r="6" stroke="none">
-    //          <animate attributename="opacity" begin="0.2" dur="1s" repeatcount="indefinite" values="0;1;0"/>
-    //      </circle>
-    //      <circle cx="46" cy="50" fill="#fff" r="6" stroke="none">
-    //          <animate attributename="opacity" begin="0.3" dur="1s" repeatcount="indefinite" values="0;1;0"/>
-    //      </circle>
-    //  </svg>
-    //      `
-
         const style = document.createElement('style');
         style.textContent = `
         @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
@@ -57,12 +38,10 @@ class CartDrawer extends HTMLElement{
         .load-icon.done {
           display: none;
         }
-        
         .load-icon svg {
           width: 100px;
           height: 100px;
         }
-        
         .load-icon svg circle {
           fill: var(--primary-20);
         }
@@ -247,35 +226,33 @@ class CartDrawer extends HTMLElement{
 
 
         `;
-
-    const fontAwesome = document.createElement('link')
+        const fontAwesome = document.createElement('link')
         fontAwesome.setAttribute('ref', 'stylesheet')
         fontAwesome.setAttribute('href', '/assets/font-awesome.min.css')
         fontAwesome.setAttribute('type', 'text/css')
         fontAwesome.setAttribute('media', 'all')
         this.shadowRoot.appendChild(fontAwesome)
-
         this.shadowRoot.append(style,wrapper)
-
-
         const cartIcon = document.querySelector('.header__content-cart');
-        // const addToCartBtn = document.querySelector('.product-form__submit')
           cartIcon.addEventListener('click',this.onEventHandler.bind(this))
-
-
     };
 
 
     onEventHandler () {
-      // this.loadAnimation(this.loader, this)
+      this.openDrawer(this)
       this.loadData(this.setCartHeading, this)
       this.loadData(this.getCartItems, this, this.changeCart.bind(this))
-      
     }
-
+    openDrawer() {
+  const cartDrawer = this
+      if (cartDrawer.dataset.state === 'open') {
+        cartDrawer.setAttribute('data-state', 'closed');
+      } else {
+        cartDrawer.setAttribute('data-state', 'open');
+      }
+    }
     loadAnimation(el) {
       el.setAttribute('class', 'load-icon')
-      
       el.innerHTML = `
       <svg enable-background="new 0 0 0 0" id="L4" version="1.1" viewbox="0 0 100 100" x="0px" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px">
       <circle cx="6" cy="50" fill="#fff" r="6" stroke="none">
@@ -299,24 +276,9 @@ class CartDrawer extends HTMLElement{
     }
 
 
-    async loadData(fn, el, fns)  {
-    this.loadAnimation(el.loader)
-      const req = await fetch('/cart.js');
-      const data = await req.json();
-      fn(data, el, fns);
-      console.log(data)
-    if (data) {
-      setTimeout(() => {
+ loadData(fn, el, fns)  {
+      const data = currentCart
 
-        this.removeAnimation(el.loader)
-      },500)
-    }
-
-    }
-
-    async prepShipping (fn, el, fns) {
-      const req = await fetch('/cart.js');
-      const data = await req.json();
       fn(data, el, fns);
     }
 
@@ -352,9 +314,9 @@ class CartDrawer extends HTMLElement{
       const body = document.querySelector('body');
       const bodyWidth = body.clientWidth
       const shadow = elem.shadowRoot;
-      
-        // console.log(cart.items)
-        if (cart.items.length > 0 && elem.dataset.state === 'open') {
+      console.log(cart.items)
+         console.log(elem.dataset.state)
+        if (cart.items.length >= 1 && elem.dataset.state === 'open') {
           const checkoutButtonWrapper = shadow.appendChild(document.createElement('form'));
           checkoutButtonWrapper.setAttribute('class', 'checkout-wrapper')
           const checkoutButton = checkoutButtonWrapper.appendChild(document.createElement('input'));
@@ -366,11 +328,9 @@ class CartDrawer extends HTMLElement{
           checkoutButtonWrapper.setAttribute('action', `${window.routes.cart_url}`);
           checkoutButton.textContent = 'Checkout';
           const cartTotal = checkoutButtonWrapper.appendChild(document.createElement('span'));
-          // console.log(cart.total_price)
-          cartTotal.textContent = 'Your Total: ' + `${formatter.format(cart.total_price * .01)}`
+          cartTotal.textContent = 'Your Total: ' + `${formatter.format(cart.total_price() * .01)}`
           cartTotal.setAttribute('class','total')
                 cart.items.forEach((item, i) => {
-                  if (elem.dataset.state === 'open') {
                     const lineItem = shadow.querySelector('.cart__items').appendChild(document.createElement('div'));
                     lineItem.setAttribute('class', 'line__item');
                     lineItem.setAttribute('data-varID', `${item.id}`);
@@ -419,7 +379,6 @@ class CartDrawer extends HTMLElement{
                     buttons.forEach(button => {
                         button.addEventListener('click', changeItem)
                     })
-                  }
                   // if (elem.dataset.state !== 'open') {
                   //   const cartItemsWrapper = shadow.querySelector('.cart__items')
                   //   const child = shadow.querySelectorAll('.line__item')
@@ -432,18 +391,19 @@ class CartDrawer extends HTMLElement{
                   // }
                 });
 
-            }
-        if (elem.dataset.state !== 'open' && cart.items.length > 0) {
+            return;
+              }
+        if (elem.dataset.state === 'closed' && cart.items.length > 0) {
           const cartItemsWrapper = shadow.querySelector('.cart__items')
           const child = shadow.querySelectorAll('.line__item')
           child.forEach(child => {
           child.remove();
           });
-          
           const checkoutButtonWrapper = shadow.querySelectorAll('.checkout-wrapper')
           checkoutButtonWrapper.forEach(btn => {
             btn.remove();
           });
+          return;
         }
 
             const cartDrawer = document.querySelector('cart-drawer')
@@ -478,7 +438,6 @@ class CartDrawer extends HTMLElement{
              cartContent.style.padding = '7rem 2rem 2rem 3rem'
              cartIcon.style.top = '5%'
              hamburgerIcon.style.top = '13%'
-            //  chatApp.style.marginBottom = '10rem'
             }
             if (bodyWidth < 900 && cartDrawer.dataset.state !== 'open') {
               cartIcon.style.top = '26%'
@@ -495,6 +454,7 @@ class CartDrawer extends HTMLElement{
 
 
      changeCart(e) {
+       const itemsInCart = currentCart;
           e.preventDefault();
         const formatter = new Intl.NumberFormat('en-US', {
           style: 'currency',
@@ -504,7 +464,6 @@ class CartDrawer extends HTMLElement{
 
         const newQuantity = this.shadowRoot.querySelectorAll('input')
         const newItemsHeading = this.shadowRoot.querySelector('.cart__headings > span');
-        // console.log(this)shadowRoot.
 
         let formData = {}
 
@@ -512,9 +471,11 @@ class CartDrawer extends HTMLElement{
         const newTotal = this.shadowRoot.querySelector('.total')
         const cartBubble = document.querySelector('.cart-bubble')
         const updateTotal = function (data){
+          itemsInCart.items = [];
+          itemsInCart.items = data.items
+          console.log(data)
           if (formatter.format(data.total_price * .01) === NaN && data.items.length === 0 ) {
             newTotal.textContent = 'Your Total: $0'
-            
             newItemsHeading.textContent = 'You Have No Items In Your Cart' 
             return;
           } else {
@@ -539,7 +500,6 @@ class CartDrawer extends HTMLElement{
             body: JSON.stringify(form)
           })
           const data = await res.json();
-          // console.log(data)
           fn(data);
 
            }
@@ -548,7 +508,6 @@ class CartDrawer extends HTMLElement{
 
             switch (e.target.className) {
                 case 'minus':
-                  // console.log(e.originalTarget.previousSibling.value)
                  if (e.target) {
                   e.target.previousSibling.stepDown(1)
                   formData = {
@@ -566,6 +525,7 @@ class CartDrawer extends HTMLElement{
                     'line': Number(e.originalTarget.offsetParent.dataset.line),
                     'quantity': Number(e.originalTarget.previousSibling.value)
                   }
+
                   if (Number(e.originalTarget.previousSibling.value) === 0) {
                     e.originalTarget.offsetParent.remove()
                   }
@@ -645,15 +605,3 @@ class CartDrawer extends HTMLElement{
 }
 
 customElements.define('cart-drawer', CartDrawer);
-
-
-//Product Quanitiy Input Component For Drawer//
-
-class QuantityInputDrawer extends CartDrawer {
-    constructor() {
-      super();
-
-    }
-    }
-
-  customElements.define('quantity-input-drawer', QuantityInputDrawer);

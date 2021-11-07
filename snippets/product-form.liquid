@@ -10,13 +10,15 @@
 
 
 {% form 'product', product %}
+
 <variant-radios data-url="{{ product.url }}"" data-section="{{ section.id }}">
     {% for option in product.options_with_values %}
         <fieldset>
             <legend>{{ option.name }}</legend>
+            
             {%- for value in option.values -%}
                 <input value="{{ value | escape }}" type="radio" name="{{option.name}}" id="optionValues-{{ forloop.index }}" {% if option.selected_value == value %} checked {% endif %}>
-                <label for="optionValues-{{  forloop.index }}" form="product-form-{{ section.id }}">{{ value }}</label>
+                <label for="optionValues-{{ forloop.index }}" form="product-form-{{ section.id }}">{{ value }}</label>
             {% endfor %}
         </fieldset>
     {% endfor %}
@@ -38,23 +40,21 @@
     </button>
 
 </quantity-input>
+{% render 'payment-icons' %}
 
 <div id="selection-{{ section.id }}" data-section="{{ section.id }}" class="selection-total">
    <span class="total"> Price: {{ current_variant.price | money }}</span>
     {% if current_variant.compare_at_price != null %}
-        
+
     <span class="orig-price">Orig. Price: {{ current_variant.compare_at_price | money }}</span>
     <span class="savings">Total Savings:  {{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%</span>
     {% else %}
     <span class="orig-price">
-       
     </span>
     <span class="savings">
         Savings: -
     </span>
-
     {% endif %}
-        
 </div>
 
 <product-form class="product-form">

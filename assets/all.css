@@ -698,6 +698,31 @@ section {
   width: calc(35rem + 25vw);
 }
 
+.payment-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.payment-types .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 25rem;
+}
+
+.payment-types p {
+  font-size: var(--small);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.payment-types img {
+  padding: 0.2rem;
+}
+
 .product__content .selection-total {
   width: 100%;
   text-align: right;
@@ -2020,29 +2045,25 @@ main .shopify-policy__container .shopify-policy__title {
 
 @keyframes wiggle1 {
   0% {
-    transform: rotate(-5deg);
+    opacity: 0.1;
     text-shadow: 0px 0px 1px white;
   }
   50% {
-    transform: rotate(0deg);
-    text-shadow: 0px 0px 40px var(--primary-70);
+    text-shadow: 0px 0px 20px var(--primary-70);
   }
-  50% {
-    transform: rotate(5deg);
+  100% {
     text-shadow: 0px 0px 0px var(--primary-70);
   }
 }
 @keyframes wiggle2 {
   0% {
-    transform: rotate(5deg);
     text-shadow: 0px 0px 1px white;
   }
-  70% {
-    transform: rotate(0deg);
-    text-shadow: 0px 0px 40px var(--primary-70);
-  }
   50% {
-    transform: rotate(-5deg);
+    opacity: 0.1;
+    text-shadow: 0px 0px 20px var(--primary-70);
+  }
+  100% {
     text-shadow: 0px 0px 0px var(--primary-70);
   }
 }

@@ -8,10 +8,10 @@ menu.addEventListener('click', e => {
   header.classList.toggle('open');
   overlay.classList.toggle('open');
 });
-const navHeight = nav.getBoundingClientRect().height; // console.log(navHeight)
+const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
-  const [entry] = entries; // console.log(entry)
+  const [entry] = entries;
 
   if (!entry.isIntersecting) {
     nav.classList.add('sticky');
@@ -42,9 +42,7 @@ const allSections = document.querySelectorAll('section');
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
-  // console.log(entry)
-  // console.log(entry.target.className)
-  entry.target.classList.remove('hide'); // console.log(entry)
+  entry.target.classList.remove('hide');
 };
 
 const sectionObserver = new IntersectionObserver(revealSection, {
@@ -56,39 +54,91 @@ allSections.forEach(function (section) {
   sectionObserver.observe(section);
 });
 
+
+// ************** Create cart obj**************** //
+
+
+let currentCart = {
+  items: [],
+  total_price: function total_price(){
+    const itemPrices = []
+    this.items.forEach(item => {
+      itemPrices.push(item.price * item.quantity)
+    });
+    const sum = itemPrices.reduce(add, 0)
+    function add(accum, a) { 
+      return accum + a
+    }
+    return sum;
+    }
+}
+
+
+
+function creatCartObj(data){
+
+if (currentCart.items.length === 0) {
+  data.items.forEach( (item) => {
+    currentCart.items.push(item)
+  });
+  return;
+}
+const newItem = data.items
+const currentIds = []
+
+if (currentCart.items.length >= 1) {
+  currentCart.items.forEach((item, i) => {
+    currentIds.push(item.id)
+    if (currentIds[i] === newItem[0].id) {
+      item.quantity = newItem[0].quantity
+      return;
+    }
+  });
+  let duplicateItem = false
+
+  currentIds.forEach(id => {
+    if (id === newItem[0].id) {
+      duplicateItem = true
+      return;
+    }
+  })
+  if (duplicateItem !== true) {
+    currentCart.items.push(newItem[0])
+  }
+  }
+}
+
+
 // ************** Open Cart Drawer **************** //
 
 
 const cartIcon = document.querySelector('.header__content-cart');
 const cartDrawer = document.querySelector('cart-drawer');
 
-function openDrawer() {
-  if (cartDrawer.dataset.state === 'open') {
-    cartDrawer.setAttribute('data-state', 'closed');
-  } else {
-    cartDrawer.setAttribute('data-state', 'open');
-  }
-}
-
-cartIcon.addEventListener('click', openDrawer, false);
-
 // ** Get amount of items in cart on load and apply to bubble ** //
 
 
-function getCart() {
-  const cartBubble = document.querySelector('.header__content-cart .cart-bubble');
-  fetch('/cart.js', {
-    method: 'GET'
-  }).then(response => response.json()).then(cartData => {
-    if (cartData.items.length === 0) {
-      cartBubble.style.opacity = '0'
-    } else {
-    cartBubble.textContent = `${cartData.items.length}`;
-    }
-  });
+async function getCart(fn) {
+   const res = await fetch('/cart.js', {method: 'GET'})
+   const data = await res.json()
+
+    fn(data)
+}
+const cartBubble = document.querySelector('.header__content-cart .cart-bubble');
+
+function loadCartBubble (data){
+  if (data.items.length === 0) {
+    cartBubble.style.opacity = '0'
+  } else {
+  cartBubble.textContent = `${data.items.length}`;
+  }
 }
 
-window.onload = getCart();
+function loadData (data){
+  loadCartBubble(data);
+  creatCartObj(data)
+}
+window.onload = getCart(loadData);
 
 function debounce(fn, wait) {
   let t;
@@ -251,7 +301,6 @@ class VariantRadios extends HTMLElement {
     this.options = fieldsets.map(fieldset => {
       return Array.from(fieldset.querySelectorAll('input')).find(radio => radio.checked).value;
     });
-    // console.log('This is this current option', this.options);
   }
 
   updateMasterId() {
@@ -260,7 +309,6 @@ class VariantRadios extends HTMLElement {
         return this.options[index] === option;
       }).includes(false);
     });
-    // console.log('this is curent value', this.currentVariant);
   }
 
   getVariantData() {
@@ -309,7 +357,9 @@ class VariantRadios extends HTMLElement {
 
 }
 
-customElements.define('variant-radios', VariantRadios); //Product Quanitiy Input Component//
+customElements.define('variant-radios', VariantRadios);
+
+//Product Quanitiy Input Component//
 
 class QuantityInput extends HTMLElement {
   constructor() {
@@ -326,7 +376,6 @@ class QuantityInput extends HTMLElement {
     const previousValue = this.input.value;
     event.target.name === 'plus' ? this.input.stepUp(1) : this.input.stepDown(1);
     if (previousValue !== this.input.value) this.input.dispatchEvent(this.changeEvent);
-    // console.log(this.input.value);
   }
 
 }
@@ -367,7 +416,6 @@ function changeImage(e) {
   if (e.target.id === 'varImage') {
     e.target.classList.add('selected');
     clicks = e.target.dataset.image - 1;
-    // console.log(clicks);
   }
 
   if (e.target.classList.contains('fa-caret-left') && selectedImg.previousElementSibling.tagName === 'IMG') {
@@ -388,9 +436,7 @@ function changeImage(e) {
   if (e.target.classList.contains('fa-caret-right') && selectedImg.nextElementSibling.tagName !== 'IMG') {
     varImage[0].classList.add('selected');
     clicks = 0;
-  } // console.log(clicks)
-
-
+  }
   selectedImg.classList.remove('selected');
   return changeImageUrl(clicks);
 }
@@ -402,10 +448,6 @@ const changeImageUrl = function () {
   titles.forEach(title => {
     title[clicks].replace('100x100', '500x500');
   });
-
-  // console.log(titles[clicks]);
-  // console.log(titles); 
-
   currentImage.classList.toggle('fade-out');
   setTimeout(() => {
     currentImage.setAttribute('src', `${titles[clicks].replace('100x100', 'medium')}`);

@@ -1,3 +1,7 @@
+
+
+
+
 class ProductForm extends HTMLElement {
   constructor(){
     super();
@@ -7,8 +11,8 @@ class ProductForm extends HTMLElement {
   onSubmitHandler(evt) {
     evt.preventDefault();
     this.getID();
-    this.postReq();
-    this.updateCart();
+    this.postReq(this.postData);
+    // this.updateCart();
   }
 
   getID() {
@@ -30,7 +34,7 @@ class ProductForm extends HTMLElement {
 
 
 
-postReq(){
+postReq(fn){
   const elemQuantity = document.querySelector('#quantityInput');
   let elemValue = elemQuantity.value;
   let formData = {
@@ -40,34 +44,37 @@ postReq(){
      }]
    };
 
-   const postData = async function () {
-     const res = await fetch('/cart/add.js', {
-     method: 'POST',
-     headers: {
-       'Content-Type': 'application/json'
-     },
-     body: JSON.stringify(formData)
-   })
-   const data = await res.json();
-  //  console.log(data)
-
-
-    }
-    postData();
+   fn(this.updateCart, formData)
 }
 
-updateCart(){
+async postData(fn, formData) {
+  const res = await fetch('/cart/add.js', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(formData)
+})
+const data = await res.json();
+ console.log('First post request', data)
+fn(data)
 
-  const getdata = async function () {
-    const res = await fetch('/cart.js')
-    const data = await res.json();
-    const cartBubble = document.querySelector('.cart-bubble')
+ }
 
-      cartBubble.style.opacity = '1'
-    cartBubble.textContent = `${data.items.length + 1}`;
 
-  }
-   getdata();
+updateCart(data){
+  creatCartObj(data);
+  cartBubble.textContent = ''
+  cartBubble.textContent = `${currentCart.items.length === 0 ? 1 : currentCart.items.length}`;
+  cartBubble.style.opacity = '1'
+
+  // const getdata = async function () {
+  //   const res = await fetch('/cart.js')
+  //   const data = await res.json();
+
+
+  // }
+  //  getdata();
 
 }
 

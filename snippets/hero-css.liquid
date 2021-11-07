@@ -1,11 +1,10 @@
 {% style %}
 
 .hero__content-image img {
-
-    background-size: cover;
+    width: auto;
+    height: 100%;
     background-clip: border-box;
     background-origin: border-box;
-    background-repeat: no-repeat;
     pointer-events: none;
     -webkit-mask-image: url('{{'hero-mask1-1.svg' | asset_url}}');
     mask-image: url('{{'hero-mask1-1.svg' | asset_url}}');
@@ -18,7 +17,7 @@
     -webkit-mask-clip: content-box;
     mask-clip: content-box;
     clip-path: url('{{'hero-mask1-1.svg' | asset_url}}');
-    height: 100%;
+
 }
 
 {% endstyle %}
