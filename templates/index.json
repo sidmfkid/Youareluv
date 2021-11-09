@@ -1,22 +1,43 @@
 {
   "sections": {
     "hero": {
-      "type": "hero"
-    },
-    "logo-list": {
-      "type": "logo-list"
+      "type": "hero",
+      "settings": {
+        "heading": "Hi There! Welcome To You Are!",
+        "para": "Where everytime we make  sale, a box is donated to a child in a low income area.",
+        "btn_link": "shopify:\/\/products\/you-are-10-piece-crayons",
+        "btn_text": "Buy Now"
+      }
     },
     "girl": {
-      "type": "girl"
+      "type": "girl",
+      "settings": {
+      }
+    },
+    "logo-list": {
+      "type": "logo-list",
+      "settings": {
+        "icon1-text": "100% Minority Owned",
+        "icon2-text": "Over 1,000 Boxes Sold",
+        "icon3-text": "Free US Shipping On Orders Over 30$"
+      }
     },
     "affirmations": {
-      "type": "affirmations"
+      "type": "affirmations",
+      "settings": {
+      }
     },
     "image-with-text": {
-      "type": "image-with-text"
+      "type": "image-with-text",
+      "settings": {
+        "btn_link": "",
+        "btn_text": "Buy Now"
+      }
     },
     "newsletter": {
-      "type": "newsletter"
+      "type": "newsletter",
+      "settings": {
+      }
     }
   },
   "order": [
