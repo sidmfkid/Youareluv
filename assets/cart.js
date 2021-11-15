@@ -1,3 +1,75 @@
+const qtyBtns = document.querySelectorAll('.line__item-quantity button')
+const deleteBtn = document.querySelectorAll('.line__item .delete')
+const quantityInput = document.querySelectorAll('#quantityInput')
+const changeInputEvent = new Event('change', {bubbles: true})
+const lineItemProduct = document.querySelectorAll('.line__item-product')
+const sectionCart = document.getElementById('cart')
+
+
+// function handleClick(e) { 
+//   e.preventDefault();
+//   console.log('click')
+//   quantityInput.forEach((input, i) => {
+//     const previousValue = input.value;
+//     e.target.name === 'minus' ? input.stepDown(1) : input.stepUp(1);
+//     if (previousValue !== input.value) { input.dispatchEvent(changeInputEvent);
+//     }
+//   });
+// }
+
+function deleteItem(e) {
+  e.preventDefault();
+  const sectionID = e.target.nextElementSibling.dataset.id
+  console.log(e.target)
+let form = {
+  'id': e.target.nextElementSibling.dataset.varid,
+  'quantity': 0
+}
+changeData(form)
+ e.target.parentElement.outerHTML = ''
+renderSection(sectionID)
+console.log(e.target)
+
+
+}
+
+ const changeData = async (form) => { 
+   const req = await fetch('/cart/change.js', {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json'
+     },
+     body: JSON.stringify(form)
+   })
+   const data = req.json();
+   console.log(data)
+ }
+
+ const renderSection = async () => {
+   const req = await fetch(`/?section_id=cart`)
+   const data = await req.text();
+   const cartId = `cart`
+  const html = new DOMParser().parseFromString(data, 'text/html');
+  const destination = document.getElementById(cartId)
+  const source = html.getElementById(cartId)
+  const totalSourcePrice = html.getElementById('total-price')
+  const totalDestPrice = document.getElementById('total-price')
+  console.log( source, source, destination)
+  if (source && destination) {
+
+     totalDestPrice.textContent = totalSourcePrice.textContent
+  }
+ }
+
+deleteBtn.forEach(btn => {
+
+btn.addEventListener('click', deleteItem)
+});
+
+// qtyBtns.forEach(btn => {
+//   btn.addEventListener('click', handleClick)
+// });
+
 class CartDrawer extends HTMLElement{
     constructor(){
         super();

@@ -1,3 +1,48 @@
-<section class="cart">
-    <h3>hi</h3>
+{{ 'cart-page.css' | asset_url | stylesheet_tag }}
+
+<section id="cart" class="cart" data-id="{{ section.id }}">
+    <h1>Your Cart</h1>
+
+    <div class="cart__content">
+        <div class="cart__content-labels">
+            <h2>Products</h2>
+            <h2>Price</h2>
+            <h2>Quantity</h2>
+            <h2>Total</h2>
+        </div>
+
+        <div class="cart__content-items">
+            {% for line_item in cart.items %}
+<div class="line__item" data-varID="{{ line_item.id }}">
+    <button type="button" class="delete" name="minus">
+        <i class="fa fa-minus-circle"></i>
+    </button>
+                <div class="line__item-product" data-id="{{ section.id }}" data-varID="{{ line_item.id }}">
+                    <img alt="" height="300" src="{{ line_item.image | img_url: '300x300' }}" width="300">
+                    <h3>{{ line_item.title }}</h3>
+                </div>
+                <div class="line__item-price">{{ line_item.price | money }}</div>
+                <div class="line__item-quantity">
+                    <button type="button" class="minus hide" name="minus">
+                        <i class="fa fa-minus-circle"></i>
+                    </button>
+                    <input id="quantityInput" type="number" value="{{ line_item.quantity}}" min="1" form="product-form-{{ section.id }}">
+                    <button type="button" class="plus hide" name="plus">
+                        <i class="fa fa-plus-circle"></i>
+                    </button>
+                </div>
+                <div class="line__item-total">{{ line_item.final_line_price
+                | money }}</div>
+            </div>
+            {% endfor %}
+
+
+        <div class="cart__content-total">
+            <h4>Subtotal:
+            </h4>
+            <span id="total-price">{{ cart.total_price | money }}</span>
+            <button class="btn btn-primary cart__content-total-checkout">Checkout</button>
+            {{ form | payment_button }}
+        </div>
+    </div>
 </section>
