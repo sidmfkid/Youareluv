@@ -41,7 +41,9 @@
             <h4>Subtotal:
             </h4>
             <span id="total-price">{{ cart.total_price | money }}</span>
-            <button class="btn btn-primary cart__content-total-checkout">Checkout</button>
+            <form method="POST" action="/cart">
+            <input type="submit" name="checkout" value="Checkout" class="btn btn-primary cart__content-total-checkout"></input>
+        </form>
             {{ form | payment_button }}
         </div>
     </div>

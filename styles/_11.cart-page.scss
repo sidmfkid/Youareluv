@@ -148,7 +148,9 @@
         color: var(--primary-30);
         width: min-content;
       }
-      button {
+      .cart__content-total-checkout,
+      input,
+      form {
         border: none;
       }
     }
