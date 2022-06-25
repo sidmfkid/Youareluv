@@ -415,7 +415,7 @@ section {
     position: relative;
     grid-column: none;
     width: auto;
-    margin-left: 0rem;
+    margin-right: 10rem;
   }
   .header__content-logo img {
    width: 30rem; 
