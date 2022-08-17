@@ -10,13 +10,15 @@
 
         <link href="https://fonts.googleapis.com" rel="preconnect">
         <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-        <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        {{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
-
+        <link
+            href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"> {{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
 
         <!-- <link rel="stylesheet" href="{{ 'style.css'| asset_url}}"> -->
                                                                                         <!-- <link rel="stylesheet" href="{{ 'style-new.css'| asset_url}}"> -->
         <link rel="stylesheet" href="{{ 'all.css'| asset_url}}">
+        <link rel="stylesheet" href="{{ 'header.css'| asset_url}}">
+        <link rel="stylesheet" href="{{ 'modal.css'| asset_url}}">
         {%- if settings.favicon != blank -%}
             <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
         {%- endif -%}
@@ -31,12 +33,10 @@
                 &ndash; tagged "{{ current_tags | join: ', ' }}"
             {% endif -%}
             {%- if current_page != 1 %}
-                &ndash; Page
-                {{ current_page }}
+                &ndash; Page {{ current_page }}
             {% endif -%}
             {%- unless page_title contains shop.name %}
-                &ndash;
-                {{ shop.name }}
+                &ndash; {{ shop.name }}
             {% endunless -%}
         </title>
 
@@ -44,10 +44,7 @@
             <meta name="description" content="{{ page_description | escape }}">
         {% endif %}
 
-        {% render 'meta-tags' %}
-
-        <!-- <script defer src="{{ 'jquery-3.6.0.min.js' | asset_url }}"></script> -->
-        {{ content_for_header }}
+        {% render 'meta-tags' %} <!-- <script defer src="{{ 'jquery-3.6.0.min.js' | asset_url }}"></script> --> {{ content_for_header }}
 
         {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
@@ -62,21 +59,19 @@
             <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
         {%- endunless -%}
 
-
     </head>
 
     <body>
 
-        <!-- {% section 'announcement-bar' %} -->
-        {% section 'header' %}
+        <!-- {% section 'announcement-bar' %} --> {% section 'header' %}
 
+        {% render 'customer-modal' %}
         {% section 'cart-drawer' %}
         <main>
             {{ content_for_layout }}
         </main>
 
         {% section 'footer' %}
-
 
         <script async src="{{ 'app.js' | asset_url }}"></script>
         <script async src="{{ 'cart.js' | asset_url }}"></script>
@@ -86,7 +81,9 @@
         cart_add_url: '{{ routes.cart_add_url }}',
         cart_change_url: '{{ routes.cart_change_url }}',
         cart_update_url: '{{ routes.cart_update_url }}',
-        predictive_search_url: '{{ routes.predictive_search_url }}'
+        predictive_search_url: '{{ routes.predictive_search_url }}',
+        account_login_url: '{{ routes.account_login_url }}',
+        account_register_url: '{{ routes.account_register_url }}'
       };
 
       window.cartStrings = {

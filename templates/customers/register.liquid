@@ -1,6 +1,6 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
-<div class="customer register">
+<div class="customer">
   <svg style="display: none">
     <symbol id="icon-error" viewBox="0 0 13 13">
       <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
@@ -10,8 +10,10 @@
     </symbol>
   </svg>
   <h1>
-    {{ 'customer.register.title' | t }}
+    Create Account
   </h1>
+  <div class="customer__container">
+
   {%- form 'create_customer', novalidate: 'novalidate' -%}
     {%- if form.errors -%}
       <h2 class="form__message" tabindex="-1" autofocus>
@@ -113,8 +115,9 @@
         {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
       </span>
     {%- endif -%}
-    <button>
+    <button class="btn btn-primary">
       {{ 'customer.register.submit' | t }}
     </button>
   {%- endform -%}
+</div>
 </div>

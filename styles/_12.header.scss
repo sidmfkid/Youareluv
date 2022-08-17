@@ -1,0 +1,47 @@
+.header {
+    &__content{
+        &-customer{
+            // position: absolute;
+            grid-column: 10 / 11;
+            grid-row: 1 /2;
+            cursor: pointer;
+            i {
+                font-size: 2.6rem;
+                color: var(--primary-95);
+                transition: all .3s ease-in-out;
+            }
+            &:hover{
+                i{
+                    font-size: 3rem;
+                }
+            }
+
+        }
+        &-cart{
+            // position: absolute;
+            grid-column: 11 / 12;
+            grid-row: 1 /2;
+        }
+        &-hamburger{
+            div{
+                &::after{
+                    top: 1.1rem;
+                }
+            }
+        }
+        @include media-tablet{
+            &-customer{
+                position: fixed;
+right: 0.3rem;
+top: 15%;
+background-color: var(--primary-60);
+padding: 1.3rem 1.3rem 1.3rem 1.3rem;
+border-radius: 10rem;
+box-shadow: 0.1rem 0.1rem 1rem 0rem rgba(0, 0, 0, 0.274);
+line-height: 2.25rem;
+text-align: center;
+width: 5.25rem;
+            }
+        }
+    }
+}

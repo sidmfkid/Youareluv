@@ -1,0 +1,36 @@
+.customer{
+    padding: 3rem 4rem;
+    height: 80vh;
+&__container{
+    display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+}
+    h1 {
+color: var(--primary-95);
+font-size: font-size(regular);
+    }
+    .field{
+        width: calc(30rem + 10vw);
+        display: flex;
+        flex-wrap: wrap-reverse;
+    }
+    input {
+        width: 100%;
+        height: 4rem;
+        font-size: 2rem;
+        padding-left: .8rem;
+        border-radius: 10px;
+        border: none;
+    }
+    label {
+        margin-top: 1.2rem;
+font-size: font-size(small);
+    }
+    button {
+        display: block;
+        border: none;
+        margin: 1.6rem auto auto;
+    }
+}

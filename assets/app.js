@@ -456,5 +456,11 @@ const changeImageUrl = function () {
 };
 
 
+const customerIcon = document.getElementById('customerModal')
+const modal = document.getElementById('modal')
+customerIcon.addEventListener('click', handleIconClick.bind(this))
 
-
+function handleIconClick(e) {
+  e.preventDefault();
+  modal.classList.toggle('show')
+}

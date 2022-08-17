@@ -1,0 +1,40 @@
+.modal{
+    display: none;
+    
+    position: absolute;
+    min-width: calc(30rem + 10vw);
+    height: auto;
+    z-index: 6;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    &.show{
+        display: block;
+    }
+    // transform: translate(-50%, 50%);
+    &__card{
+        background-color: var(--primary-95);
+        border-radius: 10px;
+        padding: 2rem 1.4rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.349);
+    }
+    &__header {
+        font-size: calc(2rem + .5vw);
+    }
+    &__login:link, &__login:active, &__login:visited{
+        font-size: font-size(small);
+        color: var(--secondary-40);
+    }
+    &__signup:link, &__signup:active{
+        font-size: font-size(small);
+        color: var(--primary-40);
+    }
+    &__link{
+        display: flex;
+        justify-content: center;
+        padding: .6rem 0;
+        &:nth-of-type(1){
+        border-bottom: 1px solid var(--primary-10);
+        }
+    }
+}

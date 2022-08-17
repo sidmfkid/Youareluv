@@ -259,7 +259,9 @@ section {
   color: var(--primary-30);
   width: min-content;
 }
-.cart__content-total button {
+.cart__content-total .cart__content-total-checkout,
+.cart__content-total input,
+.cart__content-total form {
   border: none;
 }
 
