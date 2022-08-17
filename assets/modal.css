@@ -141,7 +141,7 @@ section {
   font-size: calc(1.2rem + 0.5vw);
   color: var(--secondary-40);
 }
-.modal__signup:link, .modal__signup:active {
+.modal__signup:link, .modal__signup:active, .modal__signup:visited {
   font-size: calc(1.2rem + 0.5vw);
   color: var(--primary-40);
 }

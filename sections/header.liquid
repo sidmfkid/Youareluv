@@ -1,3 +1,11 @@
+{% capture loggedInColor %}
+
+    {% if customer %}
+        color: var(--secondary-50) {%else%} color: var(--primary-95)
+    {% endif %}
+
+{% endcapture %}
+
 <header class="header">
 
     <div class="header__overlay"></div>
@@ -10,7 +18,15 @@
 
         <div class="header__content-menu">
             {% for link in linklists.main-menu.links %}
-                <a href="{{ link.url }}" {% if link.active %} aria-current="page" {% endif %}>{{ link.title }}</a>
+                {% if customer and link.title == 'Wholesale' %}
+                    <a href="{{ link.url }}" {% if link.active %} aria-current="page" {% endif %}>{{ link.title }}</a>
+                {% endif %}
+                {% if customer == null and link.title == 'Wholesale' %}
+                    <a href="{{ routes.account_login_url }}" {% if link.active %} aria-current="page" {% endif %}>{{ link.title }}</a>
+                {% endif %}
+                {% if link.title != 'Wholesale' %}
+                    <a href="{{ link.url }}" {% if link.active %} aria-current="page" {% endif %}>{{ link.title }}</a>
+                {% endif %}
             {% endfor %}
         </div>
 
@@ -23,7 +39,7 @@
             <div></div>
         </div>
         <div class="header__content-customer" id="customerModal">
-            <i class="fa fa-user"></i>
+            <i style="{{loggedInColor}}" class="fa fa-user"></i>
         </div>
     </nav>
 

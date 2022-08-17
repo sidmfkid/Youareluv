@@ -2,15 +2,44 @@
     padding: 3rem 4rem;
     height: 80vh;
 &__container{
-    display: flex;
-justify-content: center;
-align-items: center;
-flex-wrap: wrap;
+    width: 100%;
+    height: 80vh;
+
+
+}
+&.register{
+        width: auto;
+        #create_customer{
+            display: flex;
+            // flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: flex-start;
+        }
+h1{
+display: block;
+font-size: font-size(medium);
+
+}
+        margin: 0rem auto;
+    .organization__fields{
+        width: 50%;
+        .field{
+            margin: 0 auto;
+        }
+    }
+    .customer__fields{
+        width: 50%;
+        .field{
+            margin: 0 auto;
+        }
+    }
 }
     h1 {
 color: var(--primary-95);
 font-size: font-size(regular);
     }
+    
     .field{
         width: calc(30rem + 10vw);
         display: flex;
@@ -32,5 +61,129 @@ font-size: font-size(small);
         display: block;
         border: none;
         margin: 1.6rem auto auto;
+        cursor: pointer;
+        &:disabled{
+        cursor: not-allowed;
+            background-color: grey;
+            &:hover{
+                transform: scale(1);
+            background-color: grey;
+                border-radius: 0;
+                color: white;
+            }
+        }
     }
+    &.login{
+        width: fit-content;
+        margin: 0 auto;
+        .login-wrapper{
+            width: 100%;
+        }
+        .btn{
+            display: block;
+            width: 100%;
+            border-radius: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .create-account{
+            margin: 1.6rem auto auto;
+            display: block;
+        }
+        .cancel{
+            margin: 1.6rem auto;
+            display: block;
+        }
+    }
+    &.account {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        height: min-content;
+        margin: 0rem auto;
+        width: calc(40rem + 10vw);
+        .account{
+            &__info{
+                width: 100%;
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+            }
+            &__order-container{
+                width: 100%;
+                p{
+                    font-size: font-size(small);
+                }
+                a{
+                    font-size: 1.2rem;
+                }
+            }
+        &__logout{
+            display: flex;
+            justify-content: center;
+            font-size: 1.6rem;
+            width: fit-content;
+            height: auto;
+            svg{
+                margin-right: .6rem;
+                width: 2rem;
+            }
+        }
+        &__history-title, &__details{
+            font-size: 1.8rem;
+            margin-top: 1.4rem;
+        }
+        &__title{
+            font-size: font-size(medium);
+        }
+        &__para, td  {
+            font-size: font-size(small);
+        }
+    }
+    }
+}
+
+.error-message {
+// display: none;
+
+    background: rgba(255, 144, 144, 0.738);
+    border-radius: 10px;
+    width: 100%;
+    color: rgb(165, 0, 0);
+    overflow: hidden;
+    height: 0px;
+    transition: all .3s ease-in-out;
+    &.show{
+    margin-top: 1.2rem;
+    height: unset;
+
+    }
+    &__message{
+        display: block;
+        padding: .8rem 1.4rem;
+    font-size: 1.4rem;
+
+
+    }
+}
+
+.success-message {
+    // display: none;
+    background: rgba(120, 241, 120, 0.738);
+    border-radius: 10px;
+    width: 100%;
+    color: rgb(0, 165, 0);
+    overflow: hidden;
+    height: 0px;
+    transition: all .3s ease-in-out;
+    &.show{
+        margin-top: 1.2rem;
+        height: unset;
+        }
+        &__message{
+            display: block;
+            padding: .8rem 1.4rem;
+        font-size: 1.4rem;
+        }
 }

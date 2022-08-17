@@ -1,6 +1,7 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
+<div class="customer__container">
 
-<div class="customer">
+<div class="customer register">
   <svg style="display: none">
     <symbol id="icon-error" viewBox="0 0 13 13">
       <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
@@ -12,7 +13,6 @@
   <h1>
     Create Account
   </h1>
-  <div class="customer__container">
 
   {%- form 'create_customer', novalidate: 'novalidate' -%}
     {%- if form.errors -%}
@@ -37,7 +37,12 @@
         {%- endfor -%}
       </ul>
     {%- endif -%}
-    <div class="field">      
+    <div class="customer__fields">
+
+    <div class="field">
+      {% render 'error-message', type: 'first_name-error' %}
+      {% render 'success-message', type: 'first_name-success' %}
+
       <input
         type="text"
         name="customer[first_name]"
@@ -51,6 +56,8 @@
       </label>
     </div>
     <div class="field">
+      {% render 'error-message', type: 'last_name-error' %}
+      {% render 'success-message', type: 'last_name-success' %}
       <input
         type="text"
         name="customer[last_name]"
@@ -63,7 +70,9 @@
         {{ 'customer.register.last_name' | t }}
       </label>
     </div>
-    <div class="field">      
+    <div class="field">
+      {% render 'error-message', type: 'email-error' %}
+      {% render 'success-message', type: 'email-success' %}
       <input
         type="email"
         name="customer[email]"
@@ -83,6 +92,7 @@
         {{ 'customer.register.email' | t }}
       </label>
     </div>
+    </div>
     {%- if form.errors contains 'email' -%}
       <span id="RegisterForm-email-error" class="form__message">
         <svg aria-hidden="true" focusable="false" role="presentation">
@@ -91,22 +101,61 @@
         {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
       </span>
     {%- endif -%}
-    <div class="field">     
+    <div class="field">
+      {% render 'error-message', type: 'password-error' %}
+      {% render 'success-message', type: 'password-success' %}
       <input
+      minlength="8"
+
         type="password"
         name="customer[password]"
         id="RegisterForm-password"
         aria-required="true"
+        placeholder="Password"
         {% if form.errors contains 'password' %}
           aria-invalid="true"
           aria-describedby="RegisterForm-password-error"
         {% endif %}
-        placeholder="{{ 'customer.register.password' | t }}"
       >
       <label for="RegisterForm-password">
-        {{ 'customer.register.password' | t }}
+        Create Password
       </label>
     </div>
+    <div class="organization__fields">
+    <div class="field">
+      <input
+        type="text"
+        name="customer[note][organizationName]"
+        id="RegisterForm-organizationName"
+        placeholder="Name"
+      >
+      <label for="RegisterForm-organization">
+        School/Business/Organization Name
+      </label>
+    </div>
+    <div class="field">
+      <input
+        type="text"
+        name="customer[note][organizationAddress]"
+        id="RegisterForm-organizationAddress"
+        placeholder="Address"
+      >
+      <label for="RegisterForm-organizationAddress">
+        School/Business/Organization Address
+      </label>
+    </div>
+    <div class="field">
+      <input
+        type="text"
+        name="customer[note][organizationPhone]"
+        id="RegisterForm-organizationPhone"
+        placeholder="Phone Address"
+      >
+      <label for="RegisterForm-organizationPhone">
+        School/Business/Organization Phone Number
+      </label>
+    </div>
+  </div>
     {%- if form.errors contains 'password' -%}
       <span id="RegisterForm-password-error" class="form__message">
         <svg aria-hidden="true" focusable="false" role="presentation">
@@ -115,9 +164,10 @@
         {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
       </span>
     {%- endif -%}
-    <button class="btn btn-primary">
+    <button id="submitRegister" class="btn btn-primary">
       {{ 'customer.register.submit' | t }}
     </button>
   {%- endform -%}
 </div>
 </div>
+{{ 'register.js' | asset_url | script_tag }}

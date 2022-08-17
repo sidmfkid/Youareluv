@@ -464,3 +464,4 @@ function handleIconClick(e) {
   e.preventDefault();
   modal.classList.toggle('show')
 }
+

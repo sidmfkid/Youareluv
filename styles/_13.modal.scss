@@ -25,7 +25,7 @@
         font-size: font-size(small);
         color: var(--secondary-40);
     }
-    &__signup:link, &__signup:active{
+    &__signup:link, &__signup:active, &__signup:visited{
         font-size: font-size(small);
         color: var(--primary-40);
     }

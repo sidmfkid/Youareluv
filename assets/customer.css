@@ -120,10 +120,34 @@ section {
   height: 80vh;
 }
 .customer__container {
+  width: 100%;
+  height: 80vh;
+}
+.customer.register {
+  width: auto;
+  margin: 0rem auto;
+}
+.customer.register #create_customer {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+.customer.register h1 {
+  display: block;
+  font-size: calc(1.5rem + 2vw);
+}
+.customer.register .organization__fields {
+  width: 50%;
+}
+.customer.register .organization__fields .field {
+  margin: 0 auto;
+}
+.customer.register .customer__fields {
+  width: 50%;
+}
+.customer.register .customer__fields .field {
+  margin: 0 auto;
 }
 .customer h1 {
   color: var(--primary-95);
@@ -150,6 +174,122 @@ section {
   display: block;
   border: none;
   margin: 1.6rem auto auto;
+  cursor: pointer;
+}
+.customer button:disabled {
+  cursor: not-allowed;
+  background-color: grey;
+}
+.customer button:disabled:hover {
+  transform: scale(1);
+  background-color: grey;
+  border-radius: 0;
+  color: white;
+}
+.customer.login {
+  width: fit-content;
+  margin: 0 auto;
+}
+.customer.login .login-wrapper {
+  width: 100%;
+}
+.customer.login .btn {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.customer.login .create-account {
+  margin: 1.6rem auto auto;
+  display: block;
+}
+.customer.login .cancel {
+  margin: 1.6rem auto;
+  display: block;
+}
+.customer.account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: min-content;
+  margin: 0rem auto;
+  width: calc(40rem + 10vw);
+}
+.customer.account .account__info {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.customer.account .account__order-container {
+  width: 100%;
+}
+.customer.account .account__order-container p {
+  font-size: calc(1.2rem + 0.5vw);
+}
+.customer.account .account__order-container a {
+  font-size: 1.2rem;
+}
+.customer.account .account__logout {
+  display: flex;
+  justify-content: center;
+  font-size: 1.6rem;
+  width: fit-content;
+  height: auto;
+}
+.customer.account .account__logout svg {
+  margin-right: 0.6rem;
+  width: 2rem;
+}
+.customer.account .account__history-title, .customer.account .account__details {
+  font-size: 1.8rem;
+  margin-top: 1.4rem;
+}
+.customer.account .account__title {
+  font-size: calc(1.5rem + 2vw);
+}
+.customer.account .account__para, .customer.account .account td {
+  font-size: calc(1.2rem + 0.5vw);
+}
+
+.error-message {
+  background: rgba(255, 144, 144, 0.738);
+  border-radius: 10px;
+  width: 100%;
+  color: #a50000;
+  overflow: hidden;
+  height: 0px;
+  transition: all 0.3s ease-in-out;
+}
+.error-message.show {
+  margin-top: 1.2rem;
+  height: unset;
+}
+.error-message__message {
+  display: block;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.4rem;
+}
+
+.success-message {
+  background: rgba(120, 241, 120, 0.738);
+  border-radius: 10px;
+  width: 100%;
+  color: #00a500;
+  overflow: hidden;
+  height: 0px;
+  transition: all 0.3s ease-in-out;
+}
+.success-message.show {
+  margin-top: 1.2rem;
+  height: unset;
+}
+.success-message__message {
+  display: block;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.4rem;
 }
 
 html.transition,

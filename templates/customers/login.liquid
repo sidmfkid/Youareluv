@@ -1,10 +1,13 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
+<div class="customer__container">
 <div class="customer login">
   <h1 id="recover" tabindex="-1">
+
+
     {{ 'customer.recover_password.title' | t }}
   </h1>
-  <div>
+  <div class="login-wrapper">
     <p>
       {{ 'customer.recover_password.subtext' | t }}
     </p>
@@ -12,6 +15,8 @@
     {%- form 'recover_customer_password' -%}
       {% assign recover_success = form.posted_successfully? %}
       <div class="field">
+        {% render 'error-message', type: 'email-error' %}
+        {% render 'success-message', type: 'email-success' %}
         <input type="email"
           value=""
           name="email"
@@ -42,11 +47,11 @@
         </small>
       {%- endif -%}
 
-      <button>
+      <button class="btn btn-secondary">
         {{ 'customer.login_page.submit' | t }}
       </button>
 
-      <a href="#login">
+      <a href="#login" class="btn btn-primary cancel">
         {{ 'customer.login_page.cancel' | t }}
       </a>
     {%- endform -%}
@@ -55,7 +60,7 @@
   <h1 id="login" tabindex="-1">
     {{ 'customer.login_page.title' | t }}
   </h1>
-  <div>
+  <div class="login-wrapper">
     {%- if recover_success == true -%}
       <h3 class="form__message" tabindex="-1" autofocus>
         <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 13 13">
@@ -81,7 +86,9 @@
         {{ form.errors | default_errors }}
       {%- endif -%}
 
-      <div class="field">        
+      <div class="field">
+        {% render 'error-message', type: 'email-error' %}
+        {% render 'success-message', type: 'email-success' %}
         <input
           type="email"
           name="customer[email]"
@@ -100,7 +107,9 @@
       </div>
 
       {%- if form.password_needed -%}
-        <div class="field">          
+        <div class="field">
+          {% render 'error-message', type: 'password-error' %}
+          {% render 'success-message', type: 'password-success' %}
           <input
             type="password"
             value=""
@@ -122,11 +131,11 @@
         </a>
       {%- endif -%}
 
-      <button>
+      <button class="btn btn-secondary" id="LoginSubmit" disabled>
         {{ 'customer.login_page.sign_in' | t }}
       </button>
 
-      <a href="{{ routes.account_register_url }}">
+      <a href="{{ routes.account_register_url }}" class="btn btn-primary create-account">
         {{ 'customer.login_page.create_account' | t }}
       </a>
       
@@ -139,10 +148,14 @@
       <h2>{{ 'customer.login_page.guest_title' | t }}</h2>
 
       {%- form 'guest_login' -%}
-        <button>
+        <button class="btn btn-secondary">
           {{ 'customer.login_page.guest_continue' | t }}
         </button>
       {%- endform -%}
     </div>
   {%- endif -%}
 </div>
+</div>
+
+
+{{ 'login.js' | asset_url | script_tag }}

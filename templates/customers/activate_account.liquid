@@ -1,5 +1,5 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
-
+<div class="customer__container">
 <div class="customer activate">
   <svg style="display: none">
     <symbol id="icon-error" viewBox="0 0 13 13">
@@ -39,7 +39,9 @@
       </ul>
     {%- endif -%}
 
-    <div class="field">     
+    <div class="field">
+      {% render 'error-message', type: 'password-error' %}
+      {% render 'success-message', type: 'password-success' %}
       <input
         type="password"
         name="customer[password]"
@@ -64,7 +66,9 @@
       {%- endif -%}
     </div>
 
-    <div class="field">     
+    <div class="field">
+      {% render 'error-message', type: 'password_confirmation-error' %}
+      {% render 'success-message', type: 'password_confirmation-success' %}
       <input
         type="password"
         name="customer[password_confirmation]"
@@ -89,11 +93,14 @@
       {%- endif -%}
     </div>
 
-    <button>
+    <button class="btn btn-secondary" id="ActivateSubmit" disabled>
       {{ 'customer.activate_account.submit' | t }}
     </button>
-    <button name="decline">
+    <button class="btn btn-primary" name="decline">
       {{ 'customer.activate_account.cancel' | t }}
     </button>
   {%- endform -%}
 </div>
+</div>
+
+{{ 'activate.js' | asset_url | script_tag }}
