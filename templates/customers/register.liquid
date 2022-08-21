@@ -92,15 +92,6 @@
         {{ 'customer.register.email' | t }}
       </label>
     </div>
-    </div>
-    {%- if form.errors contains 'email' -%}
-      <span id="RegisterForm-email-error" class="form__message">
-        <svg aria-hidden="true" focusable="false" role="presentation">
-          <use href="#icon-error" />
-        </svg>
-        {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
-      </span>
-    {%- endif -%}
     <div class="field">
       {% render 'error-message', type: 'password-error' %}
       {% render 'success-message', type: 'password-success' %}
@@ -121,6 +112,16 @@
         Create Password
       </label>
     </div>
+    </div>
+    {%- if form.errors contains 'email' -%}
+      <span id="RegisterForm-email-error" class="form__message">
+        <svg aria-hidden="true" focusable="false" role="presentation">
+          <use href="#icon-error" />
+        </svg>
+        {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
+      </span>
+    {%- endif -%}
+
     <div class="organization__fields">
     <div class="field">
       <input
@@ -149,7 +150,7 @@
         type="text"
         name="customer[note][organizationPhone]"
         id="RegisterForm-organizationPhone"
-        placeholder="Phone Address"
+        placeholder="123-456-7890"
       >
       <label for="RegisterForm-organizationPhone">
         School/Business/Organization Phone Number

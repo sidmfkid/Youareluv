@@ -23,16 +23,29 @@ font-size: font-size(medium);
 }
         margin: 0rem auto;
     .organization__fields{
-        width: 50%;
         .field{
+            width: calc(30rem + 10vw);
             margin: 0 auto;
+        }
+        @include media-tablet {
+            width: 100%;
+            .field{
+                width: 100%;
+            }
         }
     }
     .customer__fields{
-        width: 50%;
         .field{
+            width: calc(30rem + 10vw);
             margin: 0 auto;
         }
+        @include media-tablet {
+            width: 100%;
+            .field{
+                width: 100%;
+            }
+        }
+
     }
 }
     h1 {
@@ -41,7 +54,7 @@ font-size: font-size(regular);
     }
     
     .field{
-        width: calc(30rem + 10vw);
+         width: calc(30rem + 10vw);
         display: flex;
         flex-wrap: wrap-reverse;
     }
@@ -76,8 +89,21 @@ font-size: font-size(small);
     &.login{
         width: fit-content;
         margin: 0 auto;
+        #recover {
+            margin-top: 1.4rem;
+        }
         .login-wrapper{
             width: 100%;
+            .field{
+                width: calc(30rem + 10vw);
+                margin: 0 auto;
+            }
+            @include media-tablet {
+                width: 100%;
+                .field{
+                    width: 100%;
+                }
+            }
         }
         .btn{
             display: block;

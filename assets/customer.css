@@ -137,17 +137,29 @@ section {
   display: block;
   font-size: calc(1.5rem + 2vw);
 }
-.customer.register .organization__fields {
-  width: 50%;
-}
 .customer.register .organization__fields .field {
+  width: calc(30rem + 10vw);
   margin: 0 auto;
 }
-.customer.register .customer__fields {
-  width: 50%;
+@media screen and (max-width: 900px) {
+  .customer.register .organization__fields {
+    width: 100%;
+  }
+  .customer.register .organization__fields .field {
+    width: 100%;
+  }
 }
 .customer.register .customer__fields .field {
+  width: calc(30rem + 10vw);
   margin: 0 auto;
+}
+@media screen and (max-width: 900px) {
+  .customer.register .customer__fields {
+    width: 100%;
+  }
+  .customer.register .customer__fields .field {
+    width: 100%;
+  }
 }
 .customer h1 {
   color: var(--primary-95);
@@ -190,8 +202,23 @@ section {
   width: fit-content;
   margin: 0 auto;
 }
+.customer.login #recover {
+  margin-top: 1.4rem;
+}
 .customer.login .login-wrapper {
   width: 100%;
+}
+.customer.login .login-wrapper .field {
+  width: calc(30rem + 10vw);
+  margin: 0 auto;
+}
+@media screen and (max-width: 900px) {
+  .customer.login .login-wrapper {
+    width: 100%;
+  }
+  .customer.login .login-wrapper .field {
+    width: 100%;
+  }
 }
 .customer.login .btn {
   display: block;
