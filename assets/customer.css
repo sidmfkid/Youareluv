@@ -280,6 +280,30 @@ section {
 .customer.account .account__para, .customer.account .account td {
   font-size: calc(1.2rem + 0.5vw);
 }
+.customer.activate {
+  margin: 0 auto;
+  width: fit-content;
+}
+.customer.activate h1 {
+  display: block;
+  height: min-content;
+}
+.customer.activate p {
+  display: block;
+  height: min-content;
+}
+.customer.activate .customer__fields .field {
+  width: calc(30rem + 10vw);
+  margin: 0 auto;
+}
+@media screen and (max-width: 900px) {
+  .customer.activate .customer__fields {
+    width: 100%;
+  }
+  .customer.activate .customer__fields .field {
+    width: 100%;
+  }
+}
 
 .error-message {
   background: rgba(255, 144, 144, 0.738);

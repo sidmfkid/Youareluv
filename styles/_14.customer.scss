@@ -168,6 +168,38 @@ font-size: font-size(small);
         }
     }
     }
+    &.activate {
+        margin: 0 auto;
+        width: fit-content;
+        // display: flex;
+        // flex-wrap: wrap;
+        // justify-content: center;
+        // align-items: flex-start;
+        h1{
+display: block;
+
+height: min-content;
+        }
+        p{
+            display: block;
+
+            height: min-content;
+                    }
+        .customer__fields{
+            .field{
+                width: calc(30rem + 10vw);
+                margin: 0 auto;
+            }
+            @include media-tablet {
+                width: 100%;
+                .field{
+                    width: 100%;
+                }
+
+            }
+    
+        }
+    }
 }
 
 .error-message {
