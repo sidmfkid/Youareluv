@@ -280,6 +280,14 @@ section {
 .customer.account .account__para, .customer.account .account td {
   font-size: calc(1.2rem + 0.5vw);
 }
+.customer.account .account tr {
+  border-bottom: 1px black solid;
+}
+@media screen and (max-width: 900px) {
+  .customer.account {
+    width: 100%;
+  }
+}
 .customer.activate {
   margin: 0 auto;
   width: fit-content;

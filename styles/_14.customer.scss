@@ -166,6 +166,12 @@ font-size: font-size(small);
         &__para, td  {
             font-size: font-size(small);
         }
+        tr {
+            border-bottom: 1px black solid;
+        }
+    }
+    @include media-tablet {
+        width: 100%;
     }
     }
     &.activate {
