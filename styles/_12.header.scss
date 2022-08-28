@@ -32,16 +32,22 @@
         @include media-tablet{
             &-customer{
                 position: fixed;
-right: 0.3rem;
-top: 15%;
-background-color: var(--primary-60);
-padding: 1.3rem 1.3rem 1.3rem 1.3rem;
-border-radius: 10rem;
-box-shadow: 0.1rem 0.1rem 1rem 0rem rgba(0, 0, 0, 0.274);
-line-height: 2.25rem;
-text-align: center;
-width: 5.25rem;
+                right: 0.3rem;
+                top: 15%;
+                background-color: hsla(34.9, 90.2%, 60%, 0.47);
+                padding: 1.3rem 1.3rem 1.3rem 1.3rem;
+                border-radius: 10rem;
+                box-shadow: 0.1rem 0.1rem 1rem 0rem rgba(0, 0, 0, 0.274);
+                line-height: 2.25rem;
+                text-align: center;
+                width: 5.25rem;
             }
+            &-cart {
+background-color: hsla(34.9, 90.2%, 60%, 0.47);
+            }
+            &-hamburger {
+                background-color: hsla(34.9, 90.2%, 60%, 0.47);
+                            }
         }
     }
 }
