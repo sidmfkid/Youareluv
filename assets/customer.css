@@ -115,13 +115,46 @@ section {
   display: none;
 }
 
+main {
+  height: 80vh;
+}
+main.register {
+  height: 80vh;
+}
+main.register .form-message {
+  display: block;
+  width: 100%;
+}
+main.register .form-message svg {
+  width: 2rem;
+  height: 2rem;
+}
+main.register .form-message li {
+  font-size: 1.5rem;
+}
+@media screen and (max-width: 900px) {
+  main.register {
+    height: auto;
+  }
+}
+
 .customer {
   padding: 3rem 4rem;
-  height: 80vh;
 }
 .customer__container {
   width: 100%;
-  height: 80vh;
+}
+@media screen and (max-width: 600px) {
+  .customer {
+    height: auto;
+  }
+  .customer__container {
+    height: auto;
+  }
+}
+.customer .shopify-section-footer {
+  position: relative;
+  min-width: fit-content;
 }
 .customer.register {
   width: auto;
@@ -239,9 +272,9 @@ section {
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   flex-wrap: wrap;
-  height: min-content;
+  height: 100%;
   margin: 0rem auto;
   width: calc(40rem + 10vw);
 }

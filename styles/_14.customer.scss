@@ -1,12 +1,47 @@
+main {
+    height: 80vh;
+    &.register {
+        height: 80vh;
+
+        .form-message {
+            display: block;
+            width: 100%;
+            svg {
+                width: 2rem;
+height: 2rem;
+            }
+            li {
+               font-size: 1.5rem;
+            }
+        }
+        @include media-tablet {
+            height: auto;
+        }
+    }
+}
+
 .customer{
     padding: 3rem 4rem;
-    height: 80vh;
+    &.account{
+        
+    }
 &__container{
     width: 100%;
-    height: 80vh;
+    // height: 80vh;
+}
+@include media-medium {
+    height: auto;
+    &__container{
+        height: auto;
+    }
+}
 
+.shopify-section-footer{
+    position: relative;
+    min-width: fit-content;
 
 }
+
 &.register{
         width: auto;
         #create_customer{
@@ -125,9 +160,9 @@ font-size: font-size(small);
         padding: 1.5rem 2rem;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: start;
         flex-wrap: wrap;
-        height: min-content;
+        height: 100%;
         margin: 0rem auto;
         width: calc(40rem + 10vw);
         .account{

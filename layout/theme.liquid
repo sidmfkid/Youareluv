@@ -67,7 +67,8 @@
 
         {% render 'customer-modal' %}
         {% section 'cart-drawer' %}
-        <main>
+        
+        <main class="{{ template.name }}">
             {{ content_for_layout }}
         </main>
 
