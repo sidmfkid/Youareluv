@@ -1,19 +1,16 @@
-{% render 'image-with-text-css'%}
+{% render 'image-with-text-css' %}
 
 <section class="image-with-text">
+  <div class="image-with-text__img clip">
+    <img width="1000" height="1000" loading="lazy" src="{{'black-family-1.jpg' | asset_url }}">
+  </div>
 
-    <div class="image-with-text__img clip">
-        <img width="1000" height="1000" loading="lazy" src="{{'black-family-1.jpg' | asset_url }}"></img>
-    </div>
-
-    <div class="image-with-text__text">
-        <h2>Giving Back</h2>
-        <p>The You Are Brand is committed to community and giving back! Every time we get receive an order, a box will be given to an underprivileged Child. They too need to know that they are beautiful, talented, valued and much more!</p>
-        <a class="btn btn-secondary" href="{{ section.settings.btn_link }}">{{ section.settings.btn_text}}</a>
-    </div>
-
+  <div class="image-with-text__text">
+    <h2>Giving Back</h2>
+    <p>{{ section.settings.para }}</p>
+    <a class="btn btn-secondary" href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}</a>
+  </div>
 </section>
-
 
 {% schema %}
 {
@@ -23,7 +20,7 @@
         "type": "image_picker",
         "id": "image",
         "label": "Select Image"
-        },
+    },
     {
         "type": "url",
         "id": "btn_link",
@@ -34,6 +31,12 @@
         "id": "btn_text",
         "label": "Button Text",
         "default": "Buy Now"
+    },
+    {
+        "type": "textarea",
+        "id": "para",
+        "label": "Paragraph Text",
+        "default": "The You Are Brand is committed to community and giving back! Every time we receive an order, a box will be given to an underprivileged Child. They too need to know that they are beautiful, talented, valued and much more!"
     }
     ],
     "presets": [
