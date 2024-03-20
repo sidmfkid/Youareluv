@@ -1,3 +1,9 @@
+{%- form 'product', product -%}
+<script>
+    let productJson = {{ product | json }};
+</script>
+{%- endform -%}
+
 <script defer src="{{ 'product_form.js' | asset_url }}"></script>
 
 <div class="product__selects">
@@ -11,7 +17,7 @@
 
 {% form 'product', product %}
 
-<variant-radios data-url="{{ product.url }}"" data-section="{{ section.id }}">
+<variant-radios data-url="{{ product.url }}" data-section="{{ section.id }}">
     {% for option in product.options_with_values %}
         <fieldset>
             <legend>{{ option.name }}</legend>

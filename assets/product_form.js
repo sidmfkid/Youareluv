@@ -1,12 +1,8 @@
-
-
-
-
 class ProductForm extends HTMLElement {
-  constructor(){
+  constructor() {
     super();
-    this.form = this.querySelector('form');
-    this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
+    this.form = this.querySelector("form");
+    this.form.addEventListener("submit", this.onSubmitHandler.bind(this));
   }
   onSubmitHandler(evt) {
     evt.preventDefault();
@@ -16,70 +12,65 @@ class ProductForm extends HTMLElement {
   }
 
   getID() {
-    var masterSelect = document.querySelector('#currentVariant')
-      var uri = window.location.search
-      const currentID = uri.slice(9);
+    var masterSelect = document.querySelector("#currentVariant");
+    var uri = window.location.search;
+    const currentID = uri.slice(9);
 
     if (!currentID) {
-      const varID = 40065683947710
+      const varID = productJson.variants[0].id.toString();
 
       return varID;
     } else {
-      masterSelect.setAttribute('value', currentID)
-      const varID = masterSelect.value
+      masterSelect.setAttribute("value", currentID);
+      const varID = masterSelect.value;
 
-      return varID
+      return varID;
     }
   }
 
+  postReq(fn) {
+    const elemQuantity = document.querySelector("#quantityInput");
+    let elemValue = elemQuantity.value;
+    let formData = {
+      items: [
+        {
+          id: this.getID(),
+          quantity: `${elemValue}`,
+        },
+      ],
+    };
 
+    fn(this.updateCart, formData);
+  }
 
-postReq(fn){
-  const elemQuantity = document.querySelector('#quantityInput');
-  let elemValue = elemQuantity.value;
-  let formData = {
-    'items': [{
-     'id': this.getID(),
-     'quantity': `${elemValue}`
-     }]
-   };
+  async postData(fn, formData) {
+    const res = await fetch("/cart/add.js", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    const data = await res.json();
+    console.log("First post request", data);
+    fn(data);
+  }
 
-   fn(this.updateCart, formData)
+  updateCart(data) {
+    creatCartObj(data);
+    cartBubble.textContent = "";
+    cartBubble.textContent = `${
+      currentCart.items.length === 0 ? 1 : currentCart.items.length
+    }`;
+    cartBubble.style.opacity = "1";
+
+    // const getdata = async function () {
+    //   const res = await fetch('/cart.js')
+    //   const data = await res.json();
+
+    // }
+    //  getdata();
+  }
 }
 
-async postData(fn, formData) {
-  const res = await fetch('/cart/add.js', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(formData)
-})
-const data = await res.json();
- console.log('First post request', data)
-fn(data)
-
- }
-
-
-updateCart(data){
-  creatCartObj(data);
-  cartBubble.textContent = ''
-  cartBubble.textContent = `${currentCart.items.length === 0 ? 1 : currentCart.items.length}`;
-  cartBubble.style.opacity = '1'
-
-  // const getdata = async function () {
-  //   const res = await fetch('/cart.js')
-  //   const data = await res.json();
-
-
-  // }
-  //  getdata();
-
-}
-
-
-
-}
-
-customElements.define('product-form', ProductForm);
+customElements.define("product-form", ProductForm);
